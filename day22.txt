@@ -1,0 +1,8 @@
+today i leared about process management
+total 6 command i learned today 
+1> sleep = that means its stop terminal for a several time 
+2> sleep & = it helps to run command in background and keep terminal free also
+3> kill pid = its stop process politely
+4> kill -9 pid = if kill pid can't stop the process then we use it for stop the process forcefully
+5> jobs = its shows status of background and stopped jobs information
+6> fg = its helps to make background to foreground
