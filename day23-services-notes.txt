@@ -1,0 +1,17 @@
+today i learned about services
+1> i learned what is services
+2> how to check services status . 
+   systemctl status service : it show status of services
+3>how to start services 
+  systemctl start service
+4> how to stop services
+   systemctl stop services
+5> how to restart services 
+   systemtcl restart service
+6> what is ssh ? and how its help us.
+  ssh is secure shell and ist helps in remote login .
+   its uses like a command to login in server .
+
+
+
+   DAY 23 COMPLETE
