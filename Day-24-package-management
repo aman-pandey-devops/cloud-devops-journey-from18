@@ -1,0 +1,28 @@
+Today i learned package management
+
+ What is package = Package called sotware that we intall in linux.
+ 
+ What inside in package = Program file that run software, Configuration file it have setting of software , Dependencies file = things that required 
+                          for a software to work.
+
+
+
+ apt = Its called package manager that help to install software,update or remove.
+ 
+
+
+ apt search "software k name" = Its help to search software.....
+                               
+                                example= apt search git
+
+
+ apt list --installed = Its shows list of software installed.
+
+
+ sudo = Its give admin power to command and run together.
+
+
+        eaxample = sudo apt install ngnix
+   
+
+ apt update = It show latest package information,downlod and refresh aslo.  
