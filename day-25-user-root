@@ -1,0 +1,22 @@
+ 
+
+   DAY 25 USER OR ROOT
+
+
+  User = linux account user 
+
+
+  Normal user = A user with limited privileges that require to take permission.
+              
+               example = sudo apt install git
+
+  Root user = its ia powerful user in linux wityh full system access.
+
+             example = apt install git  
+
+  whoami = it displays the currently logged-in user
+  
+
+     
+           THANKS WE WILL MEET NEXT DAY....  
+  
