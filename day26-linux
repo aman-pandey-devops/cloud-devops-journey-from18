@@ -1,0 +1,53 @@
+
+
+                                                                       DAY 26 
+                                                             LINUX ADMINISTRARTION BASICS
+
+
+
+ 1> Hostname: the name of a linux computer or server.
+
+   command: hostname 
+
+     it display the hostname (name) of the current linux system.
+
+
+  2> date & time: it display current date and time of system
+   
+
+     command: date
+    
+
+
+   3> disk usage: displays total disk space, used space, free space, and usage percentage in RAM 
+    
+
+     command: df -h
+  
+
+     du -sh <file or folder name> : this ccommand show size of file or folder .
+
+
+
+   df -h : its show entire disk storage usage.
+
+   du -sh <file or folder name> : it show size os specific file or directory.
+  
+
+
+   4> memory usage 
+
+     free -h: this command display total,used,and available memory in RAM
+
+
+
+   5> shutdown
+    
+     sudo shutdown now: this command use for safely shutdown the linux system
+
+
+    6> reboot
+    
+      sudo reboot: restart the linux system 
+     
+  
