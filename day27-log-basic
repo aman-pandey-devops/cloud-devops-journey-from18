@@ -1,0 +1,49 @@
+
+
+
+                                                                          DAY 27 "LOG BASIC"
+ 
+
+
+
+
+     1> LOG= A record of events and activities performed by the system or it help for trouble shooting.
+
+
+             example = user login,service start, server reboot,errors.
+
+
+
+     2> Why linux makes log = to keep a record of system activities,monitor events, and troubleshoot problem.
+
+
+
+      3> /var/log = a directory where linux stores system log file.
+
+
+
+      4> Important log file = 1st> dpkg.log = it stores package installation, update,and removal log.
+                                              example= sudo apt intsall git
+
+                             2nd> auth.log = stores login and authentication logs.
+                                             example= user login,sudo,failed login.
+
+                             3rd> syslog = stores general system events and messages.
+                                           example = services,warningg,error
+
+                             4th> kern.log= stores linux kernel and hardware-related log.      
+                                            example =disk error,hardware detect.
+                             sth> journal = directory that stores sytemd journal logs
+
+
+      5> journalctl =command use to display all system logs.
+
+
+         journalctl -n 10 = displays all system logs.
+
+
+         journalctl -b = display logs from the cureent boot.
+
+
+       6> log use in troubleshooting = logs help identifyy the root cause of system problem and assist in troubleshooting.
+
