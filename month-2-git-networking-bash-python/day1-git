@@ -1,0 +1,40 @@
+       
+
+
+
+                                                                          DAY 1 GIT BASICS
+
+
+
+
+      !> GIT = git is version control system.
+
+               git track manages change in a project
+
+
+      2> version = version is a new updated state of a project.
+
+
+      3> version control =  version control is a concept of tracking and managing different version of a project.
+
+
+      - it helps us keep project history and restore old version.
+  
+       
+      4> why git? 
+        
+      - it track project changes.
+      - keep project history.
+      - view old versio.
+      - restore previous version.
+      - help multiple developers work together.
+
+
+    5. how git works ?
+    
+     - create a project.
+     - make changes.
+     - git record those changes.
+     - git keeps the history of version.
+
+     important> git cannot save changes automatically. when we give command to git to swave changes then git save it.
