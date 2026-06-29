@@ -1,0 +1,51 @@
+     
+
+
+                                                                  GIT RESPOSITORY AND INITIALIZATION
+        
+
+                                
+
+   1> git --version = checks whether git installed and displays the installed git version.
+
+
+
+   2> Repository = it is a project folder where git stores and manages the projects history records and version.
+
+                   it managed by Git.
+
+
+
+   3> git init = this command coverts a normal folder into a git reposistory and create a hidden .git folder and starts git tracking for the project.
+
+
+
+   4> .git folder = .git is hidden folder created by git.
+    
+                    It stores: project history,versions, git configuration, project records.
+
+
+
+   5> git status = this command tells us:
+
+                   i> current branch
+                   ii> commit status
+                  iii> new files
+                   iv> modified files
+                   v> reposistory status
+
+   6> How git identifies a project
+     
+      git first checks whether the current folder contains a .git folder.
+
+
+        #> if .git exists = git recognizes it as a reposistory.
+        #> if .git doesn't exist = git checks the parent folder.
+        #> if no .git is found = git shows:  =  fatal: not a git repository
+
+
+                                        
+
+
+
+  
