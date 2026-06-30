@@ -1,0 +1,30 @@
+                                                                    
+
+
+
+
+                                                                # DAY 3 GIT TRACKING AND FIRST COMMIT
+
+
+
+1> Untracked file = An untracked file is a new file that git can see but is not tracking yet.
+
+
+2> git add = git add tells git to start tracking the file and places it in the staging area.
+
+
+3> staging area = staging area is a temporary area where files stay after git add and beforee git commit.
+
+
+4> git commit = permanently saves the staged chnages as a new version or files in git history.
+
+
+
+5> git log = show the  all saved commits(version) in git history.
+
+
+
+
+
+                                                       
+ 
