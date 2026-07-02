@@ -1,0 +1,45 @@
+                                
+
+                                                                        DAY 5 .gitignore
+
+
+
+1> .gitignore = .gitignore is special file that tells git which files or folders should not be tracked.
+
+
+2> why do we use .gitignore ?
+  
+  = we use .gitignore to prevent git from tracking unnecessary,temporary,or sensetive files.
+
+
+ 3> how .gitignore works /
+
+  = git reads the .gitignore file and ignores the files or folders listed inside it.
+    
+    example = password.txt
+              logs.txt
+
+
+  4> ignore entire folder 
+
+    = to ignore entire folder, write the folder name followed by / in the .gitignore file.
+        
+      example = logs/
+
+
+ 5> ignore file extension = use the *wildcard to ignore all files with the same extension.
+  
+                           example = *.log , *.temp
+
+
+6> ignore all files except one = use * to ignore all files and ! to exclude a specific file from being ignored.
+
+                                example = *
+                                         !README.md
+                                         !.gitignore
+
+
+
+    
+
+  
