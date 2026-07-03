@@ -1,0 +1,33 @@
+                                                                    
+                                                                      DAY 6
+                                                                  GIT-BRANCHING
+
+ 1> Main Branch = the main branch is the primary and stable version of a project.
+                
+                  it contain the latest working code.
+
+
+ 2> Branch = A branch is an independent copy of a project.
+ where developers can work on new feature or bug fixes without affecting the mainj branches
+
+              
+ 3> Why do we use branches ? 
+
+   #> keep main branch safe.
+   #> develop new features independently.
+   #> fix bugs without affecting the stable project.
+   #> allow multiple developers to work simultaneously.
+
+ 4>  git branch 'branch-name' = for create new branch.
+
+
+ 5> git branch = view all branch in repostitory.
+
+
+ 6> git switch 'branch name' = swith from one branch to another.
+           
+          or
+  git checkout 'branch name'
+
+
+
