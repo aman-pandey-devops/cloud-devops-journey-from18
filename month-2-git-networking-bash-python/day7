@@ -1,0 +1,48 @@
+   
+                                                                               DAY 7 
+                                                                             GIT MERGE
+
+ 1> What is merge ?
+
+= merge is the process of combining the change from one branch into another branch. 
+
+
+2> why do we use merge ? 
+
+=  #> to combine completed feature into the main branch
+   #> to keep the main branch stable while development happens in seprate branches. 
+   #> to safely integrate few feature after testing.
+   #> to combine work from multiple developer into one project.
+
+
+3> git merge [branch name] = this command is used to merge a branch.
+ 
+   
+important = always switch to the destination branch before merging.
+
+
+ 5> PRACTICAL = 
+
+   create repository= git init 
+   create and committed the first file= touch README.md
+                                               |
+                                        git add README.md
+                                                |
+                                        git commit -m "INitial commit"  
+                                                |
+    create a new feature-login=         git branch feature-login
+                                                |
+                                        git switch feature-login
+                                                |
+   create a new feature file =          touch login.sh                                       
+                                                |
+                                        git add login.sh
+                                                |
+                                        git commit -m "Added login feature"
+                                                | 
+switched back to the Main branch=       git switch master
+                                                |
+
+merged the feature brancch into the main branch= git merge feature-login 
+                                                |
+check out commit list = git log --oneline
