@@ -1,0 +1,32 @@
+                                                                              
+                                                                            DAY 8
+                                                                       INTRODUCE GITHUB.
+
+
+ 1> github = github is a cloud-based platform that hosts git repositories online.
+
+  
+ 2> why do we use Github = 
+     
+    #> store code online.
+    #> project backup
+    #> to collab with your team
+    #> share project.
+   
+3> local repository = git repository is stored on your own computre.
+
+   remote repository = remote repository is stored on github.
+
+
+4> upload branch commits to github = git push origin {branch name}
+  
+           git status
+              | 
+           git add .
+              |
+          git commit -m 
+              |
+          git push origin = branch commits upload k liye
+
+
+
