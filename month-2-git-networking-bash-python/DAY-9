@@ -1,0 +1,37 @@
+                                                                          
+                                                                              DAY 9
+                                                                       Git Clone & Git pull
+
+ 1> git Clone = git clone is used to copy a remote github reposisitory to a local compture.
+
+
+  command = git clone <reposistory-url>
+
+
+ 2> why do we use clone ? 
+ 
+ = #>  to download existing repository from github.
+   #> start working on an existing project.\
+   #> set up a project on a new laptop.
+   #> collaborate with team memebers.
+
+3> clone repository = git clone <repository-url>
+
+
+4> what is git pull?
+
+ = git pull is used to download the latest changes from the remote github reposistory
+   to the local repository.
+ 
+      command = git pull 
+
+              or
+    
+       git pull orgin main
+
+5> pull latest changes 
+
+= git pull updates your local repository with the latest changes from github.
+
+  #> download changes made by developers.
+  #> keeo your local project up to date. 
