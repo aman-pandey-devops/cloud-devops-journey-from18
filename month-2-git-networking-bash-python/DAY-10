@@ -1,0 +1,43 @@
+                                                     
+ 
+                                                                              DAY 10
+                                                                           PULL REQUEST
+
+
+1> Pull request = A pull request is a request to merge changes from one branch into another
+                 branch,usually into the main branch.
+
+
+2> why do we use pull request?
+= we use pull requests to:
+ #> review code before merging.
+ #> prevent bugs from reaching the main branch.
+ #> keep the main branch stable.
+ #>improve code quality.
+ #> enable team collabration.
+
+
+3> code review
+
+= code review is the process of reviewing another developers code
+ before merging into the main branch.      
+
+purpose: improve code quality.
+         finds bugs early.
+         maintain coding standards.
+
+
+4> merge pull request
+  
+ = merge pull  request combines the approved chnages from the feature branch
+ into the main branch.
+
+ Workfllow:
+ 
+ 1. create pull request.
+ 2. code review.
+ 3. approval.
+ 4. merge pull request.
+ 5. main branch is updated.
+ 6. team members pull the latest changes.
+
