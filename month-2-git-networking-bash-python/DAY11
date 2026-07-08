@@ -1,0 +1,44 @@
+                                                                               
+                                                                               DAY 11
+                                                                          GIT-MERGE-CONFLICT
+
+
+
+1> Merge conflict = A merge conflict occurs when git cannot automatically merge changes
+ because two branches have modified the same line of a file.
+
+
+2> why does a merge conflict happen?
+
+ = #> the same file is modified.
+   # the same line is changed in different branches.
+   # git cannot decide which version to keep.
+
+3> uderstand conflict markers
+
+ = git adds conflict markers inside the file.
+
+ <<<<<<< HEAD
+Hello Main Branch
+=======
+Hello Feature Login
+>>>>>>> feature-login
+
+ # meaning
+  
+ <<<<<<< HEAD → Current branch changes.
+======= → Separator.
+>>>>>>> feature-login → Incoming branch changes.
+
+5> Resolving merge conflict .
+
+ 1. open the conflict file.
+ 2. decide the final code.
+ 3. remove all conflicts markers.
+ 4. save the file.
+
+ stage the resolved file:
+
+git add [ file name]  
+git commit
+
