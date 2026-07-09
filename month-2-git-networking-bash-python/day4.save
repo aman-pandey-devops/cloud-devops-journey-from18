@@ -1,0 +1,26 @@
+      
+        
+                                                                       DAY 4
+                                                             MANAGING CHANGING IN GIT 
+
+
+1> Modified file = A modified file is a file that has already been committed but has been changed after the last commit.
+
+
+2> git diff = show the exact difference between the last committed version and the current version of a life.
+
+             purpose: view added lines.
+                      view removed lines.
+                     compare changes before committing.
+
+
+3> git restore = it discards uncommitted changes and restores the file to its last committed state.
+
+              purpose : undo accidental changes.
+                        recover the last committed version.
+
+
+4> git rm = removes a tracked file from git and stages the deletionfor the next commit.
+
+                     pupose : delete a tracked file.
+                             record the deletion in git history after committing.

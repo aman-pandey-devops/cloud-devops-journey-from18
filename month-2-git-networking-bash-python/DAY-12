@@ -1,0 +1,57 @@
+                                                                               
+                                                                              DAY 12
+                                                                            GIT REBASE
+
+ 
+ 1> Git Rebase = git rebase moves or replays the commits of a feature branch
+                 on top of the latest main branch .
+
+    
+    purpose :
+  
+   #> update the feature branch with the latest main branch.
+
+   #> keep git history clean and linear.
+
+
+ 2> why do we use rebase ?
+
+  #> get the latest changes from the main branch.
+  #> keep git history clean.
+  #> avoid unnecessary merge commits.
+  #> reduce merge conflicts before creating a pull request.
+
+
+ 3> Git rebase 
+
+ # commands
+  
+ #> git switch [branch name]
+ #> git reabse main
+ 
+  in conflicts occurs :
+
+ #> nano app.txt
+ #> git add app.txt
+ #> git rebase --continue
+
+
+ 5> rebase conflicts
+
+=  A rebase conflict occurs when git cannot automatically replay a commit 
+   because the same line has been modified in both branches.
+
+  steps to resolve
+
+ #> open the conflicted file.
+ #> remove conflict markers.
+ #> save the correct content.
+ #> stage the file = git add app.txt
+ #> continue the rebase = git rebase --continue
+
+ 6> rebase command  
+  
+  start rebase main = start rebase
+  git rebase --continue = continue after resolving conflicts.
+  git rebase --skip = skip the current commit during rebase
+  git rebase --abort = cancel the rebase and return to previous state 
