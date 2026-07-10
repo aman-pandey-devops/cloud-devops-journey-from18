@@ -1,0 +1,88 @@
+
+                                                                              DAY 13
+                                                                            GIT ADVANCE
+
+ 1> Git cherry pick ?
+  
+ = it is used to copy a specific commit from one branch to another without
+   merging the entrie branch.
+
+  # why do we use cherry pick?
+   
+   = - to copy a single feature or bug fix.
+   
+     - to avoid unnecessary commits.
+   
+     - to move important changes between branches.
+
+  # commands
+ 
+  git log --oneline
+  git cherry-pick [commit id]
+
+
+
+ 2> git stash 
+ 
+ = git stash is used to temporarily save uncommited changes without
+   creating a commit .
+
+ # why do we use git stash ?
+
+ - to temporarily save unfinished work.
+
+ - to switch branches without losing changes.
+
+ - to continue work later from the same point.
+
+   # workflow
+
+    work on feature.
+  
+   save changes using git stash.
+  
+   switch to another branch.
+   
+   complete the urgent task.
+
+   return to the original branch.
+
+   restore the saved work using git stash.
+
+
+ # commands
+
+ git stash = temporarily saves all uncommitted changes and clean the directory
+ git stash list = display all saved stashes.
+ git stash apply = restore the latest stash without removing it from the stash list.
+ git stash pop = restores a specific stash without deleting it.
+ git stash pop stash@{0} = restore specific stash and remove it from stash list.
+ git stash drop stash @{0}= delete a soecific stash.
+ git stash clear = deletes all saved stashes.
+
+
+
+
+ 3> What is Git tag ?
+
+ = git tag is used to assign a permanent name (version) to
+   an important commit.
+
+ Example = v1.0 , v2.0
+
+
+
+ # why do we use git tag ?
+ 
+ - software versioning.
+ - mark stable releases.
+ = indentify important commits.
+
+ # commands 
+ 
+ git tag v1.0 = create a new tag named
+ git show v1.0 = display information about the v1.0 tag including the commits detail.
+ git tag <tag name> <commit-id> = create a tag for a specific commit.
+ git tag -d <tag-name> = deletes a local tag .
+ git push origin <tag-name> = pushes a specific tag to a github repository
+ git push origin --tags = push all local tags
