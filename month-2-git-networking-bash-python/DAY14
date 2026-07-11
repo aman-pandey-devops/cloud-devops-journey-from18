@@ -1,0 +1,101 @@
+                                                               
+                                                                                DAY14
+                                                                       Git issues & Git release
+
+ 
+ !> Github issues = github issues are used to track bugs, feature request,
+ improvement, and tasks in a project.
+
+  # why do we use issues ?
+ 
+   . report bugs.
+   . request new features
+   . track project task.
+   . collaborate with team members.
+
+
+ # Auto close issues
+ 
+= insisde the pull request description:
+ 
+   closes #1
+
+ use:
+
+ Automatically closed issue #1 after the pull request is merged.
+
+
+   # Workflow
+  
+Issue Created
+      ↓
+Feature Branch
+      ↓
+Bug Fix
+      ↓
+Commit
+      ↓
+Push
+      ↓
+Pull Request
+      ↓
+Manager Review
+      ↓
+Merge
+      ↓
+Issue Automatically Closed
+
+
+
+   6> Github releases 
+
+ = A Github release is the official published version
+   of a project based on a git tag.
+
+
+  # Git tag or github release
+ 
+  Gt tag
+ 
+ > Gives a version name to a specific commit.
+
+ > example = git tag v1.0
+
+  push tag
+
+ > git push origin --v1.0 = upload the tag to the remote github repository.
+
+
+  Github release
+  
+ = A github release officially publishes a tagged version with release notes.
+
+
+  # Release workflow
+
+Project Completed
+        ↓
+Create Tag
+        ↓
+Push Tag
+        ↓
+Create GitHub Release
+        ↓
+Write Release Notes
+        ↓
+Publish Release
+
+  # release note example
+
+Version 1.0
+
+Features
+- Login Feature
+- GitHub Issues Workflow
+- GitHub Tags
+
+Bug Fixes
+- Fixed Login Button Bug
+
+Improvements
+- Improved Git & GitHub Workflow
