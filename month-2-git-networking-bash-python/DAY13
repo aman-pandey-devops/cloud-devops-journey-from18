@@ -52,10 +52,10 @@
 
  # commands
 
- git stash = temporarily saves all uncommitted changes and clean the directory
+ git stash = temporarily saves all uncommitted changes and cleans the working directory.
  git stash list = display all saved stashes.
  git stash apply = restore the latest stash without removing it from the stash list.
- git stash pop = restores a specific stash without deleting it.
+ git stash pop = restores the latest stash and removes it from the stash list.
  git stash pop stash@{0} = restore specific stash and remove it from stash list.
  git stash drop stash @{0}= delete a soecific stash.
  git stash clear = deletes all saved stashes.
