@@ -1,0 +1,99 @@
+                                                                               
+                                                                               DAY 16
+                                                                        Networking Foundation
+
+
+ 1> Networking = Networking is the connection between two or 
+    more devices to share data and information.
+  
+   Example: Laptop <<<>>> Phone
+
+  
+ 2> Internet = The Internet is a global network that connects
+               millions of computers, servers and networks worldwide.
+
+
+  # Communication Flow:
+
+     Browser
+        |
+     Request
+        |
+     Internet
+        |
+     Server
+        |
+     Response
+        |
+     Browser
+
+ 
+ 3> Network vs Internet
+
+  # Network
+ 
+ A network is a connection betweeen two or more devices.
+ 
+  Example: Home wi-fi Network.
+
+
+  # Internet
+
+  The Internet is a network of network.
+
+  it connects million of networks around the world.
+
+
+  4> IP Address
+
+  = An IP (Internet Protocol) Address is a unique address assigned to a
+    dedvice on a network.
+
+   It helps data reach the correct destination.
+
+  
+  # Example
+  
+ Laptop > 192.168.1.10
+ Phone  > 192.168.1.20
+
+
+
+ 5> Public IP vs Private IP
+
+ # Public IP
+
+  Accessible over the Internet.
+ 
+  Used to communicate with devices from anywhere in the world.
+
+
+ # Private IP
+
+ Used only inside a local network.
+ 
+ Not directly accessible from the internet.
+
+ 
+ 6> Packets
+
+ = A packets is small peice of data sent over a network.
+
+  > Large files are divided into many packets before transmission.
+
+  > At the destination, all packets are reassembled into the original file.
+
+ # A packet contains
+
+ i> source IP Address
+ ii> Destination IP Address
+ iii> A portion of the data
+
+
+ # Linux Hands-on Commands
+
+ i> ip a = show private IP
+ii> curl ifconfig.me = Show Public IP
+iii> hostname = show hostname
+iv> ping google.com = check networking connectivity
+
