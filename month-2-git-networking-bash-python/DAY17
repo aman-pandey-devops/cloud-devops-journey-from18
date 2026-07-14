@@ -1,0 +1,77 @@
+ 
+                                                                              DAY 17
+                                                                       Networking Basics- Part 2
+                                                                                                                                                  
+
+
+ 1> DNS (Domain Name System) = DNS covert domain name into an IP address.
+ 
+ ~ Humans remebers domain names easily.
+ ~ Computers communicate using IP addresses.
+
+ Example = google.com = 142.301.110
+
+
+ 2> Domain Name 
+
+ = A domain name is the human readable name of website.
+
+ ~ it helps users access websites without remembering
+    IP addresses.
+
+ ~ Eveey domain points to an IP address through DNS.
+
+ Example = google.com
+
+
+ 3> HTTP vs HTTPS
+
+ # HTTP ( Hypertext Transfer protocol)
+
+ ~ Used for communication between browser and server.
+
+ ~ Data is not encrypted.
+
+ ~ Not secure.
+
+ # HTTPS (HyperText Transfer Protocol Secure)
+
+ ~ Secure version of HTTP.
+ ~ Data is encrypted
+ ~ Protects sensitive information during communication.
+
+  # Default Ports
+  
+   HTTP = Port 80
+   HTTPS = Port 443
+
+
+ 4> Ports
+
+ = A port is logical communication endpoint.
+
+ ~ it tells the operating system which service
+   or application should receive the network request.
+
+ ~ One IP address can have multiple services running on different ports.
+
+
+ 5> SSH (Secure Shell)
+
+  = SSH is a secure protocol used to remotely access and
+    manage Linux servers.
+
+  ~ Communication is encrypted.
+  
+  ~ Commonly used to connect to AWS EC2 instances.
+
+
+ 6> Commands
+ 
+ # curl -I https://google.com 
+
+ = For check website status or server information.
+
+ # ssh -V
+  
+ = For checking SSH version or SSH is installed in system or not
