@@ -1,0 +1,119 @@
+                   
+                                                                               DAY 18
+                                                                          NETWORKING PART 3
+
+
+  1> OSI Model ( Open System interconnection)
+
+  = The OSI Model is a reference model that explain
+    how data travels between two devices through 
+     7 layer.
+   
+    It helps us understand the communication
+    process in computer network.
+
+
+  #7 Layers
+  
+  1. Physical
+  2. Data Link 
+  3. Network
+  4. Transport
+  5. Session
+  6. Presentation
+  7. Application
+
+   #Key concepts
+ 
+ * Network Layer = Usese IP Addres.
+ * Transport Layer = Uses TCP and UDP.
+
+
+ 2> TCP vs UDP
+ 
+  # TCP(Transmission control protocol)
+   
+   * Reliable protocol
+   * Establishes a connection before sending data.
+   * Delivers data in the correct order.
+   * Retransmits lost packets.
+   * Used when data accuracy is important.
+
+     # Example = Whatsapp Messages , Emails.
+
+
+  # UDP(User Datagram protocol)
+
+    * Fast protocol.
+    * Does not establish a connection.
+    * Does not retransmit lost packets.
+    * Used when speed is more important than reliablity.
+
+     # Example = YouTube Live , Video Calls 
+
+
+  3> How Data Travels on the Internet
+
+     # Complete flow:
+  
+     User
+      |
+   Browser
+      |
+     DNS
+      |
+ IP Address
+      |
+TCP Connection
+     |
+HTTP/HTTPS Request
+     |
+  Server
+    |
+Response (HTML , CSS , JavaScript, Images)
+    |
+ Browser
+    |
+ Website Display
+
+
+
+
+ 4> Linux Networking Commands
+
+  # ss -tuln
+  
+use: Display active Listening TCP and UDP ports.
+     Show which services are listening for 
+     incoming connections.
+
+   * -t = TCP
+   * -u = UDP
+   * -l = Listening ports.
+   * -n = Show port numbers
+
+
+
+  # netstat -tuln
+ 
+  use:
+
+ * Displays network connections and listening ports.
+ * Older networking command ( modern Linux systems prefer ss).
+
+
+ 5> Networking Concepts
+
+  # Listening Port
+  
+  = A port that is waiting for incomimg network connections.
+
+ # Local Address
+  
+ = The IP address and port on the local system where a service is running.
+
+ # MAC Address
+ 
+ = A unique hardware address assigned to a network interface.
+
+  Used for communication inside a local network (LAN) 
