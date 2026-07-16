@@ -1,0 +1,74 @@
+                      
+                                                                               DAY 19
+                                                                          NETWORKING PART 4
+
+
+ 1> Router =  A router is a networking device that connect different network
+            and chooses the best path for data packets to reach their destination.
+
+
+   # Key points 
+   
+   * Connects different networks.
+   * Uses IP Address.
+   
+
+
+ 2> Switch = A switch is a networking device that connects devices within the 
+             same local network(LAN)
+
+  
+  # Key points
+
+  * Connects devices in the same network.
+  * Uses MAC Address.
+  * Does not require the internet for local communication.
+
+ 
+  EXAMPLE = Laptop -- Switch --- Printer
+             
+
+
+ 3> Routing = Routing is the process of selecting the best path for
+      data packets to raech their destination.
+
+
+   # Routing Table
+   
+ =  A Routing Table is a list of routes that helps the router decide
+    where to forward data packets.
+
+   # Key points
+   
+   * Routing is performed by a router.
+   * Uses a routing Tbale to make forwarding decision.
+   * Ensures packets reach the correct destination.
+
+ 4> Network Devices
+
+  # Router
+ 
+ * Connects different networks.
+ * Uses IP Address.
+
+ # Switch
+ 
+ * Connects devices within the same networks.
+ * Uses MAC Address.
+
+ # Modem
+ 
+ * Convets digital data into signals and signals
+   backs into digital data.
+ * Connects your ome network to your ISP.
+
+ # Access point (AP)
+ 
+ * Extends or provides Wi-Fi access from a 
+   weired network.
+  
+ # Hub
+
+ * Sends data to all connected devices.
+ * Less efficient and less secure tha a switch.
+
