@@ -1,0 +1,58 @@
+
+                                                                               DAY 20
+                                                                         Networking part 5
+
+ 
+ 1> NAT (Networking Address Translation)
+  
+ = NAT is a process that translate a Private IP Address into a Pblic IP Address
+   allowing devices on a private network to communication with the internet.
+
+ # Key Point
+ * Converts Private IP to Public IP.
+ * Allow multiple devices to share one Public IP
+
+
+ 2> Fireball
+
+ = A Fireball is a security system that allows or blocks incoming and 
+   outgoing network traffic based on predefined rules.
+
+ # Key Points
+
+ * Protects devices and networks.
+ * Filters network traffic.
+ 
+
+ 3> DHCP (Dynamic Host Configuration Protocol)
+
+ = DHCP is a protocol that automatically assign IP
+   addresses and other network setting to devices.
+
+  # Automatically Assigns
+  
+  * IP Address 
+  * Subnet Mask
+  * Default Gateway
+  * DNS Server
+
+  # Key Points
+
+  * Eliminates manual IP configuration.
+  * Makes network setup simple.
+
+
+ 4> Subnet (Introduction)
+ 
+ = A Subnet is a smaller network created by dividing 
+  a larger network into smaller groups.
+
+ # Why use Subnets?
+ 
+ * Better network management.
+ * Improved security.
+ * Reduced network traffic.
+ 
+
+ 
+ 
