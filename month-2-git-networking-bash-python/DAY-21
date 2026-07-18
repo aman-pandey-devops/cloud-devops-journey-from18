@@ -1,0 +1,83 @@
+                                                                              DAY 21
+                                                                           PYTHON BASICS
+
+
+ 1> What is python
+ 
+ = python is a high-level, general-purpose programming language
+   used to build application and automate tasks.
+
+ 2> Why Python is called a High-level Language?
+
+ = Python is called a high-level language because it is easy for
+   humans to read and understand.
+
+ 3> First Python Program using the print () function
+
+ = print("Hello, World!")
+ 
+   #Output = Hello, World!
+
+
+ 4> Variable
+
+ = A Variable is a name that stores a value in computer
+   memory.
+
+  it work like a container that stores data.
+ 
+ # Example
+ 
+= name = "Aman"
+ 
+ name -- Variable
+ "Aman" -- Value
+
+5> Data Types
+
+ # String(str)
+ = String represents text or chracters written
+   inside quotes.
+ 
+ Example = "Aman"
+
+
+ # Integer(int)
+ = Integer represents whole numbers without decimals.
+
+  Example:  
+  age = 18
+
+ # Float(float)
+ = Float represents decimal numbers.
+
+ Example: 
+ height = 5.8
+
+ # Boolean(bool)
+ = Boolean stores only two values:
+   .True 
+   .False
+
+ Example:
+ is_student = True
+
+
+ 6> Input and Output
+
+ # Output
+ = Output is the result displayed by the computer.
+
+  Example:
+ print("Hello Aman") = Hello aman
+
+ # Input
+ = Input is the data provided by the user to the computer.
+  
+ Example:
+  name= input("Enter your name: ")
+        print(name)
+
+ Output: Enter your name: Aman
+         Aman
+ 
