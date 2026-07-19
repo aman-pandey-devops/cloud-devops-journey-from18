@@ -1,0 +1,73 @@
+               
+                                                                               DAY 22
+                                                                Python Basic (Operattion & Type Conversion)
+
+ 1> Operation = Operation are symbols used to perform operation on values
+                 or variables.
+
+
+   # Arithmetic Operation
+  
+   + = Addition
+   - = Substraction
+   * = Multiplication
+   / = Division
+   % = Modulus (Remainder)
+   // = Floor division
+   ** = Exponent (Power)
+ 
+ # Assignment Operator
+ 
+ = The assignment operator (=) is used to assign
+   a value to a variable.
+
+ 
+  Example:
+  
+  name = "Aman"
+  age = 18
+
+ Here:
+name,age -- Variables
+"Aman",18 -- values
+= -- Assignment Operator
+
+
+ # Comparison Operators
+ = Comparison operators compare two values and return
+   either True or False.
+
+  == Equal to
+  != Not equal to
+  > Greater than
+  < Less than
+  >= Greater than or equal to
+ <= Less than or equal to
+
+ # Logical Opreator
+= Logical operators are used to combine multiple
+  conditions.
+
+  and = True only if both conditions are True.
+  or = True if at least one condition is True.
+  not = Reverse the Boolean value.
+
+
+2> Type Conversion
+  = Type Conversion is the process of converting one
+    data tpe into another.
+
+  # Common Type Conversion Functions
+ 
+    int()  Converts data into integer
+    float() Converts data into Float.
+   str()  Converts data into string.
+   bool()  Converts into Boolean.
+
+
+3> Basic Calculations
+
+ = Python can performs basic mathematical
+   operation.
+
+
