@@ -1,0 +1,44 @@
+
+                                                                               DAY 23
+                                                                      Python Conditional Statement
+
+
+ 1> if Statement
+= The if statement is used to execute a block of code only
+  when a condition is True.
+
+  Example:
+  age = 20
+ if age >= 18:
+  print("You can vote")
+
+ 2> if-else Statement
+= The if-else statement ececute one block of code when
+   the condition is True and another ondition is false.
+
+3> if-elif-else Statement
+
+ = The if-elif-else statement is used to check
+   miltiple conditions.
+
+ # Key point
+ 
+ elif means else if.
+
+ Python checks condition from top to bottom.
+
+ Once a condition becomes True, the remaining condition
+ are skipped.
+
+ 4> Nested if
+
+= A Nested if means writting one if statement
+  inside another if statement.
+
+ # Key Points
+  
+ The inner if executes only if the outer if is True.
+ 
+  Useful when multiple condition depend
+  on each other.
+
