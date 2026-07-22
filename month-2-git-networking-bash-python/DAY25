@@ -1,0 +1,40 @@
+                   
+                                                                               DAY 25 
+                                                                          Python Function
+
+1. Function?
+= A function is a reusable block of code that perform a specific
+  task.Instead of writing the same code multiple times, we can write
+  it once inside a function and call it whenever needed.
+
+2. Built in Functions
+= Built-in function are predefined functions that Python already
+  provide. We can use them directly without creating them
+  ourselves.
+
+3. User-defined Functions
+= Uer-defined function are function created by the programmer
+  using the def keyword. They allow us to create our own
+  reusable code for specific tasks.
+
+4. Parameters and Arguments
+= Function can accept values to make them more flexible.
+
+ # Parameter; A variable defined in the function defination.
+
+ # Argument: The actual value passed when the function is called.
+
+ 
+= This allow the same function to work with different values
+ without modifying the function code.
+
+
+5. Return Statement 
+= The return statement send a value back to the function caller.
+
+  Difference
+
+# print() only displays the output.
+
+# return() returns the value so it can be stored in a variable
+  and used later in the program.
