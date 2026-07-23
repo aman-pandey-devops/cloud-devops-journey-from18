@@ -1,0 +1,49 @@
+                                                                               DAY 26
+                                                                            Python Lists
+
+1> Lists = A list is a collection that allow multiple values to be stored
+           inside a single variable.Lists are created  using square brackets
+           [] and items are seprated by commas.
+
+
+2> List Indexing
+= Learned how to access individual elements from a list using their number.
+  Python uses Zero-based indexing, meaning the first element start at
+  index 0.
+
+3> List Slicing
+= Learned how to access multiple elements from a list using slicing.
+
+ Syntax:
+
+ list[start:end]
+
+
+4> List Methods
+= Learned commonly used list methods:
+
+# append() = Adds a new item at the end of the list.
+
+# insert() = Inserts an items at a specific position.
+
+# remove() = Removes an item by its value.
+
+# pop () = Removes the last item by default or aspecific index.
+
+# clear() = Removes all items from the list.
+
+
+5> Updating List Elements
+= Learned how to replace an existing value in a list 
+  using its index.
+
+ Example = servers[1] = "Nginx Server"
+
+This replaces the value at index 1 with a new value.
+
+6> Loop with Lists
+= Learned how to use a for loop to iterate through al elements in a list.
+
+ Example:
+for server in servers:
+    print(server)
