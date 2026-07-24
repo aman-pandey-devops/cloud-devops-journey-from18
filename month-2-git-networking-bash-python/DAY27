@@ -1,0 +1,72 @@
+                                                                              DAY 27
+                                                                       Python Dictinaries
+
+
+1. Dictinories
+= A dictionary stores data in key-value pairs, where each key is associated with
+  a specific value.Dictionaries are created using curly braces {}.
+
+ Example:
+ 
+ server = {
+ "name": "Web Server",
+ "ip": "192.168.1.10",
+ "status": "Running"
+}
+
+
+2. Keys & Values
+= key -- Identifies the data.
+ value -- Stores the actual information.
+
+Example:
+
+key       value
+name -- web server
+ip --  192.168.1.10
+status -- running 
+
+
+3. Accessing Values
+
+= Example :
+
+print (server["name"])
+print (server["ip"])
+ 
+unlike lists, dictionaries use keys instead of indexes.
+
+
+4. Updating Dictionary
+
+= Example:
+server["status"] = "Stopped"
+
+This replace the previous value with new one.
+
+5. Adding New key-value pair
+= Example:
+
+server["os"] = "Ubuntu"
+
+if the key does not already exist, Python automatically
+ creates a new key-value pair.
+
+6. Dictinary Methods
+= Practiced commonly used dictinory methods:
+
+# Keys() = Returns all keys.
+# values() = Returns all values.
+# items() = Returns all key-value pairs.
+# get() = Safely retrieves a value without causing an error 
+          if the key doesn't exist.
+
+# pop() = Removes a specific key-value pair.
+#clear() = Removes all items from the dictinary.
+
+7. Loop with Dictionary
+
+= Loop through keys:
+
+ for key in server:
+      print(key)
