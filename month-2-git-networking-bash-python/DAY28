@@ -1,0 +1,77 @@
+                                                                               DAY 28
+                                                                         Python Tples & Sets
+
+1. Tuples
+= A Tuple is python data type used to store multiple value
+  in a single variable.
+
+~ Tuples are written using round brackets()
+
+~ A Tuple is immutable, which means its values cannot be
+  changed after creation.
+
+  Example:
+  fruits - ("Apple","Mango")
+
+2.Tuple Indexing
+= Tuple indexing works exactly like list
+  indexing.
+
+~ Index start from 0
+~ You can access elements using their index.
+
+ 
+3. Tuple Methods
+= Tuples have two commanly used methods.
+
+#count()
+Returns how many times a value appears in the tuple.
+
+Example:
+numbers = (1,2,3,4)
+print(numbers.count(2))
+
+
+#index(0
+Returns the index of the first occurrence of a value.
+
+Example:
+print(numbers.index(3))
+
+
+4. Set
+= A set is a collection used to store multiple unique values.
+
+~ Sets are written using curly braces {}.
+~ Duplicate values are automatically removed.
+~ Sets are unordered.
+
+Example:
+skills = {"Linux","Python","Docker"}
+
+
+5. Set Methods
+
+#add() = Adds new item to set.
+ skill.add("Git")
+
+#remove(0) = Removes an item from the set.
+ skills.remove("Python")
+
+#discard() = Removes an item without raising an error
+ if the item does not exist.
+
+skills.discard("Java")
+
+
+#clear() = Removes all items from the set.
+  skills.clear()
+
+
+6. Loop with Set
+= A for loop can be used to iletrate through all elements of a set.
+
+Example:
+for skill in skill:
+   print(skill0
+
