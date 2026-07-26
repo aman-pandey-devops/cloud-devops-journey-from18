@@ -1,0 +1,116 @@
+                                                                               DAY29
+                                                                           Python Strings
+
+1. String
+= A string is a python data type used to store text
+  (character)
+
+Example:
+name = "Aman"
+city= 'Delhi'
+
+
+2. String Index
+= String indexing is used to access individual characters.
+  
+~ Negative indexing starts from -1 (last character).
+
+Example:
+
+text = "Python"
+print(text[0]) = p
+
+
+3.String Slicing
+= String slicing is used to extract a part of 
+  a string.
+
+Syntax:
+string[start:end]
+
+Example:
+text = "Python"
+print(text[0:3]) = pyt
+
+
+4. String Methods
+
+#upper() = Converts all chracters to uppercase.
+
+ Example: print(text.upper())
+
+
+
+#lower()
+= Coverts all characters to lowercase.
+
+
+Example:
+text = "PYTHON"
+print(text.lower())
+
+
+#strip()
+= Removes leading and trailing spaces.
+
+Example:
+text = "  Lnux  "
+print(text.strip())
+
+#split()
+= Split a string into a list.
+Example:
+text = "Docker Kubernetes Jenkins"
+
+print(text.split())
+
+
+5. String Concatenation
+= Concation means joining two or more strings using the 
+ + operator.
+
+Example:
+first = "Hello"
+second = "World"
+
+print(first + " " + second)
+
+
+6. f-Strings
+= f-strings provide a clean and modern way to insert
+  variables into strings.
+
+Syntax:
+
+f"Text {variable}"
+
+Example:
+name = "Aman"
+city = "Delhi"
+
+print(f"{name} lives in {city}")
+
+= Aman lives in Delhi.
+
+7. Loop with String
+= A for loop can be used to ilitrate through
+ every character of a string.
+
+Example:
+name = "Python"
+
+for ch in name:
+     print(ch)
+
+output:
+
+P
+y
+t
+h
+o
+n
+
+  
+
+
