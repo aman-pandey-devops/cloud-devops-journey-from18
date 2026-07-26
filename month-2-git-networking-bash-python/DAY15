@@ -1,0 +1,50 @@
+                                                                               Day 15
+                                                                             Git Rivison
+
+#Topic Rivised
+
+Git vs GitHub
+Git Repository
+git init
+git status
+git add
+git commit
+git log
+git diff
+Git Branching
+git checkout
+git merge
+Git Rebase
+Merge Conflicts
+Remote Repository
+git clone
+git push
+git pull
+git fetch
+
+# Command Practiced
+
+git init
+git status
+git add .
+git commit -m "message"
+git log
+git diff
+git branch
+git checkout
+git merge
+git rebase
+git clone
+git remote -v
+git push origin main
+git pull origin main
+git fetch
+
+
+
+# Day 15 Summary
+
+Today I revised all the Git fundamentals, including repository creation,
+commits, branching, merging, rebasing, merge conflicts, and working with
+remote repositories.This revison helped strengthen my understanding
+of Git workflow before moving on to advanced Devops topics.
