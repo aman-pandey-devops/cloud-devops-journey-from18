@@ -1,0 +1,102 @@
+                                                                               DAY 31
+                                                                           File Handling.
+
+1.File
+
+= A file is permanent storage location used to save data.
+Unlike variable, data stored in a file remains cvailable
+even after the program is closed.
+
+
+2. Opening a File
+
+= Python uses the open(0 function to open a file.
+
+ #syntax
+ file = open("notes.txt", "r")
+
+
+# File Modes
+
+r = Read (file must exist)
+w = Write (creates a new file or overwrites an existing file)
+a = Append (adds data without deleting existing content)
+x = Create ( creates a new file and raises an error if it already exists)
+
+Example:
+file = open("notes.txt", "r")
+
+
+3. Reading Files
+= Python provides three methods to read files.
+
+# read()
+
+Read entire file.
+
+Example:
+file = open("notes.txt", "r")
+print(file.read())
+file.close()
+
+# readline()
+
+= Read one line at a time.
+
+Example:
+file = open("notes.txt", "r")
+print(file.readline())
+file.close()
+
+# readlines()
+
+Reads all lines and returns them as a list.
+
+Example:
+file = open("notes.txt", "r")
+print(file.readlines())
+file.close()
+
+
+4. Writing Files
+
+The write() methods is used to write data into file.
+
+Example:
+file = open("student.txt", "w")
+file.write("Name: Aman")
+file.close()
+
+
+5. Appending Data
+
+= Append mode (a) adds new data to the end of a file without
+ removing the existing content.
+
+
+Example:
+file = open("student.txt", "a")
+file.write("\nName: Rahul")
+file.close()
+
+
+6. Closing Files.
+
+= After completing file operations, the file should
+  be closed to release system resources.
+
+* Using close()
+
+file = open("notes.txt", "r")
+print(file.read())
+file.close()
+
+* Using -- with open()
+
+with open("notes.txt"< "r")
+as file:
+print(file.read())
+
+
+the with open() statement automatically
+closes the file.
