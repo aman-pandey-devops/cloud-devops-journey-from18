@@ -1,0 +1,85 @@
+                                                                              DAY 32
+                                                                        Exception Handling
+
+1. Exception
+= An exception is a runtime error that occurs while a program is executing.
+ if an exception is not handled, the program stops immediately.
+
+
+Example:
+print(10 / 0)
+
+output
+= ZeroDivisonError: divison by zero is not allowed.
+
+
+2. try and except
+= The try block contains code that may cause an exception. If
+ an exception occurs, the except block handles it instead of 
+ allowing the program to crash.
+
+
+Example:
+num = int(input("Enter Number: "))
+print(100 / num)
+
+except ZeroDivisonError:
+print ("Cannot divide by zero.")
+
+
+3. Multiple Execption
+= A program may produce different types of exception.
+Python allows multiple except blocks to handle each
+exception blocks to handle each exception seperately.
+
+
+Example:
+
+try:
+num = int(input("Enter number: "))
+print(100 / num)
+except ZeroDivisonError:
+print("Cannot divide by zero.")
+except valueError:
+print("Please enter numbers only.")
+
+
+4. else Block
+= The else block executes only if no exception occurs
+ in the try block.
+
+Example:
+try:
+num = int(input("Enter Number: "))
+result = 100 / num
+
+except ZeroDivisonError:
+print("Cannot divide by Zero.")
+else:
+print("Result =", result)
+
+
+5. finally Block
+= The finally block always executes, whether an exception occurs or not.
+ It is commonly used for cleanup operations such as closing file or database
+ connections.
+
+Example;
+try:
+num = int(input("Enter number: "))
+except ZeroDivisionError:
+print("Cannot divide by zero. ")
+finally:
+print("program Finished")
+
+
+
+6. raise Keyword
+= The raise Keyword is used to generate an exception manually 
+when a custom condition is not satisfied.
+
+Example:
+age = int(input("Enter age: "))
+if age < 18:
+raise valueError("age must be 18 0r above.")
+print("Welcome!")
