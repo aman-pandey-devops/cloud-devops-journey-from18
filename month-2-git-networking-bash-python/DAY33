@@ -1,0 +1,107 @@
+                                                                               DAY 33
+                                                                           Python OS Module
+
+1. OS Module
+
+= The OS Module is a built in python module that allows python to interact
+ with the Operating System. it is commonly used for file management,
+ directory management, and automation tasks.
+
+Example :
+import os
+
+
+2. Importing the os Module
+
+= Before using any OS Module function, it must
+ be imported.
+
+# Syntax
+
+import os
+
+Example:
+
+print(os.name)
+
+
+3. Current Working Directory
+
+= The getcwd() function returns the current working directory where the
+Python program is running.
+
+
+#Syntax
+os.getcwd()
+
+Example:
+import os
+print(os.getcwd())
+= /home/user/folder
+
+4. Change Directory
+
+= The chdir() function changes the current working
+ directory.
+
+#Syntax
+os.chdir(path)
+
+Example:
+import os
+os.chdir("/home/user/folder")
+print(os.getcwd())
+
+
+
+5. List Files and Folders
+
+= The listdir() function returns a list of all files and folders
+ inside a directory.
+
+#Syntax
+os.listdir()
+
+Example:
+import os
+print(os.listdir())
+
+#Display using loop 
+import os
+for item in os.listdir():
+print(item)
+
+
+6. Create and Remove Directories
+
+# For create Directory
+= create a new directory (os.mkdir())
+
+Example:
+import os
+os.mkdir ("pythonpractice")
+
+# Remove Directory
+= Delete an empty folder (os.rmdir)
+
+Example:
+import os
+os.rmdir("pythonpractice")
+
+
+7. Rename Files and Folder
+
+= The rename() function changes the name of a file or folder.
+
+# Syntax
+os.rename9old_name, new_name)
+
+# Rename Folder
+import os
+os.rename("Demofolder", "pythonpractice")
+print("Folder Renamed Succefully")
+
+# Rename File
+
+import os'os.rename("notes.txt", "login.txt")
+
