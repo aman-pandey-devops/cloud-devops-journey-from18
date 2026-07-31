@@ -1,0 +1,92 @@
+                                                                               DAY34
+                                                                     Python Subprocess Module
+
+1. Subprocess Module
+
+= The Subprocess Module is a built in Python module that allows
+ Python programs to execute terminal or operating system
+ commands.
+
+
+# Uses
+
+~ Run Linux/Windows terminal commands
+~ Automate repetive tasks
+~ Execute system utilities
+~ Build Devops automation scripts
+
+Example;
+import sub process
+
+
+2. Importing the Subprocess Module
+
+= Before any subprocess function,the module must be imported.
+
+ # Syntax
+import subprocess
+
+
+Example:
+import subproces
+print("Subprocess Module Imported Successfully")
+
+
+3. Running Terminal Commands.
+= The subprocess.run() function execute a terminal command.
+
+# Syntax
+subprocess.run(["command"])
+
+Example:
+subprocess.run(["pwd"])
+
+
+4. Capturing Command Output
+= Sometimes we need to store the command output
+  inside a variable instead of only displaying it.
+
+ # Syntax
+ result = subprocess.run["command"],capture_output = True, text = True
+
+
+Example 
+result = subprocess.run["command"],capture_output = True, text = True
+)
+print(result.stdout)
+
+
+5. Running Multiple Commands
+= Multiple Terminal commands can be executed one after another.
+
+ # Method 1
+ import subprocess
+
+subprocess.run(["pwd"])
+subprocess.run(["whoami"])
+subprocess.run(["ls"])
+
+ # Method 2 (using loop)
+
+import subprocess
+
+commands = [ ["pwd"], ["whoami"],["ls"] ]
+
+for command in commands:
+subprocess.run(command)
+
+
+
+6. Error Handling with Subprocess
+
+= if a command does not exist, Python
+ raises an exception.
+
+ Example:
+import subprocess
+try:
+subprocess.run([abc"])
+except FileNotFoundError:
+print("Command not found!")
+
+
