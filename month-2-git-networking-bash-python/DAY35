@@ -1,0 +1,43 @@
+                                                                               DAY 35
+                                                                     Python Automation Scripts
+
+1. Automation
+= Automation is the process of performing repetitive tasks automatically using 
+  script or software instead od doing the manually.
+
+
+2. Why Python for Automation?
+
+= Python is one of the most popular automation languages because it is simple,
+ powerful, and has many built-in modules.
+
+ # Common Modules
+
+ import os
+ import subprocess
+ import shutil
+
+
+3. Automation File Operations
+
+= Python can automatically create, write,read, and update files.
+
+
+#Create and Write File
+with open("notes.txt", "w")
+as file:
+file.write("welcome to python Automation")
+
+
+4. Automating Folder Operations
+= Python can automatically manage direction using the OS module.
+
+
+5. Automating System Commands
+= Python can execute terminal commands using the subprocess module.
+
+Example:
+import subprocess
+
+subprocess.run(["whoami"])
+
