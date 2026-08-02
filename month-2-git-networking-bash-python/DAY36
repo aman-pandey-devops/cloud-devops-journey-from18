@@ -1,0 +1,70 @@
+                                                                               DAY 36
+                                                                        Bash Scripting (Part 1)
+
+1. Bash 
+= Bash stands for bourne Again Shell .
+
+it is the most commanly used shell in Linux systems that allow users to
+interact with the operating system through commands.
+
+
+2. Bash Script
+= A Bash Script is a text file containing multiple Linux commands that
+are executed automatically one after another.
+
+# Extension
+= .sh
+
+# Bash script
+= #!/bin/bash
+
+
+3. Shebang
+= The shebang is always written on the first line of a Bash script.
+#!/bin/bash
+Without the shebang, Linux may not know which shell should run
+ the script.
+
+
+4. First Bash Script
+
+#touch first_script.sh
+
+#nano first_script.sh
+ 
+Script
+
+#!/bin/bash
+echo "Hello Bhai!"
+echo "Welcome to Bash Scripting"
+whoami
+pwd
+date
+
+# Make Executable
+chmod +x first_script.sh
+
+Run sccript = ./first_script.sh
+
+
+5. Variable in Bash
+= Variable store data
+
+# Syntax
+name="Rahul"
+
+print Variable
+= echo $name
+
+
+6. User Output
+= Bash usese the read command to take input from
+  the user.
+
+Example:
+#!/bin/bash
+echo "Enter Your name:"
+read name
+echo "Hello $name"
+
+
