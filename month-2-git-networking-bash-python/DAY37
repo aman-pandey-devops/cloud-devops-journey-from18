@@ -1,0 +1,88 @@
+                                                                               DAY 37
+                                                                       Bash Scripting Part-2
+
+1. Comments in Bash
+= Comments are used to exp-lain the code.
+Bash ignores commenst during execution.
+
+ Syntax
+# This is a comment
+
+
+Example:
+#!/bin/bash
+
+# Print welcome message
+echo "Welcome to bash"
+
+
+2. If statement
+= The if statement is used to execute code only
+when a condition is true.
+
+
+Example:
+#!/bin/bbash
+age=20
+if [ $age -ge 18 ]
+then
+echo "Eligible to vote"
+fi
+
+
+
+3. if-Else Statement
+= the if-else statement execute one block if the condition is true
+and another block if it is false.
+
+
+Example:
+#!/bin/bash
+age=16
+if [ $age -ge 18 ]
+then
+echo "Eligible to vote"
+else
+echo "Not Eligible to vote"
+fi
+
+
+4. Comparison Operators
+= Comparison operator are used to compare numberic values.
+
+
+-eq = Equal to
+-ne = Not equal
+-gt = Greater Than
+-lt = Less than
+-ge = Greater Than or Equal
+-le = Less Than or Equal
+
+
+Example:
+marks=75
+if [ $marks -ge 60 ] 
+then
+echo "Pass"
+else
+echo "Fail"
+fi
+
+
+5. String Comparison
+= String comparison is used to compare text values.
+
+# Operators
+
+=  Equal
+!= Not Equal
+-z String is Empty
+-n String is Not Empty
+
+
+Example:
+name="admin"
+if [ "$name" = "admin" ]
+then
+echo "Login Successful"
+fi
