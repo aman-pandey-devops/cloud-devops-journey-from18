@@ -1,0 +1,63 @@
+                                                                               DAY 38
+                                                                    Bash Scripting part 3
+
+1. Loop
+= A Loop is a programming concept that repeats the same block
+of code multiple times until a condition is met or a squence
+is completed.
+
+
+
+2. for Loop
+= The for loop executes a block of code for every item
+in a squence.
+
+Example:
+#!/bin/bash
+for i in {1..5}
+do echo $1
+done
+
+
+3. while Loop
+= The while loop executes as long as the given condition
+remains true.
+
+Example:
+#!/bin/bash
+while [ $count -le 5 ]
+do
+echo $count
+count=$((count + 1))
+done
+
+
+4. break Statement
+= The break statement immediately terminates the loop.
+
+Example:
+#!/bin/bash
+for i in {1..10}
+do 
+if [ $i -eq 5 ]
+then
+break 
+fi
+echo $i
+done
+
+
+5. continue Statement
+= The continue statement skips the current iteration and moves
+ to the next iteration.
+
+Example:
+#!/bin/bash
+for i in {1..10}
+do 
+if [ %i -eq 5 ]
+then
+continue
+fi
+echo $i
+done
