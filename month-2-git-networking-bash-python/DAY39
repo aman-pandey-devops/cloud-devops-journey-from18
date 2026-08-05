@@ -1,0 +1,71 @@
+                                                                               DAY 39
+                                                                      Bash Scripting Part-4
+
+1. Function
+= A Function is reusable block of code that performs a specific task.
+
+
+2. Creating Function
+= Function in Bash can be created using following
+syntax.
+
+function_name() {
+      commands
+}
+
+Example:
+#!/bin/bash
+greet() {
+  echo "Welcome to Devops"
+}
+greet
+
+
+3. Passing Arguments to Function
+= Arguments allow function to work with different
+ values.
+
+#Special Variable
+
+$1 = First Argument
+$2 = Second Argumennt
+$3 = Third Argument
+
+Example:
+#!/bin/bash
+student() {
+     echo "Name : $1"
+     echo "Age : $2"
+}
+student Rahul 22
+
+
+4. Return Values
+=  Unlike Python, Bash function do not return data using return.
+
+Instead:
+return returns an Exit Status.
+echo is used to return text or output.
+
+Example:
+#!/bin/bash
+check(0 {
+    echo "Checking..."
+    return 0
+}
+check
+echo $?
+
+
+5. Reusable Bash Script.
+= Reusable scripts are created using functions.
+
+
+Example;
+#!/bin/bash
+check_service() {
+    echo "Checking $1..."
+}
+check_service ngnix
+check_service docker
+check_service mysql
