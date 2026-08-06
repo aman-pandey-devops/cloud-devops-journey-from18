@@ -1,0 +1,93 @@
+                                                                               DAY 40
+                                                                       Bash Scripting Part-5
+
+1. Arrays in Bash
+= An Arrays  is a variable that can store multiple values.
+
+# Syntax
+array_name=("value1" "value2" "value3")
+
+
+Example:
+#!/bin/bash
+servers=("server1" "server2" "server3")
+echo ${servers[0]}
+
+
+# Example Looping Through an Array
+#!/bin/bash
+services=("ngnix" "docker" "mysql")
+
+for service in
+"${services{@}}"
+do
+   echo "Checking
+$services..."
+done
+
+
+
+2. Reading Files in Bash
+=Bash can read files line by line using the while read loop.
+
+Example File:
+servers.txt
+= server1
+  server2
+  server3
+
+# Script
+#!/bin/bash
+while read server
+do
+ echo "Checking
+$server..."
+done < servers.txt
+
+
+3. Case Statement
+= The case statement is used when multiple conditions depend
+on the same variable.
+
+Example:
+
+#!/bin/bash
+
+echo "Enter Action:"
+read action
+
+case $action in
+    start)
+        echo "Starting Service..."
+        ;;
+    stop)
+        echo "Stopping Service..."
+        ;;
+    restart)
+        echo "Restarting Service..."
+        ;;
+    *)
+        echo "Invalid Option"
+        ;;
+esac
+
+
+4. Basic Error Handling
+= Every Linux command return an Exit Status.
+
+Exit Status
+   0 = Sucess
+ Non-zero = Error
+
+
+Example:
+#!/bin/bash
+mkdir DemoFolder
+if [ $? -eq 0 ]
+then
+echo "Folder Created
+Successfully"
+else
+echo "Folder Already
+Exists"
+fi
