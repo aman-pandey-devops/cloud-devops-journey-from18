@@ -1,0 +1,78 @@
+                                                                               DAY 41
+                                                                              RIVISION
+
+
+ Day 41 - Python Foundation Revision
+# Hands-on Practice
+
+# 1. print()
+print("Hello Bhai")
+print("I am learning Python")
+print("I will become a DevOps Engineer")
+
+
+# 2. Variables
+name = "Aman"
+age = 20
+city = "Patna"
+career = "DevOps Engineer"
+
+print(name)
+print(age)
+print(city)
+print(career)
+
+
+# 3. Data Types
+print(type(name))
+print(type(age))
+
+height = 5.8
+is_learning = True
+
+print(type(height))
+print(type(is_learning))
+
+
+# 4. User Input
+user_name = input("Enter your name: ")
+user_city = input("Enter your city: ")
+
+print("Hello", user_name)
+print("You live in", user_city)
+
+
+# 5. Type Casting
+user_age = int(input("Enter your age: "))
+
+print("Your age is", user_age)
+print("Next year you will be", user_age + 1)
+
+
+# 6. Basic Operators
+num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+
+print("Addition:", num1 + num2)
+print("Subtraction:", num1 - num2)
+print("Multiplication:", num1 * num2)
+print("Division:", num1 / num2)
+print("Remainder:", num1 % num2)
+
+
+# 7. Mini Hands-on Challenge
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+
+print("\n===== My Profile =====")
+print("Name:", name)
+print("Age:", age)
+
+print("\n===== Calculator =====")
+print("Addition:", num1 + num2)
+print("Subtraction:", num1 - num2)
+print("Multiplication:", num1 * num2)
+print("Division:", num1 / num2)
+print("Remainder:", num1 % num2)
