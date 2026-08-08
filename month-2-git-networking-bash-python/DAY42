@@ -1,0 +1,130 @@
+                                                                         Condition Rivison 
+
+# Day 42
+# Hands-on Revision
+
+
+# 1. IF STATEMENT
+
+age = 20
+
+if age >= 18:
+    print("You are an adult")
+
+
+# 2. IF-ELSE STATEMENT
+
+age = int(input("Enter your age: "))
+
+if age >= 18:
+    print("You are an adult")
+else:
+    print("You are a minor")
+
+
+# 3. ELIF STATEMENT - Marks Checker
+
+marks = int(input("Enter your marks: "))
+
+if marks >= 90:
+    print("Excellent")
+elif marks >= 75:
+    print("Good")
+elif marks >= 50:
+    print("Pass")
+else:
+    print("Fail")
+
+
+# 4. COMPARISON OPERATORS
+
+age = 20
+
+print(age > 18)
+print(age < 18)
+print(age >= 20)
+print(age <= 20)
+print(age == 20)
+print(age != 20)
+
+
+# 5. LOGICAL OPERATORS - AND
+
+age = 20
+has_id = True
+
+print(age >= 18 and has_id)
+
+
+# 6. LOGICAL OPERATORS - OR
+
+is_student = False
+has_discount = True
+
+print(is_student or has_discount)
+
+
+# 7. LOGICAL OPERATORS - NOT
+
+is_running = True
+
+print(not is_running)
+
+
+# 8. DEVOPS EXAMPLE - CPU USAGE CHECK
+
+cpu_usage = int(input("Enter CPU usage: "))
+
+if cpu_usage <= 80:
+    print("CPU usage is normal")
+else:
+    print("WARNING: High CPU usage")
+
+
+# 9. SERVER ACCESS CHECK - AND / OR
+
+age = int(input("Enter age: "))
+has_id = input("Do you have ID? (yes/no): ")
+is_admin = input("Are you an admin? (yes/no): ")
+
+if age >= 18 and has_id == "yes":
+    print("Access Granted")
+elif is_admin == "yes":
+    print("Access Granted as Admin")
+else:
+    print("Access Denied")
+
+
+# 10. NESTED IF
+
+age = int(input("Enter age: "))
+
+if age >= 18:
+    has_id = input("Do you have ID? (yes/no): ")
+
+    if has_id == "yes":
+        print("You can enter")
+    else:
+        print("ID required")
+else:
+    print("You are underage")
+
+
+# 11. FINAL MINI CHALLENGE - DEVOPS ACCESS CHECKER
+
+age = int(input("Enter age: "))
+has_id = input("Has ID? (yes/no): ")
+is_admin = input("Is Admin? (yes/no): ")
+
+if age >= 18:
+    if has_id == "yes":
+        print("Access Granted")
+    elif is_admin == "yes":
+        print("Access Granted as Admin")
+    else:
+        print("Access Denied")
+else:
+    if is_admin == "yes":
+        print("Access Granted as Admin")
+    else:
+        print("Access Denied")
