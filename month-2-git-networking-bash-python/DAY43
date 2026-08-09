@@ -1,0 +1,100 @@
+                                                                            Hands on Practice
+
+# Day 43 
+# Python Loops Revision
+
+
+# 1. for loop
+
+for i in range(5):
+    print(i)
+
+
+# 2. range()
+
+for i in range(1, 6):
+    print(i)
+
+
+for i in range(2, 11, 2):
+    print(i)
+
+
+for i in range(10, 4, -1):
+    print(i)
+
+
+# 3. while loop
+
+count = 1
+
+while count <= 5:
+    print(count)
+    count = count + 1
+
+
+# 4. while loop with user input
+
+count = 1
+limit = int(input("Enter limit: "))
+
+while count <= limit:
+    print(count)
+    count = count + 1
+
+
+# 5. break
+
+for i in range(1, 11):
+    print(i)
+
+    if i == 5:
+        break
+
+
+# 6. continue
+
+for i in range(1, 11):
+    if i == 5:
+        continue
+
+    print(i)
+
+
+# 7. Loop + if - Even numbers
+
+for i in range(1, 11):
+    if i % 2 == 0:
+        print(i)
+
+
+# 8. Loop + if - Odd numbers
+
+for i in range(1, 11):
+    if i % 2 != 0:
+        print(i)
+
+
+# 9. DevOps-style example - CPU monitoring
+
+for cpu in range(50, 101, 10):
+    print("CPU usage:", cpu)
+
+    if cpu > 80:
+        print("WARNING: High CPU usage!")
+
+
+# 10. Mini hands-on challenge
+
+for cpu in range(50, 101, 10):
+
+    if cpu == 70:
+        continue
+
+    if cpu >= 90:
+        print("WARNING:", cpu)
+
+    if cpu == 100:
+        break
+
+    print("CPU normal:", cpu)
