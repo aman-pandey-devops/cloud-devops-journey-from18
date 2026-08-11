@@ -1,0 +1,99 @@
+                                                                              DAY 45
+                                                                     Python Function Rivison
+
+
+
+# Hands-on Practice
+
+
+# 1. Function creation
+
+def greet():
+    print("Hello Bhai")
+
+
+# 2. Function call
+
+greet()
+greet()
+
+
+# 3. Function with one argument
+
+def greet_name(name):
+    print("Hello", name)
+
+
+greet_name("Aman")
+greet_name("Maishar")
+greet_name("Rahul")
+
+
+# 4. Multiple arguments
+
+def server_info(server, status):
+    print("Server:", server)
+    print("Status:", status)
+
+
+server_info("server01", "Running")
+server_info("server02", "Stopped")
+
+
+# 5. Return
+
+def add(a, b):
+    return a + b
+
+
+result = add(10, 20)
+print("Addition:", result)
+
+
+# 6. Return value used in another calculation
+
+def multiply(a, b):
+    return a * b
+
+
+answer = multiply(5, 4)
+print("Result:", answer)
+
+print("Result + 10:", answer + 10)
+
+
+# 7. Function + if
+
+def check_cpu(cpu):
+    if cpu > 80:
+        print("WARNING: High CPU")
+    else:
+        print("CPU Normal")
+
+
+check_cpu(50)
+check_cpu(80)
+check_cpu(95)
+
+
+# 8. Function + loop
+
+def print_number(limit):
+    for i in range(1, limit + 1):
+        print(i)
+
+
+print_number(5)
+print_number(3)
+
+
+# 9. DevOps-style example
+# Checking multiple demo servers
+
+def check_servers(total):
+    for server in range(1, total + 1):
+        print("Checking server", server)
+
+
+check_servers(3)
+check_servers(5)
