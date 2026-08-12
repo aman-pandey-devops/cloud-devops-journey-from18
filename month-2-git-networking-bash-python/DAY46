@@ -1,0 +1,113 @@
+                                                                               DAY 46
+                                                                       Data Structure Rivison
+
+# Day 46 - Python Data Structures Revision
+# Hands-on Practice
+
+
+# 1. Lists
+
+servers = ["web01", "web02", "db01"]
+
+print(servers)
+
+print(servers[0])
+print(servers[1])
+print(servers[2])
+
+# Change a list item
+servers[1] = "web03"
+
+# Add a new item
+servers.append("db02")
+
+print(servers)
+
+
+# 2. List + For Loop
+
+servers = ["web01", "web02", "db01"]
+
+for server in servers:
+    print("Server:", server)
+
+
+# 3. Tuples
+
+server_config = ("web01", "production", 80)
+
+print(server_config)
+print(server_config[0])
+print(server_config[1])
+print(server_config[2])
+
+# Tuple values cannot be changed
+# server_config[0] = "web02"   # This gives an error
+
+
+# 4. Dictionaries
+
+server = {
+    "name": "web01",
+    "status": "running",
+    "port": 80
+}
+
+print(server["name"])
+print(server["status"])
+print(server["port"])
+
+# Change dictionary value
+server["status"] = "stopped"
+
+# Add new key-value pair
+server["ip"] = "192.168.1.10"
+
+print(server)
+
+
+# 5. Sets
+
+servers = {"web01", "web02", "web01", "db01", "web02"}
+
+print(servers)
+
+# Convert list to set to remove duplicates
+servers = ["web01", "web02", "web01", "db01", "web02"]
+
+unique_servers = set(servers)
+
+print(unique_servers)
+
+
+# 6. Strings
+
+server = "web01"
+status = "running"
+
+print(server)
+
+print(server[0])
+print(server[1])
+
+print("Server status:", status)
+
+print(status.upper())
+print(status.lower())
+
+
+# 7. List + Dictionary + Loop + If/Else
+
+servers = ["web01", "web02", "db01"]
+
+status = {
+    "web01": "running",
+    "web02": "stopped",
+    "db01": "running"
+}
+
+for server in servers:
+    if status[server] == "running":
+        print(server, "is running")
+    else:
+        print(server, "is stopped")
