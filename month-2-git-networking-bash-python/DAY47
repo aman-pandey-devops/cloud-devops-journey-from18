@@ -1,0 +1,108 @@
+                                                                          Python File Handling
+                                                                       Exception Haandling Rivison        
+
+# Day 47 - Python File Handling + Exception Handling
+# Hands-on Practice
+
+
+# 1. File open karna - open()
+
+file = open("server.txt", "r")
+
+data = file.read()
+
+print(data)
+
+file.close()
+
+
+# 2. File read karna - read()
+
+file = open("server.txt", "r")
+
+data = file.read()
+
+print("Server list:")
+print(data)
+
+file.close()
+
+
+# 3. File mein likhna - write()
+
+file = open("server.txt", "w")
+
+file.write("web01\n")
+file.write("web02\n")
+file.write("db01\n")
+
+file.close()
+
+
+# 4. with open() - Write
+
+with open("server.txt", "w") as file:
+    file.write("web01\n")
+    file.write("web02\n")
+    file.write("db01\n")
+
+
+# 5. with open() - Read
+
+with open("server.txt", "r") as file:
+    data = file.read()
+    print(data)
+
+
+# 6. File + Loop
+
+with open("server.txt", "r") as file:
+    for server in file:
+        print("Checking:", server.strip())
+
+
+# 7. try / except
+
+try:
+    number = int(input("Enter a number: "))
+    print("You entered:", number)
+
+except ValueError:
+    print("Invalid number")
+
+
+# 8. File Handling + Exception Handling
+
+try:
+    with open("server.txt", "r") as file:
+        data = file.read()
+        print(data)
+
+except FileNotFoundError:
+    print("server.txt file not found")
+
+
+# 9. File + Loop + Exception Handling
+
+try:
+    with open("server.txt", "r") as file:
+        for server in file:
+            print("Checking:", server.strip())
+
+except FileNotFoundError:
+    print("Server file not found")
+
+
+# 10. DevOps-style Server Inventory Checker
+
+try:
+    with open("servers.txt", "r") as file:
+
+        for server in file:
+            server = server.strip()
+
+            if server:
+                print("Checking server:", server)
+
+except FileNotFoundError:
+    print("ERROR: servers.txt file not found")
