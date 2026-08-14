@@ -1,0 +1,117 @@
+                                                                               DAY 48
+                                                                       Error Handling + Module
+
+
+# Day 48 - Python Revision
+# Error Handling + Modules + DevOps Hands-on
+
+
+
+# 1. Exception - ZeroDivisionError
+
+
+num1 = 10
+num2 = 0
+
+# This produces ZeroDivisionError
+# result = num1 / num2
+
+
+
+# 2. try / except
+
+
+num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+
+try:
+    result = num1 / num2
+    print("Result:", result)
+
+except:
+    print("Something went wrong!")
+
+
+
+# 3. try / except / else / finally
+
+
+num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+
+try:
+    result = num1 / num2
+
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+
+else:
+    print("Result:", result)
+
+finally:
+    print("Calculation finished")
+
+
+
+# 4. File Handling + Error Handling
+
+
+try:
+    file = open("server.log", "r")
+    data = file.read()
+    file.close()
+
+except FileNotFoundError:
+    print("server.log file not found")
+
+else:
+    print("File content:")
+    print(data)
+
+finally:
+    print("File operation finished")
+
+
+
+# 5. Python Module - os
+
+
+import os
+
+print("Current directory:")
+print(os.getcwd())
+
+
+
+# 6. Directory Check
+
+
+folder = "logs"
+
+if os.path.exists(folder):
+    print("Logs folder exists")
+else:
+    print("Logs folder does not exist")
+
+
+
+# 7. DevOps Hands-on
+# Check logs directory and list files
+
+
+import os
+
+folder = "logs"
+
+if os.path.exists(folder):
+    print("Logs folder exists")
+
+    files = os.listdir(folder)
+
+    print("Files inside logs:")
+
+    for file in files:
+        print(file)
+
+else:
+    print("Logs folder does not exist")
