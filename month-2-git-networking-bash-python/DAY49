@@ -1,0 +1,123 @@
+                                                                               DAY 49
+                                                                      OS Module + File Management
+# DAY 49
+# os Module + File Management + DevOps Automation
+
+# 1. os Module - Current Working Directory
+
+import os
+
+current_directory = os.getcwd()
+
+print("Current directory:", current_directory)
+
+
+# 2. os.listdir() - List Files and Folders
+
+files = os.listdir()
+
+print("Files and folders:")
+
+for item in files:
+    print(item)
+
+
+# 3. os.path.exists() - Check Path
+
+if os.path.exists("server.log"):
+    print("server.log exists")
+else:
+    print("server.log not found")
+
+
+# 4. os.path.isfile() - Check File
+
+if os.path.isfile("notes.txt"):
+    print("notes.txt is a file")
+else:
+    print("notes.txt is not a file")
+
+
+# 5. os.path.isdir() - Check Directory
+
+if os.path.isdir("logs"):
+    print("logs is a directory")
+else:
+    print("logs is not a directory")
+
+
+# 6. Create Directory
+
+folder = "backup"
+
+if not os.path.exists(folder):
+    os.mkdir(folder)
+    print("Backup folder created")
+else:
+    print("Backup folder already exists")
+
+
+# 7. File Handling - Write
+
+file = open("server.log", "w")
+
+file.write("Server started successfully\n")
+file.write("Application is running\n")
+
+file.close()
+
+print("Log file created")
+
+
+# 8. File Handling - Read
+
+file = open("server.log", "r")
+
+data = file.read()
+
+print("Log contents:")
+print(data)
+
+file.close()
+
+
+# 9. DevOps-style Automation
+
+folder = "logs"
+
+if not os.path.exists(folder):
+    os.mkdir(folder)
+    print("Logs folder created")
+else:
+    print("Logs folder already exists")
+
+
+# 10. Mini Hands-on Challenge
+# DevOps Log Manager
+
+folder = "logs"
+log_file = os.path.join(folder, "server.log")
+
+if not os.path.exists(folder):
+    os.mkdir(folder)
+    print("Logs folder created")
+else:
+    print("Logs folder already exists")
+
+if not os.path.isfile(log_file):
+    file = open(log_file, "w")
+    file.write("Server check completed\n")
+    file.close()
+
+    print("server.log created")
+else:
+    print("server.log already exists")
+
+file = open(log_file, "r")
+
+data = file.read()
+
+print("Log contents:")
+print(data)
+
+file.close()
