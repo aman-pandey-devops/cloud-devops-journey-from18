@@ -1,0 +1,158 @@
+                                                                               DAY 50
+                                                                    Subprocess Module Rivison
+
+# Day 50 - Python Revision
+# subprocess Module + Linux Command Automation
+# DevOps System Health Checker
+
+import subprocess
+
+# 1. Run Linux Command - pwd
+
+print("CURRENT DIRECTORY")
+subprocess.run(["pwd"])
+
+
+# 2. Run Linux Command - whoami
+
+print("\nCURRENT USER")
+subprocess.run(["whoami"])
+
+
+# 3. Run Linux Command - ls
+
+print("\nFILES AND FOLDERS")
+subprocess.run(["ls"])
+
+
+# 4. Capture Command Output
+
+print("\nCAPTURE COMMAND OUTPUT")
+
+result = subprocess.run(
+    ["pwd"],
+    capture_output=True,
+    text=True
+)
+
+print("Current directory:", result.stdout.strip())
+
+
+# 5. Capture Different Command Output
+
+result = subprocess.run(
+    ["whoami"],
+    capture_output=True,
+    text=True
+)
+
+print("Current user:", result.stdout.strip())
+
+
+# 6. Command Success / Failure Check
+
+print("\nCOMMAND STATUS")
+
+result = subprocess.run(
+    ["pwd"],
+    capture_output=True,
+    text=True
+)
+
+print("Return code:", result.returncode)
+
+if result.returncode == 0:
+    print("Command successful")
+else:
+    print("Command failed")
+
+
+# 7. Test Failed Command
+
+result = subprocess.run(
+    ["command_that_does_not_exist"],
+    capture_output=True,
+    text=True
+)
+
+print("\nFailed command return code:", result.returncode)
+
+if result.returncode == 0:
+    print("Command successful")
+else:
+    print("Command failed")
+
+
+# 8. shell=True - Basic Concept
+
+print("\nSHELL COMMAND")
+
+subprocess.run("pwd && ls", shell=True)
+
+
+# 9. System Health Information
+
+print("\nSYSTEM HEALTH")
+
+result = subprocess.run(
+    ["uptime"],
+    capture_output=True,
+    text=True
+)
+
+print("Uptime:", result.stdout.strip())
+
+
+# 10. Python + Linux DevOps Automation
+
+print("\nDEVOPS SYSTEM CHECK")
+
+commands = {
+    "User": ["whoami"],
+    "Directory": ["pwd"],
+    "Uptime": ["uptime"]
+}
+
+for name, command in commands.items():
+
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        text=True
+    )
+
+    if result.returncode == 0:
+        print(f"{name}: {result.stdout.strip()}")
+    else:
+        print(f"{name}: Command failed")
+
+
+# 11. Mini Project
+# System Health Checker
+
+print("\nSYSTEM HEALTH CHECKER")
+
+health_commands = {
+    "Current User": ["whoami"],
+    "Current Directory": ["pwd"],
+    "System Uptime": ["uptime"],
+    "Files and Folders": ["ls"]
+}
+
+for check_name, command in health_commands.items():
+
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        text=True
+    )
+
+    print(f"\n{check_name}:")
+
+    if result.returncode == 0:
+        print(result.stdout.strip())
+    else:
+        print("Check failed")
+
+
+print("\nHEALTH CHECK COMPLETED")
