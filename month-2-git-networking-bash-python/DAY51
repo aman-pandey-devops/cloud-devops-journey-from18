@@ -1,0 +1,95 @@
+                                                                               DAY 51
+                                                                       
+# Day 51 - Python Revision
+# Environment Variables
+# Python + Linux DevOps Configuration
+
+import os
+
+
+# 1. Read Environment Variables
+
+print("USER:", os.environ["USER"])
+print("HOME:", os.environ["HOME"])
+print("PATH:", os.environ["PATH"])
+
+
+# 2. Read Custom Environment Variable
+
+app_env = os.environ["APP_ENV"]
+
+print("\nApplication Environment:", app_env)
+
+
+# 3. Using os.getenv()
+
+environment = os.getenv("APP_ENV")
+
+print("\nEnvironment:", environment)
+
+
+# 4. Using Default Value
+
+environment = os.getenv("APP_ENV", "development")
+
+print("Environment with default:", environment)
+
+
+# 5. Handle Missing Environment Variable
+
+app_env = os.getenv("APP_ENV")
+
+if app_env is None:
+    print("\nERROR: APP_ENV is not set")
+else:
+    print("Application environment:", app_env)
+
+
+# 6. Environment-Based Configuration
+
+app_env = os.getenv("APP_ENV")
+
+if app_env is None:
+    print("\nERROR: APP_ENV is required")
+
+else:
+
+    print("\nApplication Environment:", app_env)
+
+    if app_env == "development":
+        debug = True
+        print("Debug mode: ON")
+        print("Development configuration loaded")
+
+    elif app_env == "testing":
+        debug = True
+        print("Debug mode: ON")
+        print("Testing configuration loaded")
+
+    elif app_env == "production":
+        debug = False
+        print("Debug mode: OFF")
+        print("Production configuration loaded")
+
+    else:
+        print("ERROR: Unknown environment")
+
+
+# 7. Mini Hands-on
+# Environment Based Configuration Script
+
+app_env = os.getenv("APP_ENV", "development")
+
+print("\nFinal Environment:", app_env)
+
+if app_env == "development":
+    print("Running in development mode")
+
+elif app_env == "testing":
+    print("Running in testing mode")
+
+elif app_env == "production":
+    print("Running in production mode")
+
+else:
+    print("Unknown environment")
