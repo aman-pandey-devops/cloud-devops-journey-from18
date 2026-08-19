@@ -1,0 +1,129 @@
+                                                                               DAY 2
+                                                                      
+Day 1 - AWS Cloud Basics + IAM
+
+☁️# Cloud Computing
+
+Cloud Computing means using computing resources like servers, storage, databases, and networking over the internet instead of owning physical infrastructure.
+
+On-Premise vs Cloud
+
+- On-Premise: Company owns and manages physical servers.
+- Cloud: Cloud provider manages the physical infrastructure and we use required resources.
+
+---
+
+# IaaS, PaaS, SaaS
+
+- IaaS: Infrastructure as a Service → Virtual servers and infrastructure.
+  - Example: EC2
+- PaaS: Platform as a Service → Managed platform for deploying applications.
+- SaaS: Software as a Service → Ready-to-use software.
+  - Example: Gmail
+
+Remember:
+"IaaS → Infrastructure | PaaS → Platform | SaaS → Software"
+
+---
+
+# Public, Private, Hybrid Cloud
+
+- Public Cloud: Cloud infrastructure provided for multiple customers.
+  - Example: AWS
+- Private Cloud: Cloud environment dedicated to one organization.
+- Hybrid Cloud: Combination of Public + Private Cloud.
+
+---
+
+☁️# AWS
+
+AWS = Amazon Web Services
+
+AWS is Amazon's cloud platform providing services for computing, storage, networking, databases, security, and monitoring.
+
+Important AWS Services
+
+- EC2 → Virtual Server
+- S3 → Object Storage
+- IAM → Identity & Permissions
+- VPC → Networking
+- CloudWatch → Monitoring & Logs
+- RDS → Managed Database
+- Lambda → Serverless Computing
+
+---
+
+# Region & Availability Zone
+
+Region: A geographical AWS location.
+
+Availability Zone (AZ): An isolated infrastructure location inside a Region.
+
+Region
+├── AZ-A
+├── AZ-B
+└── AZ-C
+
+Multiple AZs can be used to improve availability and fault tolerance.
+
+---
+
+# IAM Basics
+
+IAM = Identity and Access Management
+
+IAM controls who can access AWS resources and what they can do.
+
+IAM User
+
+An identity for a person/application.
+
+IAM Group
+
+A collection of IAM Users with common permissions.
+
+IAM Role
+
+An identity that can be assumed temporarily, especially by AWS services/workloads.
+
+IAM Policy
+
+A document that defines permissions.
+
+User / Group / Role
+        ↓
+      Policy
+        ↓
+   Permissions
+
+Important policy concepts:
+
+- Effect → Allow / Deny
+- Action → What can be done
+- Resource → Where it can be done
+
+---
+
+# IAM Security
+
+Least Privilege
+
+«Give only the permissions that are actually required.»
+
+Example:
+
+Developer needs S3 Read
+        ↓
+Give S3 Read
+        ↓
+Don't give unnecessary Admin access
+
+Important Rules
+
+- Protect the Root User
+- Enable MFA
+- Don't share credentials
+- Use IAM identities/roles for regular work
+- Follow least privilege
+
+
