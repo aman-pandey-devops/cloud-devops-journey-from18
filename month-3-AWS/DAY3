@@ -1,0 +1,98 @@
+
+
+                                                        
+# Day 3 - AWS Console and IAM Basics
+
+## AWS Management Console
+
+AWS Management Console is a web-based interface used to access and manage AWS services.
+
+Important parts of the AWS Console:
+
+- Search Bar - Used to quickly find AWS services.
+- Region Selector - Used to select an AWS Region.
+- Services - Provides access to services such as EC2, S3, IAM, VPC, and CloudWatch.
+- Account Menu - Used for account-related settings and access.
+
+The AWS Console works as a control panel for managing AWS resources.
+
+## IAM
+
+IAM stands for Identity and Access Management.
+
+IAM is used to control who can access AWS resources and what actions they are allowed to perform.
+
+## IAM User
+
+An IAM User is an individual identity inside an AWS Account.
+
+Example:
+
+AWS Account
+    |
+IAM User
+    |
+Permissions
+    |
+AWS Resources
+
+An IAM User can be given specific permissions according to the user's requirements.
+
+## IAM Group
+
+An IAM Group is a collection of IAM Users.
+
+Example:
+
+Developers Group
+    |
+    |-- User A
+    |-- User B
+    |-- User C
+
+Groups are useful when multiple users require common permissions.
+
+User = Individual identity
+
+Group = Collection of users
+
+## IAM Policy
+
+An IAM Policy is a permission rule or document that defines what an identity is allowed or denied to do.
+
+Basic structure:
+
+User / Group
+    |
+Policy
+    |
+Permissions
+    |
+AWS Resource
+
+Important policy concepts:
+
+- Effect - Defines whether an action is Allow or Deny.
+- Action - Defines what action can be performed.
+- Resource - Defines which AWS resource the action applies to.
+
+Example:
+
+Developer
+    |
+S3 Read Permission - Allowed
+S3 Delete Permission - Not Allowed
+
+## Least Privilege
+
+Least Privilege means giving an identity only the permissions required to perform its specific task.
+
+Example:
+
+If a developer only needs to read files from S3, the developer should receive S3 read permission instead of unnecessary administrator permissions.
+
+Simple rule:
+
+Give only the access that is actually required.
+
+
