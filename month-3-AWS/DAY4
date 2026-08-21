@@ -1,0 +1,131 @@
+                                                                               DAY 4
+
+# Day 4 - AWS EC2 Basics
+
+## EC2
+
+EC2 stands for Elastic Compute Cloud.
+
+EC2 is an AWS service that provides virtual servers in the cloud.
+
+EC2 can be used to run:
+
+- Web applications
+- Backend applications
+- APIs
+- Linux servers
+- DevOps tools and workloads
+
+Simple idea:
+
+AWS → EC2 → Virtual Server → Application
+
+## EC2 Instance
+
+An EC2 Instance is an actual virtual server launched using the EC2 service.
+
+Example:
+
+AWS
+ |
+EC2
+ |
+EC2 Instance
+ |
+Linux / Windows
+ |
+Application
+
+EC2 = AWS compute service
+
+EC2 Instance = Virtual server created using EC2
+
+## AMI
+
+AMI stands for Amazon Machine Image.
+
+An AMI is a template used to create an EC2 Instance.
+
+An AMI can contain the operating system and required configuration.
+
+Example:
+
+Amazon Linux AMI
+       |
+       ↓
+EC2 Instance
+       |
+Amazon Linux
+
+Simple idea:
+
+AMI = Server template
+
+EC2 Instance = Server created from the template
+
+## Instance Type
+
+Instance Type determines the computing capacity of an EC2 Instance.
+
+It defines resources such as:
+
+- CPU
+- RAM
+- Network performance
+- Overall computing capacity
+
+Different instance families are designed for different workloads.
+
+Common examples:
+
+- T family → General-purpose and burstable workloads
+- M family → General-purpose workloads
+- C family → CPU-intensive workloads
+- R family → Memory-intensive workloads
+
+Example:
+
+t3.micro
+
+t3 → Instance family
+
+micro → Instance size
+
+Simple idea:
+
+Instance Type = Size and computing capacity of the server
+
+## Key Pair
+
+A Key Pair is used for secure authentication when connecting to an EC2 instance.
+
+A key pair contains:
+
+- Public Key → Stored/used by AWS for the instance
+- Private Key → Kept securely by the user
+
+Basic connection:
+
+Your Computer
+     |
+Private Key
+     |
+SSH
+     |
+EC2 Linux Server
+
+The private key must be kept secure and should never be shared or uploaded to GitHub.
+
+## Quick Revision
+
+AMI → Server template
+
+Instance Type → Server computing capacity
+
+Key Pair → Secure authentication/login
+
+EC2 Instance → Actual virtual server
+
+EC2 → AWS compute service
+
+
