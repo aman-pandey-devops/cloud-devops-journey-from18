@@ -1,0 +1,192 @@
+                                                                            DAY 4-EC2
+
+
+
+Day 4 - AWS EC2 Basics
+
+1. Security Group
+
+A Security Group acts as a network-level firewall for an EC2 instance.
+
+It controls which incoming and outgoing network traffic is allowed.
+
+Important ports:
+
+- Port 22 → SSH
+- Port 80 → HTTP
+- Port 443 → HTTPS
+
+Simple idea:
+
+Internet → Security Group → EC2 Instance
+
+2. EC2 Launch Flow
+
+When launching an EC2 instance, different components work together.
+
+AMI → Starting operating system/template
+
+Instance Type → CPU, RAM and computing capacity
+
+Key Pair → Secure authentication
+
+Security Group → Network traffic control
+
+Simple flow:
+
+AMI
+|
+Instance Type
+|
+Key Pair
+|
+Security Group
+|
+EC2 Instance
+
+3. EBS
+
+EBS stands for Elastic Block Store.
+
+EBS provides persistent storage for an EC2 instance.
+
+It can store:
+
+- Operating system
+- Applications
+- Files
+- Logs
+- Other data
+
+Simple idea:
+
+EC2 → Virtual Server
+
+EBS → Persistent Storage
+
+4. EC2 Instance States
+
+Running means the EC2 instance is ON and can run applications.
+
+Stopped means the EC2 instance is temporarily OFF and can generally be started again.
+
+Terminated means the EC2 instance has been permanently removed.
+
+Simple idea:
+
+Running → ON
+
+Stopped → Temporarily OFF
+
+Terminated → Permanently Removed
+
+5. Linux EC2 Connection
+
+A Linux EC2 instance can commonly be accessed using SSH.
+
+For an Ubuntu EC2 instance, the default username is commonly:
+
+ubuntu
+
+Basic requirements:
+
+- Running EC2 instance
+- Public IP or Public DNS
+- Private Key
+- Security Group allowing Port 22
+
+Basic SSH command:
+
+ssh -i my-key.pem ubuntu@public-ip
+
+The private key must be kept secure and should never be shared or uploaded to GitHub.
+
+6. Basic Linux Commands
+
+These commands are useful for managing an Ubuntu Linux EC2 server.
+
+pwd
+ls
+cd
+cd ..
+mkdir
+touch
+cat
+echo
+cp
+mv
+rm
+clear
+whoami
+uname -a
+
+pwd → Shows the current directory.
+
+ls → Lists files and directories.
+
+cd → Changes the current directory.
+
+cd .. → Moves to the parent directory.
+
+mkdir → Creates a new directory.
+
+touch → Creates an empty file.
+
+cat → Displays the contents of a file.
+
+echo → Prints or writes text.
+
+cp → Copies files or directories.
+
+mv → Moves or renames files.
+
+rm → Removes files.
+
+clear → Clears the terminal.
+
+whoami → Shows the current Linux user.
+
+uname -a → Shows system information.
+
+7. Mini EC2 Hands-on
+
+Opened the AWS Console and accessed the EC2 service.
+
+Opened the EC2 Dashboard successfully.
+
+Started the EC2 launch process.
+
+The EC2 instance will be configured with:
+
+- Ubuntu AMI
+- Instance Type
+- Key Pair
+- Security Group
+
+After launching the instance, the Ubuntu server will be accessed using SSH.
+
+Basic Linux commands will then be practiced on the EC2 server.
+
+Quick Revision
+
+Security Group → Network-level firewall
+
+EBS → Persistent storage
+
+Running → Instance is ON
+
+Stopped → Instance is temporarily OFF
+
+Terminated → Instance is permanently removed
+
+SSH → Secure connection to Linux EC2
+
+Ubuntu → Linux operating system
+
+AMI → Server template
+
+Instance Type → Server computing capacity
+
+Key Pair → Secure authentication
+
+
