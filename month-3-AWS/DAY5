@@ -1,0 +1,213 @@
+                                                                               DAY 5
+                                                                           AWS RIVISION
+
+Day 5 - AWS Revision
+
+1. Public Cloud
+
+Public Cloud provides cloud infrastructure through a cloud provider that can be used by multiple customers.
+
+Example:
+
+AWS, Microsoft Azure, Google Cloud
+
+Simple idea:
+
+Public Cloud → Provider infrastructure + Multiple customers
+
+2. Private Cloud
+
+Private Cloud is a cloud environment dedicated to one organization.
+
+It provides more control and customization for the organization.
+
+Simple idea:
+
+Private Cloud → Dedicated cloud environment
+
+3. Hybrid Cloud
+
+Hybrid Cloud combines Public Cloud with Private Cloud or On-Premise infrastructure.
+
+Example:
+
+On-Premise / Private Cloud + AWS Public Cloud
+
+Simple idea:
+
+Hybrid Cloud → Public + Private
+
+4. AWS Basics
+
+AWS stands for Amazon Web Services.
+
+AWS is a cloud platform that provides services for computing, storage, networking, databases, security, and monitoring.
+
+Important AWS services:
+
+- EC2 → Virtual Servers
+- S3 → Object Storage
+- IAM → Access and Permissions
+- VPC → Networking
+- RDS → Relational Database
+- Lambda → Serverless Compute
+- CloudWatch → Monitoring and Logs
+
+5. AWS Region
+
+A Region is a geographical location where AWS has its infrastructure.
+
+When launching an AWS resource, we generally select a Region.
+
+Region selection can affect latency, pricing, and service availability.
+
+Simple idea:
+
+Region → Geographical location
+
+6. Availability Zone
+
+An Availability Zone is an isolated infrastructure location inside an AWS Region.
+
+A Region can contain multiple Availability Zones.
+
+Example:
+
+Region
+|
+├── Availability Zone 1
+├── Availability Zone 2
+└── Availability Zone 3
+
+Using multiple Availability Zones can help improve availability and fault tolerance.
+
+Simple idea:
+
+Region → Geographical area
+
+Availability Zone → Isolated location inside the Region
+
+7. IAM Revision
+
+IAM stands for Identity and Access Management.
+
+IAM controls who can access AWS resources and what actions they can perform.
+
+Important IAM concepts:
+
+- IAM User → Individual identity
+- IAM Group → Collection of users
+- IAM Role → Assumable identity used to provide permissions
+- IAM Policy → Permission rules
+- Least Privilege → Give only the permissions that are required
+
+Simple idea:
+
+IAM → Access Control
+
+8. EC2 Revision
+
+EC2 stands for Elastic Compute Cloud.
+
+EC2 provides virtual servers in the cloud.
+
+Important EC2 concepts:
+
+- EC2 Instance → Actual virtual server
+- AMI → Server template
+- Instance Type → Computing capacity
+- Key Pair → Secure authentication
+- Security Group → Network-level firewall
+- EBS → Persistent storage
+
+Simple idea:
+
+EC2 → Virtual Computer
+
+9. EC2 Launch Flow
+
+The main EC2 components connect together during the launch process:
+
+AMI
+|
+Instance Type
+|
+Key Pair
+|
+Security Group
+|
+EBS
+|
+EC2 Instance
+|
+SSH
+|
+Linux Server
+
+10. EC2 Instance States
+
+Running → Instance is ON
+
+Stopped → Instance is temporarily OFF
+
+Terminated → Instance is permanently removed
+
+11. Linux EC2 Connection
+
+Linux EC2 instances can commonly be accessed using SSH.
+
+For an Ubuntu EC2 instance, the username is commonly:
+
+ubuntu
+
+Basic SSH command:
+
+ssh -i my-key.pem ubuntu@public-ip
+
+The private key must remain secure and should never be uploaded to GitHub.
+
+Quick Revision
+
+Public Cloud → Multiple customers
+
+Private Cloud → Dedicated organization
+
+Hybrid Cloud → Public + Private
+
+AWS → Cloud Platform
+
+Region → Geographical AWS location
+
+Availability Zone → Isolated infrastructure location inside a Region
+
+IAM → Access Control
+
+EC2 → Virtual Server
+
+AMI → Server Template
+
+Instance Type → Server Computing Capacity
+
+Key Pair → Secure Authentication
+
+Security Group → Network Firewall
+
+EBS → Persistent Storage
+
+SSH → Secure Server Connection
+
+Day 5 Progress
+
+Completed:
+
+- Public Cloud Revision
+- Private Cloud Revision
+- Hybrid Cloud Revision
+- AWS Basics and Important Services
+- Region and Availability Zone
+- IAM Complete Revision
+- EC2 Complete Revision
+
+
+
+Day 5 - AWS Revision Complete
