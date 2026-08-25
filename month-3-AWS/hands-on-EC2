@@ -1,0 +1,128 @@
+
+                                                                          AWS-EC2-HANDS-ON
+
+# AWS EC2 Hands-on
+
+1. Opened EC2 Service
+
+Opened the AWS Management Console and navigated to the EC2 service.
+
+Opened the Instances section and started the EC2 launch process.
+
+2. Selected Ubuntu AMI
+
+Selected Ubuntu as the operating system for the EC2 instance.
+
+AMI provides the template from which the EC2 instance is created.
+
+Simple idea:
+
+Ubuntu AMI
+|
+↓
+EC2 Instance
+
+3. Selected Instance Type
+
+Selected the t3.micro instance type for practice.
+
+Instance Type determines the computing capacity of the EC2 instance, including resources such as CPU and RAM.
+
+Simple idea:
+
+t3.micro → Small EC2 computing capacity
+
+4. Created Key Pair
+
+Created a new Key Pair for secure authentication.
+
+Key Pair name:
+
+ec2-ubuntu-day5
+
+The private key file was downloaded in ".pem" format.
+
+The ".pem" file must be kept secure and should never be uploaded to GitHub.
+
+Simple idea:
+
+Private Key → Secure SSH Login → Ubuntu EC2
+
+5. Configured Security Group
+
+Configured a Security Group for the EC2 instance.
+
+Enabled:
+
+- SSH traffic
+- Source: My IP
+
+This allows SSH access to the EC2 instance from my current IP address.
+
+Simple idea:
+
+My IP
+|
+Port 22 / SSH
+|
+Security Group
+|
+Ubuntu EC2
+
+6. Configured Storage
+
+Reviewed the default storage configuration.
+
+The EC2 instance uses an EBS root volume for persistent storage.
+
+Simple idea:
+
+EC2 → EBS → Storage
+
+7. Final EC2 Configuration
+
+Before launching, verified the main configuration:
+
+AMI → Ubuntu
+
+Instance Type → t3.micro
+
+Key Pair → ec2-ubuntu-day5
+
+Security Group → SSH / My IP
+
+Storage → Default EBS
+
+Quick Revision
+
+Ubuntu AMI → Operating system template
+
+t3.micro → EC2 instance type
+
+Key Pair → Secure authentication
+
+.pem → Private SSH key file
+
+Security Group → Network-level firewall
+
+Port 22 → SSH
+
+My IP → Allows SSH access from my current IP
+
+EBS → EC2 persistent storage
+
+ Hands-on Progress
+
+Completed:
+
+- Opened EC2
+- Selected Ubuntu AMI
+- Selected t3.micro
+- Created Key Pair
+- Configured Security Group
+- Configured Storage
+- Verified EC2 configuration before launch
+
+Next step:
+
+Launch the Ubuntu EC2 instance and connect to it using SSH.
