@@ -1,0 +1,113 @@
+                                                                          DAY 6 EC2 HANDS-ON
+
+
+
+# Day 6 - AWS EC2 SSH Hands-on
+
+1. EC2 Instance Started
+
+Started the Ubuntu EC2 instance from the AWS Management Console.
+
+The EC2 instance must be in the Running state before connecting through SSH.
+
+Simple idea:
+
+Stopped EC2
+    ↓
+Start Instance
+    ↓
+Running EC2
+
+2. Public IPv4 Address
+
+Learned that the Public IPv4 Address is used to reach the EC2 instance over the internet.
+
+The Public IPv4 address is required when connecting to the EC2 instance through SSH.
+
+Example:
+
+Your Computer
+     ↓
+Internet
+     ↓
+Public IPv4
+     ↓
+Ubuntu EC2
+
+The Public IPv4 address can change when an EC2 instance is stopped and started again.
+
+3. SSH
+
+SSH stands for Secure Shell.
+
+SSH is used to securely connect from a local computer to a remote Linux server such as an Ubuntu EC2 instance.
+
+Simple idea:
+
+Windows Computer
+      ↓
+     SSH
+      ↓
+Ubuntu EC2
+
+4. Requirements for SSH Connection
+
+To connect to Ubuntu EC2 using SSH, we need:
+
+- Running EC2 instance
+- Public IPv4 address
+- Private ".pem" key
+- Ubuntu username
+- Security Group allowing SSH traffic on Port 22
+
+5. Ubuntu SSH Username
+
+For an Ubuntu EC2 instance, the default SSH username is commonly:
+
+ubuntu
+
+6. SSH Command
+
+The basic SSH command is:
+
+ssh -i ec2-ubuntu-day5.pem ubuntu@PUBLIC-IP
+
+Here:
+
+ec2-ubuntu-day5.pem → Private Key
+ubuntu              → Ubuntu username
+PUBLIC-IP           → EC2 Public IPv4 address
+
+7. Security Group and SSH
+
+The Security Group was configured to allow:
+
+SSH
+Port → 22
+Source → My IP
+
+This allows SSH access from the configured IP address.
+
+Simple idea:
+
+My Computer
+     ↓
+Port 22 / SSH
+     ↓
+Security Group
+     ↓
+Ubuntu EC2
+
+8. Private Key Security
+
+The ".pem" file is the private SSH key used for authentication.
+
+Important:
+
+- Keep the ".pem" file secure.
+- Do not share it.
+- Do not upload it to GitHub.
+- Do not expose it publicly.
+
+The ".pem" file is only for secure authentication; normal project code can still be uploaded to GitHub.
+
