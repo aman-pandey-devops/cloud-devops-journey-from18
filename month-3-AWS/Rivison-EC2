@@ -1,0 +1,217 @@
+
+
+
+Day 7 - AWS EC2 Revision
+
+
+
+1. EC2
+
+EC2 stands for Elastic Compute Cloud.
+
+EC2 is an AWS service that provides virtual servers in the cloud.
+
+Simple idea:
+
+AWS → EC2 → Virtual Server → Application
+
+2. EC2 Instance
+
+An EC2 Instance is the actual virtual server created using the EC2 service.
+
+EC2 → Service
+EC2 Instance → Actual Virtual Server
+
+3. AMI
+
+AMI stands for Amazon Machine Image.
+
+AMI is a template used to create an EC2 instance.
+
+Example:
+
+Ubuntu AMI
+    ↓
+EC2 Instance
+    ↓
+Ubuntu Server
+
+Simple idea:
+
+AMI = Server Template
+
+4. Instance Type
+
+Instance Type determines the computing capacity of an EC2 instance.
+
+It defines resources such as:
+
+- CPU
+- RAM
+- Network performance
+
+Example:
+
+t3.micro
+
+t3    → Instance family
+micro → Instance size
+
+Simple idea:
+
+Instance Type = Computing Capacity
+
+5. Key Pair
+
+Key Pair is used for secure authentication when connecting to an EC2 instance.
+
+It contains:
+
+- Public Key
+- Private Key
+
+The private key is downloaded as a ".pem" file and is used for SSH authentication.
+
+Your Computer
+     ↓
+.pem Private Key
+     ↓
+SSH
+     ↓
+EC2 Ubuntu
+
+Important:
+
+.pem Private Key → Never upload to GitHub
+
+6. Security Group
+
+Security Group is the network-level firewall for an EC2 instance.
+
+It controls incoming and outgoing network traffic.
+
+For SSH:
+
+SSH → Port 22
+Source → My IP
+
+7. Public IPv4 Address
+
+Public IPv4 is the internet-facing IP address of an EC2 instance.
+
+It is commonly used to connect to the EC2 instance through SSH.
+
+Computer
+   ↓
+Internet
+   ↓
+Public IPv4
+   ↓
+EC2
+
+The Public IPv4 can change when an instance is stopped and started again unless an Elastic IP is used.
+
+8. SSH
+
+SSH stands for Secure Shell.
+
+SSH is used to securely connect to a remote Linux server.
+
+Basic connection:
+
+Windows PowerShell
+       ↓
+      SSH
+       ↓
+Ubuntu EC2
+
+Basic command:
+
+ssh -i key.pem ubuntu@PUBLIC-IP
+
+9. EBS
+
+EBS stands for Elastic Block Store.
+
+EBS provides persistent storage for EC2 instances.
+
+EC2 Instance
+     ↓
+    EBS
+     ↓
+  Storage
+
+Simple idea:
+
+EC2 = Server
+EBS = Storage
+
+10. EC2 Instance States
+
+Running
+
+Instance is active and running.
+
+Stopped
+
+Instance is shut down but still exists and can be started again.
+
+Terminated
+
+Instance is permanently deleted and normally cannot be started again.
+
+Running
+   ↓
+Stopped
+   ↓
+Running
+
+Running
+   ↓
+Terminated
+
+11. EC2 Hands-on Completed
+
+Practiced:
+
+- Ubuntu EC2 instance launch
+- t3.micro instance type selection
+- Key Pair creation
+- Security Group configuration
+- EBS storage review
+- EC2 start/stop
+- Public IPv4 identification
+- SSH connection from Windows PowerShell
+- Basic Linux commands on Ubuntu EC2
+
+Quick Revision
+
+EC2 → AWS cloud server service
+
+Instance → Actual virtual server
+
+AMI → Server template
+
+Instance Type → Computing capacity
+
+Key Pair → Secure authentication
+
+.pem → Private SSH key
+
+Security Group → Network firewall
+
+Port 22 → SSH
+
+Public IPv4 → EC2 internet address
+
+SSH → Secure remote connection
+
+EBS → Persistent storage
+
+Running → Instance active
+
+Stopped → Instance temporarily off
+
+Terminated → Instance deleted
+
+Day 7 - EC2 Revision Complete
