@@ -1,0 +1,214 @@
+                                                                       
+                                                                       Day 8 - AWS EC2 Revision
+
+
+
+
+
+
+1. EC2 Pricing Basics
+
+EC2 mein cost mainly instance ke running time, computing resources, storage aur applicable data transfer se related hoti hai.
+
+EC2 instance Running hone par compute usage count hota hai.
+
+EC2 instance Stopped hone par compute charges generally stop ho jaate hain, lekin attached EBS storage ke charges continue ho sakte hain.
+
+Important:
+
+EC2 Running → Compute usage
+EC2 Stopped → Compute usage generally stops
+EBS → Storage charges may continue
+
+Free Tier ki applicable limits ke andar eligible usage par charge nahi lag sakta.
+
+2. Elastic IP
+
+Elastic IP ek static public IPv4 address hai.
+
+Normal Public IPv4 stop/start ke baad change ho sakta hai.
+
+Elastic IP ko EC2 ke saath associate karne par same public IP retain kiya ja sakta hai.
+
+Normal Public IPv4 → Change ho sakta hai
+
+Elastic IP → Static Public IPv4
+
+Elastic IP ko unnecessarily allocate nahi karna chahiye, kyunki public IPv4 usage par AWS ke current pricing rules ke according charges apply ho sakte hain.
+
+3. EBS Deep Basics
+
+EBS stands for Elastic Block Store.
+
+EBS EC2 instance ke liye persistent block storage provide karta hai.
+
+Simple idea:
+
+EC2 → Server
+EBS → Storage
+
+EBS Volume ko virtual hard disk ki tarah samajh sakte hain.
+
+EC2 stop hone ke baad EBS volume ka data normally preserved rehta hai.
+
+EC2 launch karte waqt attached root EBS volume mein operating system aur system files stored hote hain.
+
+4. EBS Snapshot
+
+EBS Snapshot EBS volume ka point-in-time backup hota hai.
+
+Simple idea:
+
+EBS Volume
+     ↓
+Snapshot
+     ↓
+Backup
+
+Snapshot ka use future mein data restore ya new EBS volume create karne ke liye kiya ja sakta hai.
+
+5. EC2 vs Traditional Server
+
+Traditional Server ek physical server hota hai jiske hardware ko organization ko manage karna padta hai.
+
+EC2 AWS infrastructure par running virtual server hai.
+
+Traditional Server → Physical Server
+
+EC2 → Cloud-based Virtual Server
+
+EC2 mein physical hardware, power aur data-center infrastructure AWS manage karta hai.
+
+User EC2 ke andar operating system, software aur configuration manage karta hai.
+
+6. EC2 Practical Revision
+
+EC2 hands-on ka complete flow revise kiya:
+
+AWS
+ ↓
+EC2
+ ↓
+Ubuntu AMI
+ ↓
+t3.micro
+ ↓
+EC2 Instance
+ ↓
+Security Group
+ ↓
+Port 22
+ ↓
+Public IPv4
+ ↓
+Key Pair (.pem)
+ ↓
+SSH
+ ↓
+Ubuntu EC2
+ ↓
+Linux Commands
+
+7. SSH and EC2
+
+SSH stands for Secure Shell.
+
+SSH ke through local computer se remotely Ubuntu EC2 instance mein securely connect kar sakte hain.
+
+Basic command:
+
+ssh -i key.pem ubuntu@PUBLIC-IP
+
+Important:
+
+PowerShell → Local Windows Terminal
+
+SSH → Secure Connection Method
+
+EC2 → Remote Virtual Server
+
+SSH connection successful hone ke baad "ubuntu@ip-...:~$" prompt ka matlab hai ki commands EC2 Ubuntu server par execute ho rahi hain.
+
+8. EC2 Instance States
+
+Running
+
+EC2 instance active hai aur compute resources use kar raha hai.
+
+Stopped
+
+Instance temporarily stopped hai. Compute usage generally stop ho jata hai, lekin EBS storage remain karta hai.
+
+Terminated
+
+Instance permanently deleted ho jata hai.
+
+Running → Stopped → Running
+
+Running → Terminated
+
+9. EC2 and Linux Practice
+
+EC2 ke andar Linux commands run karne ke liye instance ka Running hona zaroori hai.
+
+Agar EC2 stopped hai, to usmein SSH ke through commands run nahi kar sakte.
+
+EC2 Running
+     ↓
+SSH Connect
+     ↓
+Linux Practice
+
+Practice complete hone ke baad:
+
+exit
+↓
+EC2 Stop
+
+kar sakte hain.
+
+Quick Revision
+
+EC2 → Cloud Virtual Server
+
+AMI → Server Template
+
+Instance Type → Computing Capacity
+
+Key Pair → Secure Authentication
+
+.pem → Private SSH Key
+
+Security Group → Network Firewall
+
+Port 22 → SSH
+
+Public IPv4 → EC2 Public Address
+
+Elastic IP → Static Public IPv4
+
+EBS → Persistent Storage
+
+Snapshot → EBS Backup
+
+SSH → Secure Remote Connection
+
+Running → EC2 Active
+
+Stopped → Compute usage generally stopped
+
+Terminated → EC2 Instance Deleted
+
+Day 8 Progress
+
+Completed:
+
+- EC2 Pricing Basics
+- Elastic IP
+- EBS Deep Basics
+- EBS Snapshot
+- EC2 vs Traditional Server
+- EC2 Practical Revision
+- EC2 + SSH + Linux practice flow revision
+
+Day 8 - AWS EC2 Revision Complete
