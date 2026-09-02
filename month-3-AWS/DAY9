@@ -1,0 +1,64 @@
+                                                                            AWS S3 BASICS
+
+
+Day 9 - AWS S3 Basics
+
+1. What is S3?
+
+S3 stands for Simple Storage Service.
+
+AWS S3 is an object storage service used to store files and data in the cloud.
+
+Examples:
+
+- Images
+- Videos
+- Documents
+- Backups
+- Logs
+
+2. S3 Bucket
+
+A Bucket is a storage container used to store objects.
+
+S3 → Bucket → Objects
+
+A bucket is created in a specific AWS Region.
+
+3. S3 Object
+
+An Object is the actual file/data stored inside a bucket.
+
+An object mainly contains:
+
+- Data
+- Key (object name/path)
+- Metadata
+
+4. Bucket vs Object
+
+Bucket = Container
+Object = Actual File/Data
+
+Example:
+
+my-bucket
+ ├── image.jpg
+ ├── resume.pdf
+ └── notes.txt
+
+5. S3 Storage Classes
+
+- S3 Standard → Frequently accessed data
+- S3 Standard-IA → Infrequently accessed data
+- S3 Glacier → Long-term archive data
+
+6. Important S3 Use Cases
+
+- Backup and recovery
+- Static website hosting
+- Log storage
+- File/data storage
+- Data archiving
+
+
