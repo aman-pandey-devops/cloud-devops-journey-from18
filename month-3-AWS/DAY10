@@ -1,0 +1,58 @@
+
+
+Day 10 - S3 Permissions & Policies
+
+1. S3 Bucket Permissions
+
+S3 bucket permissions decide who can access the bucket and what they are allowed to do.
+
+Some common actions are:
+
+- GetObject - read or download an object
+- PutObject - upload an object
+- DeleteObject - delete an object
+- ListBucket - view the objects in a bucket
+
+2. Block Public Access
+
+Block Public Access is used to stop public access to an S3 bucket and its objects.
+
+For normal practice and private data, it is better to keep it enabled.
+
+3. Bucket Policy
+
+A bucket policy is a JSON policy that is attached directly to an S3 bucket.
+
+It can define who can access the bucket and what actions they can perform.
+
+For example:
+
+- GetObject
+- PutObject
+- DeleteObject
+
+4. IAM Policy vs Bucket Policy
+
+IAM Policy: Attached to an IAM user, group or role and defines what that identity can do.
+
+Bucket Policy: Attached directly to an S3 bucket and defines who can access that bucket.
+
+IAM Policy → Permissions for an identity
+
+Bucket Policy → Access rules for a bucket
+
+5. S3 Access Flow
+
+When a user or application tries to access S3, AWS checks the applicable permissions and policies.
+
+User / Application
+        ↓
+    S3 Bucket
+        ↓
+ Permission Check
+        ↓
+  Allow or Deny
+        ↓
+   S3 Object
+
+
