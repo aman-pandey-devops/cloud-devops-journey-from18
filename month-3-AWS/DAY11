@@ -1,0 +1,51 @@
+
+Day 11 - S3 Practical and Static Website Basics
+
+1. Static Website
+
+A static website is a website where the content is mainly served from files like HTML, CSS and JavaScript.
+
+S3 can be used to store and serve these website files.
+
+Website Files
+      ↓
+  S3 Bucket
+      ↓
+Static Website
+
+2. S3 Bucket Creation - Hands-on
+
+Created an S3 bucket for practice.
+
+Bucket name:
+
+aman-cloud-devops-bucket
+
+During bucket creation:
+
+- General purpose bucket
+- ACLs disabled
+- Block Public Access enabled
+- Versioning disabled
+- Default encryption kept enabled
+
+3. S3 File Upload
+
+Started the process of uploading a file into the S3 bucket using:
+
+S3 Bucket
+   ↓
+Upload
+   ↓
+Add files
+
+File upload practice is still pending.
+
+4. Quick Revision
+
+S3 → Bucket → Object
+
+Bucket = Container
+Object = File/Data
+
+
