@@ -1,0 +1,55 @@
+
+# Day 12 - S3 Static Website Hosting
+
+## 1. S3 Static Website Hosting
+
+Amazon S3 can be used to host a static website without using an EC2 server.
+
+We can upload website files like HTML, CSS, JavaScript and images into an S3 bucket and configure the bucket for static website hosting.
+
+S3 is suitable for static websites because it stores and serves files, but it does not run server-side application code.
+
+## 2. Website Files in S3
+
+A static website usually contains files such as:
+
+- `index.html` - Main webpage
+- `style.css` - Website design and styling
+- `script.js` - Client-side functionality
+- Images - Website visuals
+
+These files are uploaded to the S3 bucket as S3 objects.
+
+## 3. Index Document (`index.html`)
+
+`index.html` is normally the main or entry page of a static website.
+
+In S3 Static Website Hosting, we configure `index.html` as the Index Document.
+
+When someone opens the website, S3 knows which HTML file should be used as the main page.
+
+## 4. S3 Website Endpoint
+
+When Static Website Hosting is enabled, S3 provides a website endpoint through which the static website can be accessed.
+
+The browser requests the website from this endpoint, and S3 serves the website files.
+
+## 5. Static Website Hosting Flow
+
+The basic flow is:
+
+Browser
+→ S3 Website Endpoint
+→ S3 Bucket
+→ `index.html`
+→ CSS / JavaScript / Images
+→ Website displayed in browser
+
+## 6. Important Points
+
+- S3 can host static websites.
+- Website files are stored as S3 objects.
+- `index.html` is the main page.
+- Static websites do not require an EC2 server.
+- S3 does not execute server-side code.
+- Static Website Hosting is configured at the S3 bucket level.
