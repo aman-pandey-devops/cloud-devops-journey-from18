@@ -1,0 +1,70 @@
+                                                                               DAY13
+                                                                           VERSIONING S3
+
+Day 13 - S3 Versioning
+
+1. S3 Versioning
+
+S3 Versioning is a feature that keeps different versions of the same object in a bucket.
+
+It helps protect data from accidental changes or deletions because older versions can be preserved.
+
+2. How Versioning Works
+
+When Versioning is enabled, uploading the same object again creates a new version instead of simply replacing the old version.
+
+For example:
+
+index.html
+├── Version 1
+├── Version 2
+└── Version 3
+
+Each version has its own unique Version ID.
+
+Versioning is enabled at the bucket level.
+
+3. Multiple Versions of an Object
+
+The same S3 object can have multiple versions.
+
+For example, if "index.html" is uploaded three times with different content, S3 can keep all three versions:
+
+Version 1 → My First S3 Static Website
+Version 2 → My S3 Versioning Practice
+Version 3 → Updated Website
+
+This allows older versions to remain available for recovery.
+
+4. Accidental Deletion and Recovery
+
+When Versioning is enabled, deleting an object normally creates a Delete Marker instead of immediately removing the previous version.
+
+The older versions can still remain in the bucket.
+
+The Delete Marker can be removed to make the previous object version accessible again.
+
+Delete Object
+      ↓
+Delete Marker
+      ↓
+Old Version Still Available
+      ↓
+Remove Delete Marker
+      ↓
+Object Recovered
+
+5. Versioning Practical
+
+For the practical:
+
+1. Enabled Versioning on the S3 bucket.
+2. Used the existing "index.html" file.
+3. Changed the content of "index.html".
+4. Uploaded the same "index.html" again.
+5. Selected Replace when S3 detected that the file already existed.
+6. Used Show versions to verify that multiple versions of "index.html" were stored.
+
+This demonstrated how S3 keeps different versions of the same object.
+
+
