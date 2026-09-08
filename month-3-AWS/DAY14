@@ -1,0 +1,58 @@
+ 
+
+                                                                            S3 LIFECYCCLE
+
+
+Day 14 - S3 Lifecycle
+
+1. S3 Lifecycle Rule
+
+S3 Lifecycle Rules are automatic rules used to manage objects in an S3 bucket based on time or other conditions.
+
+A Lifecycle Rule can automatically move objects to another storage class or remove them after a specific period.
+
+Example:
+
+New Object
+    ↓
+S3 Standard
+    ↓
+Standard-IA
+    ↓
+S3 Glacier
+    ↓
+Delete
+
+2. Transition Between Storage Classes
+
+Transition means automatically moving an S3 object from one Storage Class to another.
+
+For example:
+
+Day 0   → S3 Standard
+Day 30  → S3 Standard-IA
+Day 90  → S3 Glacier
+
+This can be done using an S3 Lifecycle Rule.
+
+The purpose is to keep frequently used data in suitable storage and move older or less frequently accessed data to more appropriate storage classes.
+
+3. Object Expiration
+
+Object Expiration means automatically removing an object after a specified period using a Lifecycle Rule.
+
+For example:
+
+Day 0   → Log file uploaded
+Day 30  → Object automatically expires
+
+Expiration can be useful for temporary files, old logs, and data that is no longer needed.
+
+4. Important Points
+
+- Lifecycle Rules automatically manage S3 objects.
+- Transition changes the object's Storage Class.
+- Expiration removes the object automatically.
+- Lifecycle Rules can help with storage cost management and data management.
+- Lifecycle actions happen automatically according to the configured rules.
+- Lifecycle Rules can be configured for specific objects or groups of objects using conditions.
