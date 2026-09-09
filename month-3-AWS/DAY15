@@ -1,0 +1,83 @@
+                                  
+Day 15 - S3 Security and Access Control
+
+1. S3 Access Control
+
+S3 Access Control is used to control who can access S3 buckets and objects and what actions they can perform.
+
+Examples of actions include:
+
+- Read objects
+- Upload objects
+- Delete objects
+- Access bucket contents
+
+S3 provides different mechanisms for controlling access, such as IAM policies, Bucket Policies, Block Public Access and ACLs.
+
+2. IAM User/Policy vs S3 Bucket Policy
+
+IAM User and IAM Policy
+
+An IAM User represents an AWS identity, while an IAM Policy defines what that identity is allowed to do.
+
+IAM Policy is an identity-based policy.
+
+IAM User
+    ↓
+IAM Policy
+    ↓
+Allowed AWS Actions
+
+S3 Bucket Policy
+
+A Bucket Policy is attached directly to an S3 bucket and defines who can access the bucket and what actions they can perform.
+
+It is a resource-based policy.
+
+S3 Bucket
+    ↓
+Bucket Policy
+    ↓
+Access Rules
+
+Main Difference
+
+IAM Policy → What can this identity do?
+
+Bucket Policy → Who can access this bucket/resource and what can they do?
+
+3. Block Public Access
+
+S3 Block Public Access is a security feature that helps prevent S3 buckets and objects from being publicly accessible.
+
+Its main purpose is to protect data from accidental public exposure.
+
+Block Public Access ON
+        ↓
+Public Access Blocked
+
+Turning Block Public Access OFF does not automatically make a bucket public. Appropriate permissions or policies are also required.
+
+4. ACLs
+
+ACL stands for Access Control List.
+
+ACLs are a traditional mechanism for controlling basic access permissions for S3 buckets and objects.
+
+They can define permissions such as read or write access.
+
+In our S3 bucket, ACLs were disabled during bucket creation.
+
+Modern S3 setups generally prefer using IAM policies and Bucket Policies instead of ACLs.
+
+5. S3 Encryption Basics
+
+S3 Encryption protects data stored in S3 by encrypting it while it is at rest.
+
+Basic S3 server-side encryption options include:
+
+- SSE-S3 - S3 manages the encryption keys.
+- SSE-KMS - AWS KMS keys are used for encryption and provide more key-management control.
+- SSE-C - The customer provides the encryption key.
+
+Our S3 bucket had default encryption enabled when it was created
