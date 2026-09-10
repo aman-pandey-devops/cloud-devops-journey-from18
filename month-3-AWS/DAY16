@@ -1,0 +1,91 @@
+
+
+
+
+Day 16 - S3 Security Best Practices
+
+1. S3 Security Best Practices
+
+S3 buckets should be secured carefully to protect stored data.
+
+Important security practices:
+
+- Keep Block Public Access ON when public access is not required.
+- Follow Least Privilege and give users only the permissions they need.
+- Use IAM Policies and Bucket Policies carefully.
+- Keep Encryption enabled for stored data.
+- Use Versioning for important data when recovery from accidental changes or deletions is useful.
+- Avoid unnecessary use of ACLs in modern S3 setups.
+- Regularly review bucket permissions and access settings.
+
+Simple Security Rule
+
+Private by default
++ Least Privilege
++ Encryption
++ Proper Access Control
++ Regular Permission Review
+
+2. S3 Security Practical
+
+We practiced checking the security settings of our S3 bucket.
+
+Encryption
+
+Verified that Default Encryption is enabled for the bucket.
+
+Block Public Access
+
+Our bucket is being used for the S3 static website practice from Day 12, so Block Public Access is OFF because the website requires appropriate public access.
+
+For a normal private S3 bucket, Block Public Access should generally remain enabled unless public access is specifically required.
+
+Versioning
+
+Verified the Versioning setting that was enabled during the Day 13 practical.
+
+3. Important S3 Security Concepts
+
+IAM Policy
+
+An identity-based policy that defines what an IAM user, group, or role can do.
+
+Bucket Policy
+
+A resource-based policy attached directly to an S3 bucket that controls access to the bucket and its resources.
+
+Block Public Access
+
+A security control that helps prevent unwanted public access to S3 data.
+
+ACL
+
+A traditional mechanism for controlling basic access permissions for S3 buckets and objects.
+
+Encryption
+
+Protects data stored in S3 by encrypting it at rest.
+
+Versioning
+
+Keeps multiple versions of an object and can help with recovery from accidental changes or deletions.
+
+4. Quick Revision
+
+S3 Access Control → Controls who can access S3 and what actions they can perform.
+
+IAM Policy → Identity-based permissions.
+
+Bucket Policy → Resource-based permissions.
+
+Block Public Access → Helps prevent public access.
+
+ACL → Traditional access-control mechanism.
+
+Encryption → Protects stored data.
+
+Versioning → Preserves different object versions.
+
+Least Privilege → Give only the permissions that are required.
+
+
