@@ -1,0 +1,115 @@
+
+
+Day 17 - AWS CloudFront
+
+1. CloudFront
+
+Amazon CloudFront is AWS's Content Delivery Network (CDN) service.
+
+It helps deliver website content to users through CloudFront's distributed network of locations, which can reduce latency and improve content delivery speed.
+
+CloudFront is not a replacement for S3.
+
+- S3 → Stores website files and data
+- CloudFront → Helps deliver that content efficiently to users
+
+2. CDN
+
+CDN stands for Content Delivery Network.
+
+A CDN is a network of distributed locations that can cache and deliver website content closer to users.
+
+This can reduce the distance content needs to travel and improve website response time.
+
+CloudFront is AWS's CDN service.
+
+3. Edge Location
+
+An Edge Location is a location in the CloudFront network where content can be cached.
+
+When a user requests content, CloudFront can serve cached content from a suitable nearby Edge Location.
+
+This can make content delivery faster.
+
+4. Origin
+
+Origin is the original source from which CloudFront gets the content.
+
+For our S3 website setup:
+
+S3 Bucket = Origin
+
+The website files such as "index.html", CSS, JavaScript and images are stored in S3.
+
+CloudFront uses the S3 bucket as the source for this content.
+
+5. CloudFront + S3 Connection
+
+CloudFront and S3 can work together to deliver a static website.
+
+The basic setup is:
+
+S3 Bucket
+(Origin)
+    ↓
+CloudFront
+    ↓
+Edge Locations
+    ↓
+Users
+
+S3 stores the original website files, while CloudFront helps deliver them to users through its network.
+
+6. CloudFront Request Flow
+
+When a user requests content through CloudFront, the request reaches a suitable Edge Location.
+
+If the requested content is already cached:
+
+User
+  ↓
+CloudFront
+  ↓
+Edge Location
+  ↓
+Content
+  ↓
+User
+
+This is a cache hit.
+
+If the content is not cached:
+
+User
+  ↓
+CloudFront
+  ↓
+Edge Location
+  ↓
+S3 Origin
+  ↓
+Content
+  ↓
+Edge Location
+  ↓
+User
+
+This is a cache miss. CloudFront gets the content from the origin and can cache it for future requests.
+
+Quick Revision
+
+CloudFront → AWS CDN service.
+
+CDN → Distributed network used to deliver content efficiently.
+
+Edge Location → CloudFront location where content can be cached.
+
+Origin → Original source of content.
+
+S3 → Can act as the CloudFront origin for a static website.
+
+Cache Hit → Requested content is already available in the Edge Location.
+
+Cache Miss → CloudFront gets the content from the origin.
+
+
