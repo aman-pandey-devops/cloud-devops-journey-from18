@@ -1,0 +1,72 @@
+Day 17 - AWS CloudFront Practical
+
+1. CloudFront Distribution
+
+Today I created and practiced an AWS CloudFront distribution to deliver my S3 static website through a CDN.
+
+2. CloudFront Configuration
+
+- Created a CloudFront distribution
+- Connected CloudFront with my S3 website
+- Practiced CloudFront distribution settings
+- Enabled the distribution after configuration
+- Checked the distribution status from the CloudFront console
+
+3. Default Root Object
+
+I learned that the default root object tells CloudFront which file to serve when a user opens the distribution without specifying a file.
+
+For my static website, the default root object is:
+
+index.html
+
+The file name is case-sensitive.
+
+4. CloudFront and S3
+
+The basic flow I practiced was:
+
+User
+  ↓
+CloudFront
+  ↓
+Edge Location
+  ↓
+S3
+  ↓
+Website Files
+
+S3 stores the original website files, while CloudFront helps deliver the content to users through its CDN network.
+
+5. Practical Troubleshooting
+
+During the practical, the CloudFront website initially had a timeout issue.
+
+I checked the CloudFront distribution and learned that the distribution must be enabled and correctly configured before testing the website.
+
+I also learned the importance of checking the CloudFront origin configuration and default root object when troubleshooting website access.
+
+6. What I Learned
+
+- CloudFront distribution
+- CloudFront and S3 connection
+- Distribution status
+- Enabling a CloudFront distribution
+- Default root object
+- "index.html"
+- Basic CloudFront troubleshooting
+- CloudFront request flow
+
+Quick Revision
+
+CloudFront is AWS's CDN service.
+
+S3 stores the website files, and CloudFront delivers those files through its distributed network.
+
+S3 = Stores content
+CloudFront = Delivers content
+Edge Location = Helps serve content closer to users
+
+Completion
+
+Day 17 - AWS CloudFront Practical: Completed
