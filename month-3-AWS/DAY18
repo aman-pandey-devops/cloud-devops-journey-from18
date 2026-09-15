@@ -1,0 +1,109 @@
+Day 18 - AWS CloudWatch
+
+1. CloudWatch
+
+Amazon CloudWatch is an AWS monitoring service. It helps monitor AWS resources and applications, check their performance, and create alerts when problems or unusual conditions occur.
+
+2. Metrics
+
+Metrics are measurable data about the performance or condition of an AWS resource.
+
+For EC2, common metrics include:
+
+- CPU Utilization
+- Network In
+- Network Out
+
+Simple difference:
+
+CloudWatch = Monitoring service
+Metric = Measurement/data
+
+3. CloudWatch Dashboard
+
+A CloudWatch Dashboard is a customized screen where important metrics can be viewed in one place.
+
+For example, EC2 CPU and network metrics can be organized on a dashboard for easier monitoring.
+
+CloudWatch Dashboard
+        |
+        +-- CPU Utilization
+        +-- Network In
+        +-- Network Out
+
+4. CloudWatch Logs
+
+Logs are recorded information about events happening inside a system or application.
+
+CloudWatch Logs helps collect, store, view, and analyze logs.
+
+Example log events:
+
+Server started
+User login successful
+Application error
+Connection failed
+
+Important difference:
+
+Metric = Performance measurement
+Log    = Detailed record of events
+
+5. CloudWatch Alarms
+
+A CloudWatch Alarm monitors a metric and checks it against a defined threshold.
+
+For example:
+
+Metric: CPU Utilization
+Threshold: 80%
+
+CPU = 50%  -> Normal
+CPU = 85%  -> Alarm state
+
+Important concepts:
+
+- Metric = what we monitor
+- Threshold = condition/value to watch
+- Alarm = warning mechanism when the condition is met
+
+6. CloudWatch + EC2 Hands-on
+
+I practiced connecting CloudWatch monitoring concepts with my EC2 instance.
+
+I opened the EC2 Monitoring section and checked the available monitoring data.
+
+During the practice, the monitoring page initially showed:
+
+No data available
+
+I learned that CloudWatch metrics may take some time to appear, and that the correct AWS Region and EC2 instance state are important when checking resources.
+
+7. AWS Region and EC2
+
+During troubleshooting, I also learned an important AWS concept:
+
+«EC2 instances are associated with a specific AWS Region.»
+
+If the AWS Console is switched to another Region, an EC2 instance created in the previous Region may not appear in the instance list.
+
+Quick Revision
+
+CloudWatch = AWS monitoring
+Metrics    = Measurable performance data
+Dashboard  = Metrics organized in one screen
+Logs       = Recorded system/application events
+Alarm      = Alert based on a metric condition
+
+
+
+
+
+
+
+
+
+
+
+
+
