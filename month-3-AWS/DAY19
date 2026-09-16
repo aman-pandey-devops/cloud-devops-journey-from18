@@ -1,0 +1,67 @@
+Day 19 - AWS CLI Setup and Configuration
+
+1. AWS CLI
+
+AWS CLI stands for AWS Command Line Interface.
+
+It is a tool that allows us to manage and interact with AWS services using commands in a terminal instead of using the AWS Management Console.
+
+AWS Console
+    ↓
+Buttons and UI
+    ↓
+AWS Services
+
+AWS CLI
+    ↓
+Commands in Terminal
+    ↓
+AWS Services
+
+AWS CLI is useful in Cloud and DevOps because many AWS tasks can be performed from the command line and later automated using scripts and DevOps tools.
+
+2. AWS CLI Installation and Setup
+
+I installed and set up AWS CLI in my WSL environment.
+
+After installation, AWS CLI can be used from the WSL terminal to communicate with AWS services.
+
+3. AWS CLI Configuration
+
+AWS CLI needs to be configured before using AWS services from the terminal.
+
+The configuration includes:
+
+- Access Key ID
+- Secret Access Key
+- Default AWS Region
+- Output format
+
+The "aws configure" command can be used for the basic configuration.
+
+The Default Region tells AWS CLI which AWS Region to use by default, for example:
+
+ap-south-1
+
+4. Security
+
+AWS credentials are sensitive information.
+
+Important rules:
+
+- Never upload Secret Access Keys to GitHub.
+- Never share AWS credentials publicly.
+- Do not commit credential files to a Git repository.
+- Keep AWS credentials secure.
+
+Quick Revision
+
+AWS CLI = Manage AWS using terminal commands
+
+Install → AWS CLI available in WSL
+
+Configure → Credentials + Region + Output settings
+
+Completion
+
+Day 19 - AWS CLI Basics, Installation & Configuration: Completed
