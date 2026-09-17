@@ -1,0 +1,11 @@
+    
+Today I Learned Basic Commands of CLI
+
+
+AWS CLI = Manage AWS using terminal
+aws --version = Check CLI installation
+aws configure = Configure AWS CLI
+aws sts get-caller-identity = Check current AWS identity
+aws s3 ls = List S3 buckets
+aws s3 cp = Upload/download S3 files
+aws ec2 describe-instances = Get EC2 instance information
