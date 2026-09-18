@@ -1,0 +1,93 @@
+Day 20 - AWS Load Balancer (ELB)
+
+Today I learned the basics of AWS Elastic Load Balancing and how a Load Balancer works with EC2 instances.
+
+1. What is a Load Balancer?
+
+A Load Balancer is an AWS service that distributes incoming traffic or requests across multiple servers.
+
+Basic flow:
+
+Users
+  ↓
+Load Balancer
+  ↓
+EC2 #1    EC2 #2
+
+AWS Elastic Load Balancing (ELB) provides load balancing for applications and network traffic.
+
+2. Why is a Load Balancer used?
+
+A Load Balancer is mainly used to:
+
+1. Distribute traffic across multiple servers.
+2. Prevent too much traffic from going to one server.
+3. Improve availability when multiple servers are available.
+4. Help applications handle incoming traffic more reliably.
+
+3. Load Balancer and EC2 Connection
+
+EC2 instances run the application or website, while the Load Balancer receives user requests and forwards them to the EC2 instances.
+
+Basic flow:
+
+Users
+  ↓
+Load Balancer
+  ↓
+Target Group
+  ↓
+EC2 #1
+EC2 #2
+
+Important Concepts
+
+- EC2 = Server where the application runs
+- Load Balancer = Distributes incoming traffic
+- Target Group = Group of targets, such as EC2 instances, that can receive traffic from the Load Balancer
+
+The Load Balancer itself does not run the application. The application runs on the EC2 instances.
+
+4. Types of Load Balancers - Basic Idea
+
+Application Load Balancer (ALB)
+
+ALB is mainly used for HTTP and HTTPS traffic and is commonly used with web applications.
+
+User
+ ↓
+ALB
+ ↓
+EC2
+
+Network Load Balancer (NLB)
+
+NLB is designed for network-level traffic such as TCP and UDP and is suitable for high-performance network traffic.
+
+Client
+ ↓
+NLB
+ ↓
+EC2
+
+Gateway Load Balancer (GWLB)
+
+GWLB is used for deploying and scaling network security appliances.
+
+Quick Revision
+
+- ELB = Elastic Load Balancing
+- Load Balancer = Distributes incoming traffic
+- EC2 = Runs the application/server
+- Target Group = Group of targets receiving traffic
+- ALB = Mainly HTTP/HTTPS
+- NLB = Mainly TCP/UDP
+- GWLB = Network security appliances
+
+Hands-on Preparation
+
+I already had two EC2 instances in the Running state and prepared them for the Load Balancer practical.
+
+The next practical step is to connect the EC2 instances through a Target Group and then use an Application Load Balancer.
+
+
