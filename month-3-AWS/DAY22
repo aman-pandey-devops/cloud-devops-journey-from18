@@ -1,0 +1,15 @@
+# Day 22 - Month 3 Final Revision
+
+Today I revised these topics of AWS:
+
+1. Cloud Computing + AWS Basics
+2. IAM (Identity and Access Management)
+3. EC2 (Elastic Compute Cloud)
+4. SSH + EC2 Web Server Setup
+5. S3 (Simple Storage Service)
+6. S3 Static Website Hosting
+7. S3 Versioning + Lifecycle + Security
+8. CloudFront (Content Delivery Network)
+9. CloudWatch (Monitoring)
+
+This was a full revision covering What, Why, How, Practical Use, and DevOps connection for each topic — not just definitions.
