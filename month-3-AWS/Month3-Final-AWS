@@ -1,0 +1,190 @@
+# Month 3 — AWS Foundation Final Revision
+
+## 1. Cloud Computing & AWS Basics
+
+- Cloud Computing → Internet ke through computing resources/services use karna.
+- AWS → Amazon Web Services, cloud platform.
+- EC2 → Cloud-based virtual server / compute.
+- S3 → Object storage.
+- CloudWatch → Monitoring and observability.
+
+## 2. IAM — Identity & Access Management
+
+- IAM → AWS identities aur permissions manage karta hai.
+- IAM User → Identity.
+- IAM Policy → Permissions define karti hai.
+- IAM Group → Multiple users ka collection.
+- IAM Role → Permissions wali identity jo users/services/resources assume kar sakte hain.
+- Least Privilege → Sirf required permissions dena.
+
+Important Difference:
+- IAM Policy → AWS actions/resources ki permissions control karti hai.
+- Security Group → Network traffic/ports control karta hai.
+
+## 3. EC2 — Elastic Compute Cloud
+
+EC2 = AWS cloud-based virtual server.
+
+Important Components:
+- AMI → OS/software setup ka template/image.
+- Instance Type → CPU, memory aur compute resources.
+- Key Pair → Secure SSH authentication.
+- Security Group → Network traffic control.
+- Public IP → Internet-facing connectivity.
+- Private IP → Private network communication.
+
+Common Ports:
+- SSH → 22
+- HTTP → 80
+- HTTPS → 443
+
+## 4. SSH + EC2 Web Server
+
+SSH = Secure Shell.
+
+SSH ka use remote EC2 Linux server ko securely access/manage karne ke liye hota hai.
+
+Flow:
+Laptop → Internet → EC2 Public IP → Security Group Port 22 → SSH → EC2 Linux
+
+Web Server:
+Internet → EC2 → Security Group Port 80/443 → Web Server → Website
+
+## 5. Amazon S3
+
+S3 = Simple Storage Service.
+
+- Bucket → Files/objects store karne ka container.
+- Object → Actual stored file.
+- Object Key → Object ka name/path.
+
+Static Website:
+- index.html
+- style.css
+- script.js
+
+S3 Versioning:
+- Same object ke previous versions preserve kiye ja sakte hain.
+
+S3 Lifecycle:
+- Objects ko time/rules ke according automatically manage kar sakta hai.
+
+S3 Security:
+- IAM Policies
+- Bucket Policies
+- Block Public Access
+- Encryption
+
+## 6. CloudFront
+
+CloudFront = CDN (Content Delivery Network).
+
+CloudFront edge locations ke through content ko users ke closer deliver karne mein help karta hai.
+
+Flow:
+S3 → CloudFront → Edge Locations → Users
+
+- S3 → Storage
+- CloudFront → Content Delivery
+
+## 7. CloudWatch
+
+CloudWatch AWS resources/applications ki monitoring aur observability ke liye use hota hai.
+
+Important:
+- Metrics
+- Logs
+- Alarms
+
+Example:
+EC2 → CloudWatch → CPU Metric → Alarm → Notification/Action
+
+## 8. AWS CLI
+
+AWS CLI = AWS Command Line Interface.
+
+AWS CLI ek command-line tool hai, AWS service nahi.
+
+WSL/Terminal se AWS resources ko manage/interact kar sakte hain.
+
+Examples:
+aws s3 ls
+aws s3 cp file.txt s3://bucket-name/
+aws ec2 describe-instances
+
+DevOps Connection:
+AWS CLI → Commands → Scripts → Automation
+
+## 9. Application Load Balancer — ALB
+
+ALB = Application Load Balancer.
+
+ALB incoming HTTP/HTTPS requests ko multiple healthy targets ke beech distribute karta hai.
+
+Flow:
+Users → ALB → EC2 + EC2
+
+Purpose:
+- Traffic distribution
+- Multiple EC2 targets
+- Health checks
+- HTTP/HTTPS application routing
+
+## 10. Practical Projects
+
+### Day 21 — EC2 Monitoring Project
+
+Project:
+Python + AWS CLI + EC2 Monitoring
+
+Flow:
+Python → AWS CLI → EC2 → Information/State → Python Output
+
+Learning:
+- Python se AWS CLI execute karna.
+- EC2 information retrieve karna.
+- Basic monitoring/decision logic.
+- AWS automation ka foundation.
+
+### Day 23 — S3 + AWS CLI Automation
+
+Flow:
+WSL → AWS CLI → S3 → Files/Backup
+
+Learning:
+- S3 ko CLI se manage karna.
+- Upload/download/list operations.
+- Backup workflow automation.
+
+# Month 3 AWS Service Map
+
+IAM → Access & Permissions
+EC2 → Compute / Virtual Server
+S3 → Object Storage
+CloudFront → Content Delivery
+CloudWatch → Monitoring
+ALB → Traffic Distribution
+AWS CLI → Command-line Automation
+SSH → Remote Server Access
+
+# Month 3 Final Status
+
+Month 3 — AWS Foundation: COMPLETE 
+
+Covered:
+- Cloud Computing & AWS Basics 
+- IAM 
+- EC2 
+- SSH + Web Server 
+- S3 
+- Static Website 
+- S3 Versioning 
+- S3 Lifecycle 
+- S3 Security 
+- CloudFront 
+- CloudWatch 
+- AWS CLI 
+- ALB 
+- EC2 Monitoring Project 
+- S3 Automation Project 
+
