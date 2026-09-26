@@ -1,0 +1,223 @@
+# Day 1: AWS VPC Foundation
+
+## 1. VPC — Virtual Private Cloud
+
+A VPC (Virtual Private Cloud) is a logically isolated virtual network inside AWS.
+
+Inside a VPC, we organize AWS resources and control networking/routing.
+
+### Simple Structure
+
+AWS
+↓
+VPC
+↓
+Subnet
+↓
+EC2
+
+---
+
+## 2. Subnet
+
+A subnet is a smaller network segment carved out of the VPC's IP range.
+
+Concept of subnetting in networking:
+- Dividing a large network into smaller networks.
+
+In AWS VPC:
+- VPC → Bigger network
+- Subnet → Smaller network segment inside the VPC
+
+### Example
+
+VPC: `10.0.0.0/16`
+
+Subnets:
+- `10.0.1.0/24`
+- `10.0.2.0/24`
+
+---
+
+## 3. Public Subnet
+
+A public subnet is a subnet that has a route to the Internet available through an Internet Gateway.
+
+Commonly used for internet-facing resources.
+
+Example:
+
+Internet
+↓
+Internet Gateway
+↓
+Public Subnet
+↓
+EC2
+
+Important:
+Just naming a subnet "public" doesn't make it public.
+
+For a subnet to actually be public, the Route Table must have an appropriate route to the Internet Gateway.
+
+---
+
+## 4. Private Subnet
+
+A private subnet does not have a direct route to the Internet through an Internet Gateway.
+
+Commonly used for internal resources.
+
+Examples:
+- Backend servers
+- Databases
+- Internal applications
+
+Important:
+Private subnet doesn't mean the resource can never communicate with the Internet.
+
+For outbound Internet access from private subnet resources, concepts like NAT Gateway can be used later.
+
+---
+
+## 5. Public vs Private Subnet
+
+### Public Subnet
+- Route to Internet Gateway may be available.
+- Commonly used for internet-facing resources.
+- Requires appropriate routing, IP addressing, and security rules for public connectivity.
+
+### Private Subnet
+- No direct route to Internet Gateway.
+- Commonly used for internal resources.
+- Direct public Internet exposure is avoided.
+
+---
+
+## 6. Route Table
+
+A Route Table is a set of routing rules for network traffic.
+
+Simple meaning:
+
+> A Route Table decides which direction traffic should be sent to reach its destination.
+
+Example:
+
+`10.0.0.0/16 → local`
+
+Meaning:
+Traffic within the VPC can be routed within the local network.
+
+`0.0.0.0/0 → Internet Gateway`
+
+Meaning:
+For other destinations, a route toward the Internet Gateway is available.
+
+### Key Point
+
+Route Table → Decides the routing/direction of traffic.
+
+---
+
+## 7. Internet Gateway
+
+An Internet Gateway (IGW) provides connectivity between the VPC and the Internet.
+
+Basic flow:
+
+Internet
+↓
+Internet Gateway
+↓
+VPC
+↓
+Public Subnet
+↓
+EC2
+
+Important:
+
+Just creating an Internet Gateway is not enough.
+
+An appropriate Route Table route is also required.
+
+---
+
+## 8. Security Group
+
+A Security Group is a virtual firewall that controls network traffic for resources like EC2.
+
+It controls:
+- Inbound traffic
+- Outbound traffic
+
+Example:
+
+- SSH → TCP 22
+- HTTP → TCP 80
+- HTTPS → TCP 443
+
+### Important Difference
+
+Route Table:
+→ Decides where traffic should be routed.
+
+Security Group:
+→ Allows/blocks traffic.
+
+Example:
+
+If TCP Port 22 is not allowed in the Security Group:
+→ The SSH connection will not be established.
+
+---
+
+## 9. Complete VPC + EC2 Architecture
+
+Internet
+↓
+Internet Gateway
+↓
+VPC
+↓
+Public Subnet
+↓
+Route Table
+↓
+Security Group
+↓
+EC2
+↓
+Web Server
+
+---
+
+## 10. Month 3 → Month 4 Connection
+
+In Month 3:
+- What is EC2
+- What does Security Group do
+- SSH
+- HTTP/HTTPS
+
+In Month 4:
+- Which network EC2 lives inside
+- What is a VPC
+- What is a Subnet
+- How traffic routing is decided
+- Role of the Internet Gateway
+- Role of Security Group in network traffic
+
+---
+
+# Day 1 Key Takeaways
+
+- VPC = AWS's logically isolated virtual network.
+- Subnet = A smaller network segment within the VPC's IP range.
+- Public Subnet = May have a direct route available to the Internet Gateway.
+- Private Subnet = No direct route to the Internet Gateway.
+- Route Table = Routing/direction of traffic.
+- Internet Gateway = VPC ↔ Internet connectivity.
+- Security Group = Allow/block network traffic.
+- EC2 = Virtual server running inside a VPC/Subnet.
