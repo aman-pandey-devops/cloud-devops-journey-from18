@@ -1,0 +1,252 @@
+#  — Day 2: CIDR, VPC IP Range & Default VPC
+
+## 1. CIDR — Classless Inter-Domain Routing
+
+CIDR is used to define an IP address range.
+
+In AWS VPC, a CIDR block defines the IP address range for the VPC.
+
+Example:
+
+10.0.0.0/16
+
+Here:
+
+- 10.0.0.0 → Network address
+- /16 → Prefix length
+- The whole value → The VPC's CIDR block
+
+---
+
+## 2. Prefix Length
+
+An IPv4 address is a total of 32 bits.
+
+Example:
+
+10.0.0.0/16
+
+/16 means:
+
+- First 16 bits → Network portion
+- Remaining 16 bits → Host portion
+
+So /16 represents a relatively large IP range.
+
+---
+
+## 3. CIDR Range Size
+
+IPv4 = 32 bits
+
+Formula:
+
+2^(32 - prefix length)
+
+### /16
+
+2^(32 - 16)
+= 2^16
+= 65,536 total IPv4 addresses
+
+### /24
+
+2^(32 - 24)
+= 2^8
+= 256 total IPv4 addresses
+
+Therefore:
+
+/16 → Larger range
+/24 → Smaller range
+
+Important:
+The total CIDR addresses and the actually usable IP addresses in an AWS subnet are not the same, because AWS reserves some IP addresses.
+
+---
+
+## 4. Connection Between VPC and CIDR
+
+A CIDR block is defined when creating a VPC.
+
+Example:
+
+VPC
+└── 10.0.0.0/16
+
+CIDR defines the overall IP address range of the VPC.
+
+Later, smaller subnet CIDR ranges can be designed within this same VPC.
+
+Example:
+
+VPC:
+10.0.0.0/16
+
+Subnets:
+
+Public Subnet:
+10.0.1.0/24
+
+Private Subnet:
+10.0.2.0/24
+
+Concept:
+
+VPC CIDR
+→ Overall address space
+
+Subnet CIDR
+→ Smaller network segment within the VPC
+
+---
+
+## 5. CIDR Does Not Create IP Addresses
+
+Important distinction:
+
+CIDR itself does not create IP addresses.
+
+CIDR only defines the IP address range.
+
+Basic flow:
+
+CIDR
+↓
+Define IP Range
+↓
+Subnet
+↓
+AWS Resources
+↓
+IP Addresses
+
+---
+
+## 6. CIDR Planning
+
+Choosing the VPC's CIDR is important because resources and subnets will need IP addresses in the future.
+
+If CIDR planning isn't done properly, networking problems like IP overlap can occur.
+
+Example:
+
+VPC A:
+10.0.0.0/16
+
+VPC B:
+10.0.0.0/16
+
+If these two VPCs need to be connected in the future, overlapping CIDR can create a problem.
+
+Therefore:
+
+CIDR planning → An important AWS networking skill.
+
+---
+
+# 7. Default VPC
+
+A Default VPC is a ready-made VPC environment provided along with the AWS account.
+
+Its purpose is to help beginners launch AWS resources, like EC2, without manually setting up basic networking.
+
+Basic structure:
+
+AWS Account
+↓
+Default VPC
+├── Default Subnets
+├── Route Table
+└── Internet Gateway
+
+---
+
+## 8. Default VPC vs Custom VPC
+
+### Default VPC
+
+- AWS's ready-made basic network environment.
+- Convenient for beginners.
+- Basic networking configuration is already available.
+
+### Custom VPC
+
+- You design the network architecture yourself.
+- CIDR
+- Subnets
+- Route Tables
+- Internet Gateway
+- Other networking components
+
+A Custom VPC can be designed according to the application's requirements.
+
+---
+
+# 9. Basic Connection of EC2 within Default VPC
+
+EC2 launches inside a subnet within the Default VPC.
+
+Basic flow:
+
+EC2
+↓
+Subnet
+↓
+Route Table
+↓
+Internet Gateway
+↓
+Internet
+
+The Security Group plays a role in allowing/blocking network traffic.
+
+For internet connectivity, the following are important:
+
+- Route
+- Internet Gateway
+- Public IP addressing
+- Security Group rules
+
+---
+
+# 10. VPC + EC2 Networking Understanding
+
+Month 3:
+
+EC2 = Virtual Server
+
+Month 4:
+
+Understanding which network EC2 runs inside, and how traffic travels.
+
+Basic architecture:
+
+Internet
+↓
+Internet Gateway
+↓
+VPC
+↓
+Subnet
+↓
+Route Table
+↓
+Security Group
+↓
+EC2
+
+Note:
+This is a simplified architecture for learning purposes.
+
+---
+
+# 11. DHCP vs CIDR
+
+Month 2 networking connection:
+
+DHCP's purpose is to help provide IP configuration to network devices/resources.
+
+CIDR's purpose is to define the IP address range.
+
+
