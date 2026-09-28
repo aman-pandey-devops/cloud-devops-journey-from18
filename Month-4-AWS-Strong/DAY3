@@ -1,0 +1,33 @@
+# Day 3: AWS VPC Hands-on
+
+Today I performed hands-on exploration of the AWS VPC networking components using the AWS Console.
+
+## What I Practiced
+
+- Opened and inspected the Default VPC.
+- Checked the VPC state and IPv4 CIDR.
+- Observed the Default VPC CIDR: `172.31.0.0/16`.
+- Inspected the subnets inside the VPC.
+- Observed that the VPC contains smaller subnet CIDR ranges such as `/20`.
+- Opened the Route Tables section and inspected the routes.
+- Understood the `local` route for communication inside the VPC.
+- Observed the default route:
+  `0.0.0.0/0 → Internet Gateway`
+- Opened the Internet Gateway section.
+- Verified that the Internet Gateway is attached to the Default VPC.
+- Selected a subnet and inspected its associated Route Table.
+- Verified that the selected subnet has a route to the Internet Gateway.
+- Understood the basic relationship between VPC, Subnet, Route Table, and Internet Gateway.
+
+## Basic Networking Flow
+
+```text
+VPC
+ ↓
+Subnet
+ ↓
+Route Table
+ ↓
+Internet Gateway
+ ↓
+Internet
