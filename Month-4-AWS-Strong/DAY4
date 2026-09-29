@@ -1,0 +1,114 @@
+# Day 4 — Security Groups & Public vs Private Networking
+
+## Topics Learned
+
+### 1. Public vs Private Subnet
+
+- A public subnet is a subnet whose associated route table has a route to an Internet Gateway.
+- Example:
+
+  `0.0.0.0/0 → Internet Gateway`
+
+- A private subnet does not have a direct route to an Internet Gateway.
+- Public subnet status is determined by routing, not simply by the subnet CIDR.
+
+### 2. Security Group
+
+- A Security Group acts as a virtual firewall for AWS resources such as EC2.
+- It controls allowed inbound and outbound network traffic.
+- Security Groups work with traffic rules such as:
+  - Type
+  - Protocol
+  - Port
+  - Source/Destination
+
+### 3. Inbound Rules
+
+Example:
+
+`SSH | TCP | 22 | x.x.x.x/32`
+
+- Port 22 is used for SSH.
+- `/32` represents one specific IPv4 address.
+- This can be used to restrict SSH access to a specific source IP.
+
+Example:
+
+`HTTP | TCP | 80 | 0.0.0.0/0`
+
+- Port 80 is used for HTTP.
+- `0.0.0.0/0` represents all IPv4 source addresses.
+- This allows HTTP traffic from any IPv4 source, assuming the other networking requirements are also satisfied.
+
+### 4. Important CIDR Context
+
+The same CIDR notation can appear in different AWS networking components, but its meaning depends on where it is used.
+
+#### Route Table
+
+`0.0.0.0/0 → Internet Gateway`
+
+Means:
+
+- Use the Internet Gateway as the default route for traffic that does not match a more specific route.
+
+#### Security Group
+
+`HTTP | Port 80 | Source: 0.0.0.0/0`
+
+Means:
+
+- Allow HTTP traffic from any IPv4 source.
+
+#### Subnet CIDR
+
+Example:
+
+`10.0.1.0/23`
+
+Means:
+
+- This is the IP address range assigned to the subnet.
+- `/23` itself does not determine whether the subnet is public or private.
+
+### 5. Important Distinction
+
+- CIDR = defines an IP address range.
+- Route Table = decides where traffic should go.
+- Internet Gateway = provides connectivity between a VPC and the Internet.
+- Security Group = controls whether specific network traffic is allowed.
+- `/32` = one IPv4 address.
+- `0.0.0.0/0` = all IPv4 addresses when used as a source/destination range.
+
+### 6. Basic Troubleshooting Thinking
+
+When an EC2 server or website is not accessible, do not immediately assume that one component is broken.
+
+Check the networking path step by step:
+
+1. Is the EC2 instance running?
+2. Does the EC2 instance have the required IP addressing?
+3. Is the subnet using the expected route table?
+4. Does the route table have the required route?
+5. Is the Internet Gateway attached and correctly used?
+6. Is the correct Security Group attached?
+7. Does the Security Group allow the required port?
+8. Is the source IP correct?
+9. Is the required service/application running on the expected port?
+
+## Hands-On
+
+- Inspected the EC2 Security Group.
+- Checked inbound rules.
+- Identified SSH on port 22.
+- Identified HTTP on port 80.
+- Observed `/32` and `0.0.0.0/0` as source CIDR ranges.
+- Learned that the same CIDR notation can have different meanings depending on whether it is being used in a Route Table, Subnet, or Security Group.
+
+## Key Learning
+
+The main goal was to understand that similar-looking CIDR values can have different roles:
+
+- Subnet CIDR → IP address range
+- Route Table CIDR → traffic destination/routing
+- Security Group CIDR → traffic source/destination permission
