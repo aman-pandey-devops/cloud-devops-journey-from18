@@ -1,0 +1,112 @@
+# Day 5 – AWS Security Groups & Network Traffic Basics
+
+## Topics Covered
+
+### 1. Security Group
+- Security Group acts as a virtual firewall for AWS resources such as EC2.
+- It controls inbound and outbound network traffic.
+- Security Groups do not route traffic; they allow or block traffic based on rules.
+
+### 2. Security Group Inbound Rules
+Understood the main fields of an inbound rule:
+
+- Type – predefined service such as SSH or HTTP
+- Protocol – TCP/UDP, etc.
+- Port – service entry point
+- Source – where the traffic is coming from
+
+Example SSH rule:
+- Type: SSH
+- Protocol: TCP
+- Port: 22
+- Source: Specific IP/32
+
+Example HTTP rule:
+- Type: HTTP
+- Protocol: TCP
+- Port: 80
+- Source: 0.0.0.0/0
+
+### 3. IP, IPv4 and Ports
+- IP address identifies a device/resource on a network.
+- IPv4 is one version of IP addressing.
+- A port identifies a specific network entry point/service.
+- Common ports:
+  - SSH → 22
+  - HTTP → 80
+  - HTTPS → 443
+
+### 4. TCP, HTTP and SSH
+- TCP is a transport-layer protocol.
+- HTTP is an application-layer protocol commonly using TCP port 80.
+- HTTPS commonly uses TCP port 443.
+- SSH commonly uses TCP port 22.
+
+### 5. CIDR in Security Groups
+- `0.0.0.0/0` means traffic from any IPv4 address.
+- `x.x.x.x/32` represents one specific IPv4 address.
+- CIDR has different purposes depending on where it is used:
+  - VPC/Subnet CIDR → defines an IP address range
+  - Route Table CIDR → defines a traffic destination range
+  - Security Group source CIDR → defines where traffic is allowed to come from
+
+### 6. How an Inbound Rule Matches Traffic
+
+For an HTTP request:
+
+Client IP → EC2 Public IP → TCP → Port 80
+
+If the Security Group allows:
+
+HTTP | TCP | 80 | 0.0.0.0/0
+
+the request can pass the Security Group.
+
+For SSH:
+
+Client IP → EC2 Public IP → TCP → Port 22
+
+If the Security Group allows:
+
+SSH | TCP | 22 | Specific-IP/32
+
+the matching SSH traffic can pass.
+
+### 7. Practical Troubleshooting Thinking
+
+Learned to troubleshoot an unreachable website step-by-step instead of assuming the Security Group is always the problem.
+
+Basic troubleshooting chain:
+
+EC2 Running?
+↓
+Correct Subnet?
+↓
+Correct Route Table?
+↓
+Internet Gateway route?
+↓
+Public IP available?
+↓
+Correct Security Group attached?
+↓
+Required port allowed?
+↓
+Web server running?
+↓
+Web server listening on the expected port?
+
+### 8. AWS Hands-on
+
+Inspected an EC2 Security Group in the AWS Console and examined its inbound rules:
+
+- SSH – TCP – Port 22 – Specific IPv4 `/32`
+- HTTP – TCP – Port 80 – `0.0.0.0/0`
+
+## Key Learning
+
+A Security Group rule does not start a service. It only controls whether matching network traffic is allowed.
+
+Understanding the complete traffic flow is important:
+
+Internet → Internet Gateway → VPC → Subnet → Route Table → Security Group → EC2 → Service
