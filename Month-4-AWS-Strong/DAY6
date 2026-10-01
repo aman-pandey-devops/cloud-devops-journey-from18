@@ -1,0 +1,120 @@
+# Day 6 – EC2 Network Traffic, Ports, SSH, HTTP & Security Group Hands-on
+
+## Topics Covered
+
+### 1. EC2 Security Group
+- Understood that a Security Group controls network traffic to and from supported AWS resources such as EC2.
+- Security Group rules can allow or block specific types of traffic.
+- Inbound rules define which incoming traffic is allowed.
+
+### 2. IP Address and Port
+- IP address identifies a network resource.
+- Public IPv4 is used to reach an EC2 instance from the Internet when the networking configuration allows it.
+- Private IPv4 is used for communication inside the VPC/private network.
+- A port acts as a specific network entry point for a service.
+
+Common ports:
+- SSH → 22
+- HTTP → 80
+- HTTPS → 443
+
+### 3. SSH
+- SSH (Secure Shell) is used to remotely access and manage an EC2 server.
+- SSH commonly uses TCP port 22.
+- Example Security Group rule:
+
+SSH | TCP | 22 | Specific-IP/32
+
+### 4. HTTP
+- HTTP is used for communication between a web browser and a web server.
+- HTTP commonly uses TCP port 80.
+- Example Security Group rule:
+
+HTTP | TCP | 80 | 0.0.0.0/0
+
+### 5. Security Group Rule Matching
+Understood the meaning of the main Security Group fields:
+
+- Type → service/category
+- Protocol → TCP/UDP/etc.
+- Port → destination network entry point
+- Source → where the incoming traffic is allowed to come from
+
+Important distinction:
+- `0.0.0.0/0` in a Security Group source means traffic from any IPv4 source.
+- `x.x.x.x/32` represents one specific IPv4 source address.
+
+### 6. HTTP Traffic Flow
+
+Simplified traffic flow:
+
+Browser
+→ Internet
+→ Internet Gateway
+→ VPC
+→ Subnet
+→ Route Table
+→ Security Group
+→ EC2
+→ Web Server
+→ Website
+
+Understood that allowing port 80 in the Security Group does not automatically create or start a web server.
+
+### 7. EC2 Hands-on
+
+- Started the EC2 instance.
+- Verified that a Public IPv4 address and Private IPv4 address were available.
+- Verified that the `launch-wizard-1` Security Group was attached to the EC2 instance.
+- Confirmed inbound rules:
+  - SSH → TCP → 22 → Specific IPv4 `/32`
+  - HTTP → TCP → 80 → `0.0.0.0/0`
+
+### 8. HTTP Connectivity Test
+
+Tested the EC2 Public IPv4 address using HTTP:
+
+`http://EC2-Public-IP`
+
+The browser returned:
+
+`Took too long to respond`
+
+This became a real troubleshooting case.
+
+### 9. EC2 Instance Connect
+
+- Opened the EC2 Connect page.
+- Selected Public Subnet Access / EC2 Instance Connect.
+- Attempted to connect to the running EC2 instance.
+- The connection attempt failed.
+
+This troubleshooting case will be continued in the next session.
+
+## Key Learning
+
+SSH and HTTP have different purposes:
+
+- SSH → remotely access/control the EC2 server → Port 22
+- HTTP → access a website hosted by the server → Port 80
+
+A Security Group only controls whether matching network traffic is allowed. It does not start the service itself.
+
+## Day 6 Status
+
+Completed:
+- Ports
+- SSH
+- HTTP
+- TCP basics
+- Public vs Private IPv4
+- Security Group rule matching
+- EC2 networking hands-on
+- HTTP connectivity testing
+
+Pending:
+- Troubleshoot EC2 Instance Connect failure
+- Access EC2 through SSH
+- Check/install web server
+- Run the website
+- Perform real failure and troubleshooting scenarios
