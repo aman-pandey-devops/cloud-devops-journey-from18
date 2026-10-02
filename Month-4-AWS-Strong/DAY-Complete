@@ -1,0 +1,40 @@
+# Day 6 - EC2 Instance Connect, Security Groups and EC2 OS Basics
+
+## Topics Learned
+
+- Connected to EC2 instances using AWS Console EC2 Instance Connect.
+- Understood that EC2 Instance Connect provides browser-based SSH access to an EC2 instance.
+- Understood that SSH uses TCP port 22.
+- Configured the Security Group to allow SSH access through the AWS EC2 Instance Connect regional prefix list.
+- Understood the difference between browser-based EC2 Instance Connect and normal SSH from a local terminal.
+- Connected to two EC2 instances separately and understood that each instance has its own terminal session and network information.
+- Observed that different EC2 instances can use different operating systems/AMIs.
+- Understood the difference between Ubuntu and `ec2-user`.
+- Ubuntu is an operating system, while `ubuntu` is commonly its default login username.
+- `ec2-user` is a common default login username for Amazon Linux.
+- Understood that the default login username depends on the operating system/AMI.
+- Connected to an Ubuntu 26.04 LTS EC2 instance and successfully ran:
+  `sudo apt update`
+- Used `exit` to close the EC2 Instance Connect session.
+- Observed that different EC2 instances can have different private and public IP addresses.
+- Understood that EC2 instances must be accessed independently even when both are part of the same AWS environment.
+
+## Practical Learning
+
+EC2 Instance Connect flow:
+
+Browser → AWS Console → EC2 Instance Connect → SSH/TCP 22 → EC2 Terminal
+
+Basic OS/login relationship:
+
+Ubuntu OS → `ubuntu` user → `apt`
+
+Amazon Linux → `ec2-user` user → `dnf`/`yum`
+
+## Important Troubleshooting Understanding
+
+- EC2 Instance Connect is different from normal SSH from a local terminal.
+- Browser-based EC2 Instance Connect requires the appropriate Security Group SSH rule.
+- EC2 health checks passing does not automatically mean SSH access is working.
+- The correct login username depends on the instance operating system/AMI.
+- Different EC2 instances can have different operating systems, usernames, private IPs and public IPs.
