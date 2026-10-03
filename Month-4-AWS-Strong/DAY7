@@ -1,0 +1,46 @@
+# Day 7 - Security Groups, SSH, HTTP and EC2 Instance Connect
+
+## Topics Learned
+
+- Understood the practical role of Security Groups in controlling EC2 traffic.
+- Understood inbound traffic and how Security Group rules evaluate incoming requests.
+- Understood the difference between SSH and HTTP traffic.
+- SSH is commonly used with TCP port 22 for remote server administration.
+- HTTP is commonly used with TCP port 80 for serving websites.
+- Understood that SSH provides terminal/server access, while HTTP provides web content through a web server.
+- Understood the meaning of the Source field in a Security Group rule.
+- Understood that `0.0.0.0/0` represents all IPv4 source addresses.
+- Understood that the same source range can be used for different ports, but the ports represent different services.
+- Understood that `0.0.0.0/0` on SSH port 22 allows SSH traffic from any IPv4 source and increases exposure.
+- Understood that `0.0.0.0/0` on HTTP port 80 allows public IPv4 users to send HTTP requests to the web server.
+- Understood the difference between the SSH door (port 22) and the HTTP door (port 80).
+- Understood that Security Group rules allow or block network traffic but do not create or start the service itself.
+- Understood that a web server such as Nginx must actually be running on port 80 for an HTTP request to return a website.
+- Understood browser-based EC2 Instance Connect as a method of accessing an EC2 Linux terminal through SSH.
+- Successfully connected to Ubuntu EC2 through EC2 Instance Connect.
+- Successfully opened the Ubuntu terminal and executed:
+  `sudo apt update`
+- Understood that `sudo apt update` refreshes Ubuntu's local package information from configured package repositories.
+- Understood that `apt update` can generate outbound network traffic from the EC2 instance to package repositories.
+- Understood the difference between inbound and outbound traffic.
+
+## Practical Request Flow
+
+### SSH
+
+User → EC2 Instance Connect → SSH/TCP 22 → Security Group → EC2 → Ubuntu Terminal
+
+### HTTP
+
+Visitor → HTTP/TCP 80 → Security Group → EC2 → Web Server → Website
+
+## Key Understanding
+
+- Source IP = where the network request is coming from.
+- Destination IP = where the request is going.
+- Port = identifies the network entry point/service.
+- Port 22 = commonly used for SSH.
+- Port 80 = commonly used for HTTP.
+- Port 443 = commonly used for HTTPS.
+- Security Group controls whether traffic is allowed.
+- The service running on the EC2 instance determines what happens after the traffic is allowed.
