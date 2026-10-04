@@ -1,0 +1,153 @@
+# Sunday Revision — Part 1 & Part 2
+
+## Part 1 — AWS Foundation
+
+### Cloud Computing
+- Cloud Computing means using computing resources such as servers, storage, networking, and other services over the internet.
+- Cloud does not mean that physical servers do not exist. AWS owns and manages the physical infrastructure.
+
+### AWS
+- AWS (Amazon Web Services) is a cloud platform that provides many cloud services.
+- Examples: EC2, S3, CloudFront, CloudWatch, IAM, VPC, and ALB.
+
+### AWS Region
+- A Region is a geographical location where AWS has infrastructure.
+- Example: eu-north-1 is the Stockholm Region.
+- A Region is not a network; it is a geographical AWS infrastructure location.
+
+### Availability Zone (AZ)
+- An Availability Zone is an isolated infrastructure location inside an AWS Region.
+- A Region contains multiple Availability Zones.
+- Using multiple AZs can improve availability and fault tolerance.
+
+---
+
+# Part 2 — EC2
+
+## EC2
+- EC2 (Elastic Compute Cloud) provides virtual servers in AWS.
+- EC2 service is used to create and manage EC2 instances.
+- An EC2 instance is the actual virtual server created through the EC2 service.
+
+## AMI
+- AMI (Amazon Machine Image) is a template/image used to create an EC2 instance.
+- It contains the operating system and required configuration needed to launch the server.
+- Example: Ubuntu AMI creates an Ubuntu-based EC2 server.
+
+## Instance Type
+- Instance type determines the compute resources available to the EC2 instance.
+- It mainly determines resources such as vCPU, memory, and network performance.
+- The workload determines which instance type should be selected.
+
+
+
+## SSH
+- SSH (Secure Shell) is used to remotely access an EC2 server's terminal.
+- SSH commonly uses TCP port 22.
+
+### SSH Request Flow
+Your Computer
+→ Internet
+→ EC2 Public IP
+→ Network Routing
+→ Security Group
+→ TCP Port 22
+→ SSH Service
+→ Authentication
+→ Login User
+→ EC2 Terminal
+
+### Important SSH Points
+- Security Group controls whether network traffic can reach TCP port 22.
+- A typical SSH Security Group rule is:
+  SSH | TCP | 22 | Your IP
+- Allowing port 22 does not automatically log someone into the server.
+- Authentication is still required.
+- The private SSH key must be kept secret.
+
+## Key Pair
+- EC2 uses a key pair for authentication.
+- The public key is placed on the server.
+- The private key is kept by the user.
+- Security Group permission and authentication are two separate security layers.
+
+## Default Login Users
+- Ubuntu commonly uses the `ubuntu` user.
+- Amazon Linux commonly uses the `ec2-user` user.
+- These are Linux login users and are not the same as the EC2 service itself.
+
+## SSH Troubleshooting Layers
+If SSH fails, check step-by-step:
+
+1. Is the EC2 instance running?
+2. Does it have a reachable public IP?
+3. Is the network route correct?
+4. Is the Internet Gateway available?
+5. Does the Security Group allow TCP 22?
+6. Is the NACL allowing the traffic?
+7. Is the SSH service running?
+8. Is the correct login username being used?
+9. Is the correct private key/authentication method being used?
+
+---
+
+# EBS Storage
+
+## EBS
+- EBS (Elastic Block Store) provides block storage for EC2.
+- It works like a virtual disk attached to an EC2 instance.
+- The operating system, applications, and files can be stored on EBS volumes.
+
+## EC2 + EBS Connection
+
+EC2 Instance
+→ EBS Volume
+→ Operating System / Applications / Files
+
+---
+
+# EC2 Lifecycle
+
+An EC2 instance can move through different states:
+
+Pending
+→ Running
+→ Stopping
+→ Stopped
+→ Running
+
+If an instance is no longer needed:
+
+Running
+→ Terminating
+→ Terminated
+
+### Important Difference
+- Stopped = instance is not running but can normally be started again.
+- Terminated = instance is permanently deleted and cannot normally be restarted.
+
+---
+
+# Private IP vs Public IP
+
+## Private IP
+- Private IP is used for communication inside the VPC/private network.
+- Example: `172.31.30.152`
+- It is not directly reachable from the public Internet.
+
+
+## Simple Connection
+
+Private Network:
+EC2 → Private IP → VPC communication
+
+Internet:
+User → Public IP → Network Path → Security Group → EC2
+
+---
+
+# Elastic IP
+
+- Elastic IP is a stable/static public IPv4 address that can be allocated and associated with an AWS resource such as an EC2 instance.
+- A normal public IPv4 address can change after certain EC2 lifecycle events such as stop/start.
+- Elastic IP is useful when a stable public IP address is required.
