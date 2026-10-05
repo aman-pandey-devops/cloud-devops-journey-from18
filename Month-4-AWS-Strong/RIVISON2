@@ -1,0 +1,161 @@
+# Sunday Revision — Part 3: Amazon S3
+
+## S3 Fundamentals
+
+- S3 (Simple Storage Service) is AWS object storage.
+- S3 is mainly used to store files and other data as objects.
+- Common use cases include website files, backups, logs, images, videos, and application artifacts.
+
+## S3 Structure
+
+S3
+↓
+Bucket
+↓
+Object
+
+- Bucket = storage container in S3.
+- Object = actual file/data stored inside a bucket.
+- Object Key = unique name/identifier used for an object, such as `index.html` or `images/logo.png`.
+- S3 folders are a logical structure created using object keys; S3 is not a traditional filesystem like Linux.
+
+## EBS vs S3
+
+EC2
+↓
+EBS
+↓
+Operating System / Applications / Files
+
+- EBS (Elastic Block Store) works like a virtual disk attached to an EC2 instance.
+- EBS is block storage designed for EC2.
+
+S3
+↓
+Bucket
+↓
+Objects
+
+- S3 is object storage.
+- Files are stored as objects inside buckets.
+- S3 does not require an EC2 server just to store files.
+
+## S3 Permissions and Access
+
+- S3 does not use Linux `chmod` permissions.
+- Linux `chmod` controls access to files inside a Linux filesystem.
+- S3 uses AWS authorization and access-control mechanisms such as IAM policies, bucket policies, and S3 public-access controls.
+
+Example:
+
+S3 Bucket
+↓
+secret.pdf
+
+- A private object is not automatically accessible to random Internet users.
+- A random Internet request is checked by S3 for authorization.
+- If the request does not have permission to read the object, S3 returns Access Denied.
+- An authenticated AWS identity can access an object only when the required permission is allowed.
+- Public access must be explicitly configured; keeping Block Public Access enabled helps prevent accidental public exposure.
+
+Important distinction:
+
+- Uploading a file to S3 does not automatically make it public.
+- Access control can be configured separately from the upload process.
+- Public access and authenticated AWS access are different concepts.
+
+## S3 Versioning
+
+- Versioning allows S3 to retain multiple versions of the same object.
+- Example:
+
+index.html
+├── Version 1
+└── Version 2
+
+- If a file is updated, previous versions can be retained when versioning is enabled.
+- Versioning is useful for recovering from accidental overwrites or deletions.
+
+## S3 Lifecycle
+
+- Lifecycle rules automatically manage objects based on configured rules and conditions.
+- Objects can be transitioned to different storage classes or expired/deleted according to the configured lifecycle policy.
+- Lifecycle rules are useful for managing old backups and optimizing storage usage.
+
+Example:
+
+Object created
+↓
+After configured period
+↓
+Move to another storage class
+↓
+After another configured period
+↓
+Delete/expire according to the rule
+
+## Versioning vs Lifecycle
+
+- Versioning = retains multiple versions of objects.
+- Lifecycle = automatically manages objects based on configured rules and age.
+
+## S3 Static Website
+
+A static website can contain files such as:
+
+- `index.html`
+- `style.css`
+- JavaScript
+- Images
+
+Basic flow:
+
+User Browser
+↓
+S3 Website/Object URL
+↓
+S3 Bucket
+↓
+index.html
+↓
+Website displayed in the browser
+
+- `index.html` is commonly configured as the index document for a static website.
+- S3 can serve static website content without requiring an EC2 server.
+- S3 does not execute server-side application code.
+
+## Website Access
+
+- Users do not normally search for `index.html` on Google.
+- The website URL/endpoint is shared with users.
+- Users open that URL in their browser.
+- The browser sends a request to S3, and S3 serves the website files according to the configured access permissions.
+
+Example flow:
+
+Website URL
+↓
+S3
+↓
+index.html
+↓
+Browser
+↓
+Static Website
+
+## Practical Revision Completed
+
+- S3 Bucket and Object structure reviewed.
+- EBS vs S3 connection reviewed.
+- S3 access permissions and private/public access reviewed.
+- S3 Versioning reviewed.
+- S3 Lifecycle reviewed.
+- S3 Static Website Hosting connection reviewed.
+- Practically connected an S3 `index.html` website and observed Version 2 being served from S3.
+- Understood how a user accesses the S3-hosted website through its URL.
+
+
+
+
+
+
