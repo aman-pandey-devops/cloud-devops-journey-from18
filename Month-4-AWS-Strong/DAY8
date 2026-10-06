@@ -1,0 +1,283 @@
+# Day 8 — Network ACL (NACL) Deep Dive
+
+## 1. What is a Network ACL?
+
+A Network ACL (NACL) is a subnet-level traffic control layer in AWS.
+
+Simplified traffic flow:
+
+Internet
+↓
+Internet Gateway
+↓
+NACL
+↓
+Subnet
+↓
+Security Group
+↓
+EC2
+
+A NACL controls traffic entering and leaving a subnet.
+
+---
+
+## 2. Creating a NACL
+
+A custom NACL can be created from:
+
+AWS Console → VPC → Network ACLs → Create network ACL
+
+After creating it, the NACL can be associated with a subnet.
+
+Important:
+- NACL is associated with a subnet.
+- It is not directly attached to an EC2 instance.
+- One NACL can affect traffic for resources inside its associated subnet.
+
+---
+
+## 3. NACL Rules
+
+A NACL rule can contain:
+
+- Rule Number
+- Protocol
+- Port
+- Source/Destination
+- Allow or Deny
+
+Example:
+
+100 | TCP | 80 | 0.0.0.0/0 | ALLOW
+
+Meaning:
+
+Rule 100 allows TCP traffic to port 80 from any IPv4 source.
+
+### Rule Number
+
+The rule number represents priority.
+
+Lower rule numbers are evaluated before higher rule numbers.
+
+Example:
+
+100 → DENY
+200 → ALLOW
+
+If traffic matches rule 100, it is denied before rule 200 is evaluated.
+
+Rule number 100 has no relation to port 100.
+
+---
+
+## 4. Protocol and Port
+
+TCP is a transport protocol.
+
+Common examples:
+
+- SSH → TCP 22
+- HTTP → TCP 80
+- HTTPS → TCP 443
+
+Port 80 is not a public IP.
+
+Port 80 is the commonly used destination port for HTTP traffic.
+
+---
+
+## 5. CIDR: 0.0.0.0/0
+
+0.0.0.0/0 means any IPv4 source.
+
+Example:
+
+TCP | 80 | 0.0.0.0/0 | ALLOW
+
+This means HTTP traffic from any IPv4 source can be allowed by that rule.
+
+0.0.0.0/0 is not a public IP.
+
+---
+
+## 6. Inbound Traffic
+
+Inbound traffic means traffic coming toward the subnet/resource.
+
+Example:
+
+User → Internet → NACL → Subnet → EC2
+
+For a website request:
+
+- Protocol: TCP
+- Destination port: 80
+- Source: user's public IP
+
+The NACL inbound rules are checked.
+
+---
+
+## 7. Outbound Traffic
+
+Outbound traffic means traffic leaving the subnet/resource.
+
+Example:
+
+EC2 → Subnet → NACL → Route Table → Internet Gateway → Internet
+
+For example, when running:
+
+sudo apt update
+
+the EC2 instance needs outbound network connectivity to reach package repositories.
+
+---
+
+## 8. NACL is Stateless
+
+NACLs are stateless.
+
+Inbound and outbound traffic are evaluated separately.
+
+Example:
+
+User → EC2
+HTTP request → Inbound NACL
+
+EC2 → User
+HTTP response → Outbound NACL
+
+Allowing the inbound request does not automatically allow the return traffic.
+
+Therefore, appropriate outbound rules are also required.
+
+---
+
+# 9. Security Group vs NACL
+
+| Feature | Security Group | NACL |
+|---|---|---|
+| Level | Resource/Network Interface | Subnet |
+| Allow rules | Yes | Yes |
+| Explicit Deny | No | Yes |
+| Stateful | Yes | No, stateless |
+| Inbound rules | Yes | Yes |
+| Outbound rules | Yes | Yes |
+| Rule numbers | No | Yes |
+| Main purpose | Resource-level traffic control | Subnet-level traffic control |
+
+### Simple mental model
+
+NACL = Subnet gatekeeper
+
+Security Group = Resource/EC2 gatekeeper
+
+Traffic must pass both layers when both are applicable.
+
+---
+
+## 10. NACL and Security Group Working Together
+
+Example:
+
+NACL:
+
+TCP | 80 | 0.0.0.0/0 | ALLOW
+
+Security Group:
+
+HTTP | TCP | 80 | 0.0.0.0/0 | ALLOW
+
+Then HTTP traffic can continue toward the EC2 instance, assuming the rest of the network and web server configuration is correct.
+
+### Case 1: NACL allows, SG denies
+
+NACL → ALLOW
+SG → DENY
+
+Result: Traffic is blocked.
+
+### Case 2: NACL denies, SG allows
+
+NACL → DENY
+SG → ALLOW
+
+Result: Traffic is blocked before the EC2 resource can receive it.
+
+Both layers must permit the traffic.
+
+---
+
+## 11. HTTP Request Flow
+
+Example:
+
+User opens:
+
+http://EC2-Public-IP
+
+Simplified flow:
+
+User Browser
+↓
+Internet
+↓
+Internet Gateway
+↓
+NACL
+↓
+Subnet
+↓
+Security Group
+↓
+EC2
+↓
+Web Server/Nginx
+↓
+Website
+
+The EC2 public IP is the Internet-facing destination address.
+
+Port 80 identifies the HTTP service entry point.
+
+The source IP identifies where the request came from.
+
+---
+
+## 12. Domain Name vs Public IP
+
+A website can be accessed using a domain name instead of directly using the EC2 public IP.
+
+Example:
+
+http://EC2-Public-IP
+
+can later become:
+
+http://example.com
+
+DNS is used to resolve the domain name toward the appropriate destination.
+
+A domain name is easier for humans to remember than an IP address.
+
+---
+
+## 13. NACL Troubleshooting Approach
+
+If a website is not opening, check layer by layer:
+
+1. Is the EC2 instance running?
+2. Does it have the required public connectivity/public IP?
+3. Does the subnet route table have the required route to the Internet Gateway?
+4. Does the NACL inbound rule allow HTTP TCP port 80?
+5. Does the Security Group inbound rule allow TCP port 80?
+6. Is the web server (such as Nginx) running?
+7. Is the web server listening on port 80?
+8. Does the NACL outbound configuration allow the required return traffic?
+
+This creates a structured troubleshooting process instead of guessing.
+
+
