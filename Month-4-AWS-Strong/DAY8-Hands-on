@@ -1,0 +1,103 @@
+# Day 8 — Network ACL (NACL) + Hands-on
+
+## What I Learned
+
+### 1. Network ACL (NACL)
+- NACL stands for Network Access Control List.
+- NACL is a subnet-level network traffic filter in AWS.
+- It controls inbound and outbound traffic for the subnet.
+- NACL can explicitly ALLOW or DENY traffic.
+- NACL is stateless, so inbound and outbound traffic are evaluated separately.
+
+### 2. NACL vs Security Group
+- NACL works at the subnet level.
+- Security Group works at the resource/network-interface level.
+- NACL supports both ALLOW and DENY rules.
+- Security Groups use ALLOW rules; unmatched traffic is denied.
+- NACL is stateless.
+- Security Group is stateful.
+- NACL rules use rule numbers for priority.
+- Lower rule numbers are evaluated first.
+
+### 3. NACL Rule Structure
+A NACL rule contains:
+- Rule Number
+- Protocol
+- Port
+- Source/Destination
+- Action (ALLOW/DENY)
+
+Example:
+100 | TCP | 80 | 0.0.0.0/0 | ALLOW
+
+Meaning:
+- Rule number 100 = rule priority
+- TCP = transport protocol
+- Port 80 = HTTP traffic
+- 0.0.0.0/0 = any IPv4 source
+- ALLOW = permit matching traffic
+
+### 4. Inbound and Outbound Traffic
+- Inbound = traffic coming toward the subnet/resource.
+- Outbound = traffic leaving the subnet/resource.
+- Because NACL is stateless, both directions must be considered.
+- A request may be allowed inbound but its response can still fail if outbound traffic is blocked.
+
+### 5. Rule Priority
+Example:
+100 | TCP | 80 | 0.0.0.0/0 | DENY
+200 | TCP | 80 | 0.0.0.0/0 | ALLOW
+
+The DENY rule is evaluated first because 100 has higher priority than 200.
+
+### 6. NACL and EC2 Traffic Flow
+Simplified flow:
+
+Internet
+→ Internet Gateway
+→ VPC
+→ NACL
+→ Subnet
+→ Security Group
+→ EC2
+→ Web Server
+
+NACL filters traffic at the subnet level before it reaches the EC2 resource.
+
+## Hands-on Practice
+
+- Opened AWS VPC → Network ACLs.
+- Inspected the Default NACL.
+- Observed that the Default NACL allows all IPv4 inbound and outbound traffic with rule 100 and has a `*` deny fallback.
+- Created a custom NACL named `Day8-Custom-NACL`.
+- Created an inbound rule:
+  TCP port 80
+  Source: 0.0.0.0/0
+  Action: ALLOW
+- Created an outbound rule:
+  All traffic
+  Destination: 0.0.0.0/0
+  Action: ALLOW
+- Associated the custom NACL with the subnet containing the running EC2 instance.
+- Tested the EC2 website using its Public IPv4 address.
+- Successfully opened the Nginx welcome page in the browser.
+
+## Troubleshooting Practice
+
+- Initially observed an EC2 Instance Connect failure while working with the custom NACL.
+- Used the traffic-flow concept to understand that NACL rules can affect EC2 connectivity.
+- Verified the NACL configuration and continued testing.
+- Successfully accessed the website after the configuration was correct.
+
+## Key Takeaways
+
+- NACL = subnet-level traffic filter.
+- Security Group = resource-level traffic filter.
+- NACL is stateless.
+- Security Group is stateful.
+- NACL supports ALLOW and DENY.
+- Lower NACL rule numbers have higher priority.
+- `0.0.0.0/0` means any IPv4 source/destination.
+- Port 80 is commonly used for HTTP web traffic.
+- A custom NACL has no effect on a subnet until it is associated with that subnet.
+- Network access and the web server are separate layers; allowing port 80 does not itself start a web server.
