@@ -1,0 +1,148 @@
+# Day 9 — Elastic IP (EIP) + Hands-on
+
+## What is an Elastic IP?
+
+- Elastic IP (EIP) is a static public IPv4 address provided by AWS.
+- It can be associated with an EC2 instance.
+- Unlike a normal automatically assigned public IPv4 address, an Elastic IP can remain the same when an EC2 instance is stopped and started.
+- An Elastic IP is useful when a server needs a stable public IP address.
+
+## Normal Public IPv4 vs Elastic IP
+
+### Normal Public IPv4
+- AWS can automatically assign a public IPv4 address to an EC2 instance.
+- The public IPv4 address can change after stopping and starting the EC2 instance.
+- It is not suitable when a stable public IP is required.
+
+### Elastic IP
+- Provides a stable public IPv4 address.
+- Can be associated with an EC2 instance.
+- The address can remain the same across EC2 stop/start operations as long as the Elastic IP remains associated/allocated.
+- Useful for servers that need a consistent public endpoint.
+
+## Why is Elastic IP Used?
+
+Without Elastic IP:
+
+```
+EC2 → Public IPv4 A
+Stop → Start
+EC2 → Public IPv4 B
+```
+
+The public address may change.
+
+With Elastic IP:
+
+```
+Elastic IP
+     ↓
+EC2
+     ↓
+Nginx
+     ↓
+Website
+```
+
+The Elastic IP can remain the same after an EC2 stop/start.
+
+## Important Elastic IP Operations
+
+### Allocate
+- Allocating an Elastic IP means obtaining a static public IPv4 address from AWS.
+
+### Associate
+- Associating means connecting the Elastic IP to an EC2 instance.
+
+### Disassociate
+- Removes the connection between the Elastic IP and the EC2 instance.
+
+### Release
+- Releases the Elastic IP back to AWS so it is no longer allocated to the account.
+
+## Hands-on Practice
+
+### Step 1 — Open Elastic IPs
+- Opened AWS Console.
+- Went to: EC2 → Network & Security → Elastic IPs
+
+### Step 2 — Allocate Elastic IP
+- Selected "Allocate Elastic IP address".
+- Used the default AWS public IPv4 address pool.
+- Network Border Group: `eu-north-1`
+- Successfully allocated a new Elastic IP.
+
+### Step 3 — Associate Elastic IP
+- Started the EC2 instance first and waited for status checks to pass.
+- Selected the newly allocated Elastic IP.
+- Chose "Associate Elastic IP address".
+- Resource type: Instance. Selected the running EC2 instance.
+- Left Private IP empty (EIP attaches to the primary private IP by default).
+
+### Step 4 — Verify Connectivity
+- Connected to the running EC2 instance using EC2 Instance Connect.
+- Started Nginx:
+
+```bash
+sudo systemctl start nginx
+sudo systemctl status nginx
+```
+
+- Status showed `active (running)`.
+- Opened `http://<Elastic-IP>` in the browser.
+- Successfully received the "Welcome to nginx!" page.
+
+### Step 5 — Stop/Start Test
+- Stopped the EC2 instance, then started it again.
+- **Issue faced:** While the instance was in the `Stopping` state, I clicked Start and got the error: *"The instance is not in a state from which it can be started."*
+- **Fix:** Wait until the state becomes `Stopped`, then click Start.
+- After restart, verified that the Public IPv4 stayed the same (Elastic IP stable).
+- Nginx came back up automatically and the website loaded again.
+- The private IP was also observed during the test.
+
+### Step 6 — Cleanup
+- Disassociated the Elastic IP from the instance.
+- Released the Elastic IP.
+- Verified the Elastic IPs list showed "No Elastic IP addresses found".
+- Stopped both EC2 instances.
+
+## Important Concepts
+
+- Elastic IP is a public IPv4 address.
+- Private IP is used inside the VPC/private network.
+- Public IP allows Internet-facing connectivity when the rest of the network configuration is correct.
+- Elastic IP does not automatically make a website work.
+- Route Table, Internet Gateway, NACL, Security Group, EC2 and the web server must still be correctly configured.
+- Nginx must be running and listening on the required port for the website to respond.
+
+## Complete Flow
+
+```
+Internet
+   ↓
+Elastic IP
+   ↓
+Internet Gateway
+   ↓
+VPC
+   ↓
+Subnet
+   ↓
+NACL
+   ↓
+Security Group
+   ↓
+EC2
+   ↓
+Nginx
+   ↓
+Website
+```
+
+## Key Takeaway
+
+Elastic IP provides a stable public IPv4 address for an AWS resource such as EC2. It is useful when a server needs a consistent public endpoint even after an EC2 stop/start operation.
+
+## Cost Note
+
+AWS charges for every public IPv4 address (~$0.005/hour), whether it is associated with an instance or idle. Disassociating does not stop the charge; only releasing does. So always **Release** the Elastic IP after hands-on.
