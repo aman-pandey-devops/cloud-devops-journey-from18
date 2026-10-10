@@ -1,0 +1,97 @@
+Day 11 — AWS Auto Scaling Basics
+
+1. What Is Auto Scaling?
+
+AWS Auto Scaling helps adjust computing capacity according to workload and configured scaling policies.
+
+In the EC2 context, it can increase or decrease the number of EC2 instances.
+
+Scale Out
+
+Scale out means adding more EC2 instances when additional capacity is needed.
+
+Example: 2 EC2 instances → 3 EC2 instances.
+
+Scale In
+
+Scale in means reducing the number of EC2 instances when less capacity is needed.
+
+Auto Scaling requires configured scaling policies and conditions to adjust capacity based on workload.
+
+---
+
+2. Difference Between Auto Scaling and ALB
+
+Auto Scaling
+
+- Manages EC2 instance capacity.
+- Can add instances when more capacity is needed.
+- Can reduce capacity when less capacity is needed.
+- Can replace unhealthy instances according to health-check settings.
+
+Application Load Balancer (ALB)
+
+- Receives incoming application requests.
+- Routes requests to registered healthy targets.
+- Distributes application traffic across multiple instances.
+
+Key Difference: Auto Scaling manages EC2 capacity, while ALB routes application traffic.
+
+Both services can work together but perform different jobs.
+
+---
+
+3. What Is an Auto Scaling Group (ASG)?
+
+An Auto Scaling Group is a group of EC2 instances whose capacity AWS manages according to configured settings.
+
+An ASG has three important capacity settings:
+
+- Minimum Capacity: The minimum number of instances the group should maintain.
+- Desired Capacity: The target number of instances the group should maintain.
+- Maximum Capacity: The upper limit on the total number of instances in the group.
+
+Example
+
+Minimum = 1
+Desired = 2
+Maximum = 4
+
+If desired capacity changes from 2 to 3 due to a configured scaling policy, the ASG can scale out toward 3 instances.
+
+Maximum capacity is only the upper limit. It does not mean that AWS always runs the maximum number of instances.
+
+---
+
+4. Unhealthy Instance Replacement
+
+An ASG can replace an unhealthy EC2 instance according to its health-check configuration and settings.
+
+Example:
+
+- Desired capacity = 2.
+- One instance becomes unhealthy.
+- The ASG can launch a replacement to restore the group toward its desired capacity.
+
+Replacement vs. Scale Out
+
+- Replacement: Replaces an unhealthy instance.
+- Scale Out: Adds capacity by increasing the desired number of instances.
+
+These are different operations.
+
+---
+
+5. Day 11 Learning Summary
+
+Today I learned:
+
+- AWS Auto Scaling fundamentals.
+- Scale out and scale in.
+- The difference between Auto Scaling and ALB.
+- Auto Scaling Group fundamentals.
+- Minimum, desired, and maximum capacity.
+- Unhealthy instance replacement.
+- The difference between instance replacement and scale out.
+
+Status: Auto Scaling fundamentals completed. Further topics and hands-on practice will be continued in the next session.
