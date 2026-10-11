@@ -1,0 +1,146 @@
+# Day 11: AWS Launch Template, Auto Scaling Group, and Hands-On
+
+**Region:** eu-north-1 (Europe, Stockholm)
+
+---
+
+## 1. Launch Template
+
+A Launch Template stores the configuration required to launch EC2 instances.
+
+Important settings include:
+
+- **AMI:** Specifies the operating system image.
+- **Instance Type:** Defines the compute resources (CPU and memory).
+- **Key Pair:** Supports SSH access when required.
+- **Security Group:** Controls permitted network traffic.
+- **Storage:** Defines the disk configuration.
+- **User Data:** Runs optional startup commands or scripts on first boot.
+
+A Launch Template provides the configuration for new instances. It does not launch instances by itself, and it does not decide when Auto Scaling should add or remove instances. Changing a setting creates a new template **version**; older versions remain available.
+
+## 2. Launch Template Hands-On
+
+### Steps Performed
+
+1. Opened the AWS Management Console.
+2. Verified the AWS region: `eu-north-1` (Europe, Stockholm).
+3. Opened EC2 > Launch Templates.
+4. Created a Launch Template named `asg-template` and enabled the Auto Scaling guidance option.
+5. Configured the launch settings:
+
+| Setting | Value |
+|---|---|
+| AMI | Amazon Linux 2023 (free tier eligible) |
+| Instance type | `t3.micro` |
+| Key pair | Not included (no SSH login needed for this lab) |
+| Subnet | Not included (the Auto Scaling Group selects subnets) |
+| Security group | Existing `launch-wizard-1` |
+| Storage | 8 GiB gp3 (default) |
+
+### Result
+
+The Launch Template was created successfully as Version 1 (Default). Creating a Launch Template does not start any instance.
+
+## 3. Creating an Auto Scaling Group
+
+An Auto Scaling Group (ASG) manages a group of EC2 instances according to configured capacity and health settings. It launches instances from a Launch Template and replaces instances that become unhealthy.
+
+### Steps Performed
+
+1. Opened EC2 > Auto Scaling Groups.
+2. Created an Auto Scaling Group named `practice-asg`.
+3. Selected the Launch Template `asg-template` (Default version).
+4. Selected the Default VPC and two subnets in different Availability Zones: `eu-north-1a` and `eu-north-1b`.
+5. Chose **No load balancer** to avoid extra cost.
+6. Set the capacity values.
+
+### Capacity Settings
+
+| Setting | Meaning | Value used |
+|---|---|---|
+| Minimum | The group never drops below this number of instances | 1 |
+| Desired | The number of instances the group tries to maintain | 1 |
+| Maximum | The group never grows beyond this number of instances | 3 |
+
+### Verification
+
+- When the group was created, the ASG launched one `t3.micro` instance automatically from the Launch Template.
+- The **Activity** tab showed "Launching a new EC2 instance" with status **Successful**. The cause was the desired capacity changing from 0 to 1.
+- The EC2 Instances page showed the new instance in the **Running** state.
+
+## 4. Configuring Scaling Policies
+
+Scaling policies determine when and how the desired capacity changes. Without a scaling policy, an ASG does not react to load. It only maintains the desired capacity and replaces unhealthy instances.
+
+| Policy type | When it reacts | How it works |
+|---|---|---|
+| **Dynamic** | After load changes | CloudWatch monitors a metric (for example CPU) and the ASG adjusts capacity when a threshold is crossed |
+| **Predictive** | Before load changes | Uses historical data to forecast recurring patterns and scales ahead of time |
+
+Dynamic scaling includes Target tracking, Step scaling, and Simple scaling.
+
+### Steps Performed
+
+1. Opened `practice-asg` > Automatic scaling tab.
+2. Created a dynamic scaling policy with these values:
+
+| Setting | Value |
+|---|---|
+| Policy type | Target tracking scaling |
+| Name | `cpu-target-50` |
+| Metric | Average CPU utilization |
+| Target value | 50 |
+| Instance warmup | 300 seconds (default) |
+| Scale-in | Enabled (default) |
+
+3. Confirmed the policy appeared as **Enabled** under Dynamic scaling policies.
+
+Creating the policy automatically created two CloudWatch alarms (scale-out and scale-in).
+
+## 5. How the Components Work Together
+
+1. A scaling policy, backed by a CloudWatch alarm, triggers a capacity change.
+2. The Auto Scaling Group changes its desired capacity within the Min and Max limits.
+3. The Launch Template supplies the configuration for the new EC2 instances.
+4. The ASG manages the group according to its capacity and health settings.
+
+This allows AWS to adjust EC2 capacity without launching every instance manually.
+
+## 6. Testing and Verification
+
+What was verified:
+
+- The Launch Template was created with the intended settings.
+- The Auto Scaling Group launched one instance automatically (confirmed in the Activity history and the EC2 Instances page).
+- The scaling policy was created and showed as Enabled.
+
+What was **not** tested:
+
+- No real CPU load test was performed, because there was no application or traffic. Scale-out from 1 to 2 or 3 instances was therefore not observed in practice. The scaling behaviour was understood conceptually and verified at the configuration level only.
+
+## 7. Cleanup Checklist
+
+- [x] Verified the ASG capacity: Min 1, Desired 1, Max 3.
+- [x] Reviewed the scaling policy (`cpu-target-50`).
+- [x] Deleted the practice Auto Scaling Group `practice-asg`.
+- [x] Confirmed the ASG instance moved to **Terminated**.
+- [x] Deleted the practice Launch Template `asg-template`.
+- [x] Checked CloudWatch Alarms: 0 alarms remaining (the scaling alarms were removed with the ASG).
+- [x] Left older practice instances and the `launch-wizard-1` security group untouched, since they belong to earlier labs.
+
+Cleanup order matters: delete the ASG first, confirm its instance is terminated, then delete the Launch Template.
+
+## 8. Key Learnings
+
+- A Launch Template defines how new EC2 instances are launched, but does not launch them itself.
+- An Auto Scaling Group manages EC2 instance capacity and replaces unhealthy instances.
+- Scaling policies determine when and how capacity changes. Without one, the ASG does not scale on load.
+- Launch Templates, Auto Scaling Groups, and scaling policies work together to manage EC2 capacity.
+- Deleting an ASG terminates its instances and removes its scaling alarms.
+- Cleanup is an essential part of working with AWS to avoid unexpected charges.
+
+## Day 11 Hands-On Status
+
+**Completed:** Launch Template creation, Auto Scaling Group creation (with automatic instance launch), target tracking scaling policy configuration, and full cleanup.
+**Not done:** Real load testing of scale-out behaviour.
