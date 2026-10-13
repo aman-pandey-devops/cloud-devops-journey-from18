@@ -1,0 +1,135 @@
+Day 12 — AWS Route 53: DNS Fundamentals
+
+1. Learning Objectives
+
+In this session, I learned the fundamentals of Amazon Route 53, DNS resolution, Hosted Zones, A Records, Alias records, and the difference between Route 53 and VPC Route Tables.
+
+2. What Is Amazon Route 53?
+
+Amazon Route 53 is an AWS DNS (Domain Name System) service used to manage DNS records and help route users to the correct destinations using domain names.
+
+For example, users can enter "mywebsite.com" instead of remembering an IP address.
+
+DNS does not host a website. The website runs on a server such as an Amazon EC2 instance.
+
+3. What Is DNS?
+
+DNS helps translate domain names into destination information, such as IP addresses.
+
+Example:
+
+"mywebsite.com → 203.0.113.10"
+
+The IP address above is reserved for documentation examples and is not a real website server address.
+
+DNS resolution helps the browser find the destination. The browser then connects to that destination if the required networking and security configurations allow it.
+
+4. What Is a Hosted Zone?
+
+A Hosted Zone is a container for DNS records belonging to a domain.
+
+It contains records that define how DNS queries for that domain should be answered.
+
+Types of Hosted Zones
+
+- Public Hosted Zone: Used for DNS records intended to be resolved through the public DNS system.
+- Private Hosted Zone: Used for internal DNS resolution within associated VPCs.
+
+Registering a domain and creating a Hosted Zone are two separate actions.
+
+5. What Is an A Record?
+
+An A Record is a standard DNS record that maps a hostname to an IPv4 address.
+
+Example:
+
+- Record name: "mywebsite.com"
+- Record type: "A"
+- Value: "203.0.113.10"
+
+This tells DNS resolvers which IPv4 address is configured for the hostname.
+
+An A Record does not host the website. It provides DNS information that helps a browser find the server.
+
+If an EC2 instance's public IPv4 address changes, a manually configured A Record may need to be updated.
+
+6. What Is an Alias Record in Route 53?
+
+Alias is a Route 53 feature that allows a DNS record to target supported AWS resources, such as an Application Load Balancer or a CloudFront distribution.
+
+Example:
+
+- Record name: "mywebsite.com"
+- Record type: "A"
+- Alias: "Yes"
+- Target: A supported Application Load Balancer
+
+Instead of manually entering an ALB IP address, the user selects the supported AWS resource as the target.
+
+Alias is not a separate standard DNS record type. It is a Route 53 feature available with supported record types, including A and AAAA.
+
+7. A Record vs. A Record with Alias
+
+A Record| A Record with Alias
+Maps a hostname to an IPv4 address.| Uses Route 53's Alias feature to target a supported AWS resource.
+The IPv4 address is entered as the record value.| The supported AWS resource is selected as the target.
+Commonly used to point a domain directly to an EC2 public IPv4 address.| Commonly used to point a domain to an Application Load Balancer or CloudFront.
+Standard DNS functionality.| Route 53-specific functionality.
+
+8. Route 53 vs. VPC Route Table
+
+Amazon Route 53
+
+- Manages DNS records and helps resolve domain names.
+- Helps a DNS resolver obtain destination information for a hostname.
+- Example: Finding the configured IPv4 address for "mywebsite.com".
+
+VPC Route Table
+
+- Defines routes for network traffic.
+- Uses destination IP ranges and targets to determine where traffic should go.
+- Example: "0.0.0.0/0 → Internet Gateway".
+
+A Route Table does not resolve domain names. Route 53 and VPC Route Tables perform different jobs.
+
+9. How a Website Request Works
+
+1. A user enters a domain name in a browser.
+2. The DNS resolver obtains the required destination information.
+3. The browser attempts to connect to the destination.
+4. AWS networking and security configurations determine whether the connection can reach the server.
+5. The EC2 web server processes the request and returns a response.
+
+If an Application Load Balancer is used, it can receive the request and forward it to a configured healthy EC2 target.
+
+10. Route 53 Console Exploration
+
+During the hands-on session:
+
+- Opened the Amazon Route 53 console.
+- Explored the Route 53 dashboard.
+- Opened the Hosted Zones section.
+- Observed that the account displayed zero Hosted Zones.
+- Confirmed that no custom domain was currently available for the exercise.
+
+No Hosted Zone or DNS record was created.
+
+11. Hands-On Status
+
+Completed:
+
+- Route 53 dashboard exploration.
+- Hosted Zones section exploration.
+- Conceptual understanding of DNS, Hosted Zones, A Records, and Alias records.
+- Understanding the difference between Route 53 and VPC Route Tables.
+
+Skipped for now:
+
+- Creating a Hosted Zone.
+- Creating and configuring DNS records.
+- Connecting a registered domain to an EC2 website.
+- Testing public DNS resolution for a custom domain.
+
+Reason: The practical exercise was postponed because of the current AWS account/trial limitations and the absence of a registered domain. No additional paid resources were created.
+
+
