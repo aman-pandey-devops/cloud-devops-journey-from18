@@ -1,0 +1,106 @@
+Day 13 — AWS Networking Troubleshooting and EC2 Website Deployment
+
+1. Objective
+
+Understand how AWS networking components work together and troubleshoot a website hosted on an EC2 instance.
+
+2. AWS Networking Components
+
+- VPC: A logically isolated virtual network in AWS.
+- Subnet: A smaller IP address range inside a VPC.
+- Route Table: Determines where network traffic should be routed.
+- Internet Gateway (IGW): Enables communication between a VPC and the internet when the required routing and public connectivity are configured.
+- Network ACL (NACL): A stateless subnet-level traffic filter that supports allow and deny rules.
+- Security Group (SG): A stateful virtual firewall associated with network interfaces. It uses allow rules.
+- EC2: A virtual server that runs an operating system and applications.
+- Nginx: Web server software that serves website content over HTTP or HTTPS.
+
+3. Website Request Flow
+
+A simplified public website request follows this path:
+
+Browser → Internet → Internet Gateway → VPC networking → EC2 network interface → Nginx → Website response
+
+The route table, NACL, Security Group, public IP configuration, and web server must be configured appropriately for the website to be accessible.
+
+4. Important Networking Concepts
+
+Route Table
+
+A route such as "0.0.0.0/0 → Internet Gateway" provides a route for IPv4 destinations that do not match a more specific route.
+
+A route does not replace Security Group or NACL rules.
+
+Security Group vs. NACL
+
+- Security Group is stateful and supports allow rules.
+- NACL is stateless and supports allow and deny rules.
+- NACL inbound and outbound rules must permit the relevant traffic, including return traffic.
+
+EC2 vs. Nginx
+
+- EC2 running means the virtual machine is running.
+- Nginx running means the web server process is active.
+- An EC2 instance can be running while its web server is stopped.
+
+5. Hands-On Troubleshooting
+
+Problem
+
+The EC2 website was initially inaccessible after the instance had been stopped.
+
+Investigation and Resolution
+
+1. Checked the EC2 instance state and found it was stopped.
+2. Started the EC2 instance.
+3. Confirmed that the instance was running and a public IPv4 address was available.
+4. Checked the Nginx service from the terminal.
+5. Found that Nginx was stopped.
+6. Started Nginx.
+7. Opened the public IPv4 address in a browser using HTTP.
+8. Confirmed that the Nginx welcome page was displayed.
+9. Customized the displayed website content to show “Welcome to Aman Website.”
+10. Checked the Nginx service status and confirmed that it was active and running.
+
+6. Useful Linux Commands
+
+Check the Nginx service status:
+
+sudo systemctl status nginx
+
+Start Nginx:
+
+sudo systemctl start nginx
+
+Verify the website by opening:
+
+http://YOUR-PUBLIC-IP
+
+Replace "YOUR-PUBLIC-IP" with the instance's actual public IPv4 address.
+
+7. Troubleshooting Checklist
+
+If a public website does not open, check:
+
+- [ ] EC2 instance state is Running.
+- [ ] A suitable public IPv4 address or Elastic IP is available.
+- [ ] The VPC is connected to an Internet Gateway.
+- [ ] The subnet route table has the required internet route.
+- [ ] The Security Group permits the required inbound traffic.
+- [ ] The NACL permits the required inbound and return traffic.
+- [ ] Nginx is installed and running.
+- [ ] The web server is listening on the expected port.
+- [ ] The browser uses the correct IP address and protocol.
+
+Do not change networking rules randomly. Identify the failing layer first.
+
+8. Key Learnings
+
+- EC2 running does not guarantee that a website is running.
+- Network routing and traffic permissions are different.
+- A stopped EC2 instance can lose its automatically assigned public IPv4 address.
+- Starting Nginx restored website service in this troubleshooting exercise.
+- Testing the website in a browser verifies that the website is reachable at that moment.
+- Practical troubleshooting should proceed one layer at a time.
+
+
