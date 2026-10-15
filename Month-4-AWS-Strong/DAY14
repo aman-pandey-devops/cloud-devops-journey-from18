@@ -1,0 +1,202 @@
+Day 14 — AWS NAT Gateway: Concepts and Networking Fundamentals
+
+1. What Is a NAT Gateway?
+
+A NAT (Network Address Translation) Gateway allows resources in a private subnet to initiate outbound IPv4 connections to the internet without requiring their own public IPv4 addresses.
+
+For example, a private EC2 instance may need to download software updates using:
+
+sudo apt update
+
+A NAT Gateway can help the instance reach the required internet resources while keeping the instance from being directly reachable through the public internet.
+
+A NAT Gateway is not a replacement for Security Groups, Network ACLs, or route tables.
+
+2. Public EC2 vs. Private EC2
+
+An EC2 instance is a virtual computer running in AWS. Public and private EC2 instances are not different types of computers. Their main difference is their network placement and connectivity.
+
+Public EC2 Instance
+
+A public EC2 instance can be reachable from the internet when the necessary network and security configurations are correct.
+
+Typical requirements for direct internet access include:
+
+- A public IPv4 address or another suitable public addressing configuration.
+- A subnet route table with a route to an Internet Gateway.
+- Security Group rules allowing the required traffic.
+- Network ACL rules that permit the traffic.
+- A running service, such as Nginx, listening on the required port.
+
+Example: Hosting a public website on an EC2 instance.
+
+Private EC2 Instance
+
+A private EC2 instance is normally not directly reachable from the public internet.
+
+It can still run Linux, applications, background jobs, and other services. Administrators and other servers can access it through approved private network paths when routing and security rules permit.
+
+Typical uses include:
+
+- Backend application servers.
+- Internal applications and tools.
+- Database servers.
+- Background jobs and scheduled tasks.
+- Internal APIs and data processing.
+
+A private EC2 instance does not automatically require a NAT Gateway. NAT is useful when the instance needs outbound internet access and another suitable connectivity option is not being used.
+
+3. Public Subnet vs. Private Subnet
+
+A subnet is a smaller network segment inside a VPC.
+
+Public Subnet
+
+A subnet is generally considered public when its associated route table includes a route to an Internet Gateway for internet-bound traffic.
+
+Example route:
+
+0.0.0.0/0 → Internet Gateway
+
+Resources still need appropriate addressing and security configuration to be reachable from the internet.
+
+Private Subnet
+
+A private subnet does not have a direct Internet Gateway default route for internet-bound traffic.
+
+If private resources need outbound IPv4 internet access, a common configuration is:
+
+0.0.0.0/0 → NAT Gateway
+
+The subnet name alone does not make it public or private. Routing configuration is important.
+
+4. Internet Gateway (IGW)
+
+An Internet Gateway provides internet connectivity for a VPC when the required routes and addressing are configured.
+
+A public subnet's route table may contain:
+
+VPC CIDR     → local
+0.0.0.0/0    → Internet Gateway
+
+The Internet Gateway does not automatically make every EC2 instance publicly accessible. Public addressing, routes, Security Groups, Network ACLs, and running services must also be configured correctly.
+
+5. How a NAT Gateway Works
+
+A common public NAT Gateway configuration requires:
+
+- A NAT Gateway in a public subnet.
+- An Elastic IP associated with the public NAT Gateway.
+- A public subnet route table with a default route to an Internet Gateway.
+- A private subnet route table with a default route to the NAT Gateway.
+
+Example:
+
+Public Subnet Route Table
+
+VPC CIDR     → local
+0.0.0.0/0    → Internet Gateway
+
+Private Subnet Route Table
+
+VPC CIDR     → local
+0.0.0.0/0    → NAT Gateway
+
+Outbound Traffic Flow
+
+1. A private EC2 instance initiates an IPv4 request to an internet resource.
+2. The private subnet route table sends the traffic to the NAT Gateway.
+3. The NAT Gateway translates the private source address as required for outbound connectivity.
+4. The public subnet route table sends internet-bound traffic through the Internet Gateway.
+5. The response can return through the NAT Gateway to the private EC2 instance.
+
+A public NAT Gateway supports outbound connections and their return traffic. It does not automatically provide direct inbound internet access to the private EC2 instance.
+
+6. Internet Gateway vs. NAT Gateway
+
+Feature| Internet Gateway| NAT Gateway
+Main purpose| Provides VPC internet connectivity| Enables private resources to initiate outbound IPv4 internet connections
+Typical location| Attached to a VPC| Deployed in a subnet, commonly a public subnet
+Public subnet route| Can be the target of an internet default route| Public subnet needs an IGW route for a public NAT Gateway
+Private subnet route| Not normally used as the direct internet default route for a private subnet| Common target for a private subnet's outbound internet route
+Public IP required on private EC2| Depends on its connectivity design| Not required for NAT-based outbound IPv4 access
+
+7. What Is CIDR?
+
+CIDR defines an IP address range for a network.
+
+Example architecture:
+
+VPC:             10.0.0.0/16
+Public Subnet:   10.0.1.0/24
+Private Subnet:  10.0.2.0/24
+
+The subnet ranges are smaller ranges inside the VPC CIDR and do not overlap with each other.
+
+- "10.0.0.0/16" represents the VPC's larger address range.
+- "10.0.1.0/24" represents one smaller subnet range.
+- "10.0.2.0/24" represents another smaller subnet range.
+- "/16" describes a larger range than "/24".
+- "0.0.0.0/0" represents all IPv4 destinations when used as a route destination.
+
+CIDR defines the address range. A route table determines where traffic is forwarded. A gateway is the next destination for traffic matching a route.
+
+8. Public EC2 Does Not Automatically Mean a Public Website
+
+A public IPv4 address alone does not guarantee that a website will work.
+
+For a typical HTTP website, check:
+
+1. The EC2 instance is running.
+2. The instance has a usable public IPv4 address.
+3. The subnet route table has the required Internet Gateway route.
+4. The Security Group allows HTTP traffic on TCP port 80.
+5. The Network ACL permits the required traffic in both directions.
+6. Nginx or another web server is running and listening on the expected port.
+
+SSH is a remote administration protocol, commonly using TCP port 22. An instance that supports SSH is not automatically a private instance.
+
+9. Why Companies Use Private EC2 Instances
+
+Companies often separate public-facing services from internal systems.
+
+Example:
+
+Customer Browser
+       |
+       v
+Public Web Server
+       |
+       v
+Private Application Server
+       |
+       v
+Private Database
+
+- The public web server receives customer requests.
+- The application server processes business logic, such as orders.
+- The database stores application data.
+- The database and application server do not need to be directly exposed to the public internet.
+
+Private networking reduces direct public exposure, but additional controls such as Security Groups, IAM, and encryption remain important.
+
+10. NAT Gateway Costs and Cleanup
+
+NAT Gateways are paid resources. Charges can include provisioned time and data processed, depending on the region and pricing terms.
+
+Before creating a NAT Gateway:
+
+- Review the existing VPC and subnet configuration.
+- Confirm that outbound internet access is actually required.
+- Review current regional pricing.
+- Identify any route-table changes that may be needed.
+- Plan cleanup before beginning the hands-on.
+
+After a temporary exercise:
+
+- Remove temporary route-table entries that point to the NAT Gateway.
+- Delete the temporary NAT Gateway.
+- Check whether its associated Elastic IP remains allocated.
+- Release the Elastic IP if it is no longer needed.
+- Verify that no temporary resources remain.
+- Do not delete or modify existing website resources without confirming their purpose.
