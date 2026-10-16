@@ -1,0 +1,214 @@
+# Day 14 – AWS NAT Gateway: Private Subnet Outbound Internet Access
+
+> Part of my 7-month self-directed Cloud + DevOps roadmap (Month 4: AWS Networking).
+
+##  Overview
+An EC2 instance in a **private subnet** has no public IP, so it cannot reach the internet by default. In this hands-on lab I built a custom VPC from scratch, added a **NAT Gateway** in the public subnet, routed the private subnet through it, and **proved** that the private instance can reach the internet while staying unreachable from outside. Finally, I cleaned up all paid resources.
+
+**Region:** Europe (Stockholm) `eu-north-1`
+**Tools:** AWS Management Console, EC2, VPC, EC2 Instance Connect Endpoint
+
+---
+
+## 🏗️Architecture
+
+```
+                      Internet
+                         |
+              Internet Gateway (my-igw)
+                         |
+        ┌────────────────┴─────────────────┐
+        │        VPC: my-vpc 10.0.0.0/16    │
+        │                                   │
+        │  Public Subnet 10.0.1.0/24        │
+        │  Route: 0.0.0.0/0 -> IGW          │
+        │  [ NAT Gateway + Elastic IP ]     │
+        │            ^                      │
+        │            | 0.0.0.0/0 -> NAT     │
+        │  Private Subnet 10.0.2.0/24       │
+        │  [ private-ec2 (no public IP) ]   │
+        └───────────────────────────────────┘
+```
+
+**Analogy:** The VPC is a housing society. The public block faces the main road (IGW). The private block is at the back. The NAT Gateway is the gate guard: residents of the back block can go out through the guard, but outsiders cannot walk in.
+
+---
+
+##  Resources Created
+
+| Resource | Name | Configuration |
+|---|---|---|
+| VPC | `my-vpc` | `10.0.0.0/16` |
+| Public subnet | `public-subnet` | `10.0.1.0/24`, AZ `eu-north-1a` |
+| Private subnet | `private-subnet` | `10.0.2.0/24`, AZ `eu-north-1a` |
+| Internet Gateway | `my-igw` | Attached to `my-vpc` |
+| Public route table | `public-rt` | `0.0.0.0/0 -> my-igw`, associated with `public-subnet` |
+| Private route table | `private-rt` | `0.0.0.0/0 -> my-nat-gw`, associated with `private-subnet` |
+| NAT Gateway | `my-nat-gw` | Zonal, Public, in `public-subnet`, with Elastic IP |
+| EC2 instance | `private-ec2` | t3.micro, Amazon Linux 2023, public IP disabled |
+| Security group | `private-sg` | Inbound SSH (22) from `10.0.0.0/16` |
+| EC2 Instance Connect Endpoint | `my-eic-endpoint` | In `private-subnet` |
+
+---
+
+##  Step 0: Pre-check (what already exists?)
+Before creating anything I checked the VPC dashboard.
+
+- Found only **one VPC with an empty name and "Default VPC: Yes"** (`172.31.0.0/16`) with 3 default subnets.
+- This was the **default VPC**, not a custom one, and all its subnets are public.
+- Decision: **do not touch the default VPC**; build a fresh custom VPC for this lab.
+
+# `images/00-default-vpc.png`
+
+> **Lesson:** Always verify the VPC ID, name and CIDR before creating resources.
+
+---
+
+## 🛠️Step-by-Step Implementation
+
+### Step 1: Create the VPC
+1. VPC → **Your VPCs** → **Create VPC**
+2. Resources to create: **VPC only**
+3. Name: `my-vpc`, IPv4 CIDR: `10.0.0.0/16`
+4. **Create VPC**
+
+# `images/01-vpc-created.png`
+
+### Step 2: Create the public subnet
+1. VPC → **Subnets** → **Create subnet**
+2. VPC: `my-vpc`
+3. Name: `public-subnet`, AZ: `eu-north-1a`, CIDR: `10.0.1.0/24`
+
+# `images/02-public-subnet-form.png`
+
+### Step 3: Create the private subnet
+Same process: `private-subnet`, AZ `eu-north-1a`, CIDR `10.0.2.0/24`.
+
+# `images/03-subnets-list.png`
+
+### Step 4: Create and attach the Internet Gateway
+1. VPC → **Internet gateways** → **Create internet gateway** → name `my-igw`
+2. **Actions → Attach to VPC** → select `my-vpc`
+3. Verified state = **Attached**
+
+# `images/04-igw-attached.png`
+
+### Step 5: Public route table
+1. **Route tables → Create route table** → name `public-rt`, VPC `my-vpc`
+2. **Routes → Edit routes** → add `0.0.0.0/0` → target **Internet Gateway** `my-igw`
+3. **Subnet associations** → associate **only** `public-subnet`
+
+# `images/05-public-rt-routes.png`
+
+### Step 6: Private route table
+1. Create `private-rt` in `my-vpc`
+2. Associate **only** `private-subnet`
+3. At this stage it only has the `local` route (`10.0.0.0/16 -> local`)
+
+# `images/06-private-rt-local-only.png`
+
+### Step 7: Create the NAT Gateway
+1. VPC → **NAT gateways** → **Create NAT gateway**
+2. Name: `my-nat-gw`
+3. Availability mode: **Zonal** (lets me pick a specific subnet)
+4. Subnet: **`public-subnet`** (NAT must sit in a public subnet)
+5. Connectivity type: **Public**
+6. Elastic IP: **Allocate Elastic IP**
+7. Waited until state = **Available**
+
+# `images/07-nat-create-form.png`, `images/08-nat-available.png`
+
+### Step 8: Route the private subnet through NAT
+1. `private-rt` → **Edit routes** → **Add route**
+2. Destination `0.0.0.0/0` → target **NAT Gateway** `my-nat-gw`
+3. Save. Both routes show **Active**.
+
+# `images/09-private-rt-nat-route.png`
+
+### Step 9: Launch the private EC2 instance
+- Name: `private-ec2`, AMI: Amazon Linux 2023, type: `t3.micro`
+- Key pair: none (access via EC2 Instance Connect Endpoint)
+- Network: VPC `my-vpc`, subnet `private-subnet`, **Auto-assign public IP: Disable**
+- Security group `private-sg`: SSH (22) from `10.0.0.0/16`
+- Verified: Running, **3/3 status checks passed**, Public IPv4 = `–`, Private IP `10.0.2.219`
+
+# `images/10-launch-network-settings.png`, `images/11-instance-running-no-public-ip.png`
+
+### Step 10: Create an EC2 Instance Connect Endpoint
+A private instance has no public IP, so normal SSH or the standard "EC2 Instance Connect" tab does not work.
+
+1. VPC → **Endpoints** → **Create endpoint**
+2. Name `my-eic-endpoint`, type **EC2 Instance Connect Endpoint**
+3. VPC `my-vpc`, subnet `private-subnet`, security group `private-sg`
+4. Waited for status **Available** (Pending → Available takes ~2-3 min)
+
+# `images/12-eic-endpoint-available.png`
+
+### Step 11: Connect to the private instance
+EC2 → select `private-ec2` → **Connect** → choose **EC2 Instance Connect Endpoint** (second option) → select `my-eic-endpoint` → **Connect**.
+
+#`images/13-connect-via-endpoint.png`
+
+---
+
+##  Testing and Proof
+Commands run **inside** `private-ec2`:
+
+```bash
+curl -I https://google.com
+```
+Result: `HTTP/2 301` → the private instance reached the internet.
+
+```bash
+curl -s https://checkip.amazonaws.com
+```
+Result: `13.50.152.189` → this is the **Elastic IP of the NAT Gateway**, proving outbound traffic leaves through NAT.
+
+ #`images/14-curl-test-output.png`
+
+---
+
+##  Cleanup (order matters)
+NAT Gateway and Elastic IP are billed (~$0.045/hour + data), so I deleted them right after testing.
+
+1. **Terminate** `private-ec2`
+2. **Delete** the EC2 Instance Connect Endpoint
+3. **Delete** `my-nat-gw` and wait for state **Deleted**
+4. **Release** the Elastic IP (only possible after the NAT is deleted)
+
+Kept (free of charge): VPC, subnets, IGW, route tables, security group.
+Note: after NAT deletion, the `private-rt` route `0.0.0.0/0 -> nat-xxxx` becomes **blackhole**. It must be updated when a new NAT Gateway is created.
+
+# `images/15-nat-deleted.png`, `images/16-eip-released.png`
+
+---
+
+##  Key Learnings
+- **NAT Gateway = outbound-only** internet for private subnets. Internet hosts cannot initiate connections to private instances.
+- The NAT Gateway must be created in a **public subnet** (route table with `0.0.0.0/0 -> IGW`).
+- Public subnet route: `0.0.0.0/0 -> IGW`. Private subnet route: `0.0.0.0/0 -> NAT`.
+- Inbound user traffic to private servers is handled by a **Load Balancer** in the public subnet, not by NAT.
+- **EC2 Instance Connect Endpoint** gives SSH access to private instances without a bastion host or public IP.
+- NAT Gateway and Elastic IP are **paid**: always clean up after labs.
+- Cleanup order: EC2 → endpoint → NAT → Elastic IP.
+
+##  Mistakes and Troubleshooting
+| Problem | Cause | Fix |
+|---|---|---|
+| No custom VPC found | I was looking at the default VPC (`172.31.0.0/16`) | Created a new custom VPC `my-vpc` |
+| NAT form looked different | New console has **Regional** and **Zonal** modes | Selected **Zonal** to choose `public-subnet` |
+| "No public IPv4 address assigned" warning on Connect | Wrong tab (standard EC2 Instance Connect) for a private instance | Used the **EC2 Instance Connect Endpoint** option |
+| Connect fails while endpoint is Pending | Endpoint was not ready yet | Waited for status **Available** |
+
+---
+
+##  Bonus: Customizing a Live Nginx Website
+On a separate EC2 instance running Nginx, I edited `/usr/share/nginx/html/index.html`:
+
+1. Took a backup first: `sudo cp index.html index.html.bak`
+2. Added a full-screen anime background using CSS `background: url(...) no-repeat center / cover`
+3. Applied a Google Font (`Creepster`) for the title
+4. Moved the heading below the image's focal point with Flexbox (`align-items: flex-end`)
+5. Added a CSS `@keyframes` **blood-drip animation** under the text
+6. Verified with `sudo systemctl status nginx` and a hard refresh in the browser
+
