@@ -1,0 +1,89 @@
+# AWS  — Revision and Cloud Practitioner Preparation
+
+Session Summary
+
+1. AWS Cloud Practitioner Preparation
+
+Started Phase 2 of AWS Cloud Practitioner (CLF-C02) preparation, focusing on AWS security and core services.
+
+The study approach includes:
+
+- Revising previously learned concepts.
+- Practicing exam-style, scenario-based questions.
+- Learning the purpose and use cases of AWS services.
+- Covering unfamiliar AWS services at a basic conceptual level when relevant to the exam.
+- Performing hands-on practice for roadmap topics.
+
+2. Networking Revision
+
+Reviewed the following AWS networking concepts:
+
+- VPC: A logically isolated virtual network in AWS.
+- Subnet: A smaller IP address range inside a VPC.
+- Route Table: Determines where network traffic is forwarded.
+- Internet Gateway (IGW): Provides internet connectivity to a VPC when routing and addressing are configured correctly.
+- NAT Gateway: Allows private-subnet instances to initiate outbound IPv4 internet connections without requiring their own public IPv4 addresses.
+- Security Group: A stateful virtual firewall that uses allow rules.
+- Network ACL: A stateless subnet-level traffic filter supporting allow and deny rules.
+
+Networking Practice
+
+Completed a 10-question scenario-based practice test.
+
+Reported score: 8/10
+
+The questions covered NAT Gateway, route tables, HTTP ports, Security Groups, local VPC routes, public subnets, Network ACLs, Direct Connect, Elastic IP addresses, and Elastic Load Balancing.
+
+3. AWS Security and Core Services Revision
+
+Reviewed the purpose and common use cases of the following services:
+
+IAM — Identity and Access Management
+
+Controls access to AWS resources through users, roles, and policies.
+
+An EC2 instance can use an IAM role with appropriate permissions to access AWS services without storing long-term access keys on the instance.
+
+Amazon EC2
+
+Provides virtual servers that can run applications and websites.
+
+A working website requires appropriate server configuration, networking, security rules, and a running web service.
+
+Amazon S3
+
+Object storage used for files, images, backups, and static website assets.
+
+Amazon CloudWatch
+
+Monitors metrics, logs, and alarms for AWS resources and applications.
+
+AWS CloudTrail
+
+Records AWS account activity and API calls for auditing and investigation.
+
+Amazon RDS — Concept-Level Learning
+
+A managed relational database service used by applications that need structured, relational data storage.
+
+Covered at a basic conceptual level for Cloud Practitioner preparation.
+
+AWS Lambda — Concept-Level Learning
+
+A serverless compute service that runs code in response to events without requiring the user to manage EC2 servers.
+
+Covered at a basic conceptual level for Cloud Practitioner preparation.
+
+Elastic Load Balancing
+
+Distributes incoming application traffic across registered targets, such as EC2 instances.
+
+EC2 Auto Scaling
+
+Adjusts the number of EC2 instances according to configured scaling conditions and capacity requirements.
+
+AWS Billing and Cost Management
+
+Billing, pricing, budgets, and cost monitoring remain part of the planned Cloud Practitioner revision.
+
+
