@@ -1,0 +1,67 @@
+Day 16 — AWS Security Services (Cloud Practitioner Preparation)
+
+Topics Covered
+
+Today, I studied seven important AWS security services and their real-world use cases.
+
+1. AWS IAM (Identity and Access Management)
+
+- Purpose: Controls who can access AWS resources and which actions they can perform.
+- Use Case: Allowing an EC2 instance to access an S3 bucket using an IAM Role.
+- Key Concepts: IAM Users, IAM Roles, IAM Policies, and Least Privilege.
+
+2. AWS Shield
+
+- Purpose: Helps protect AWS applications against Distributed Denial of Service (DDoS) attacks.
+- Use Case: Protecting a website against traffic-based DDoS attacks.
+
+3. AWS WAF (Web Application Firewall)
+
+- Purpose: Filters web requests based on configured rules.
+- Use Case: Blocking suspicious HTTP/HTTPS requests and helping protect web applications against common web exploits.
+
+4. AWS CloudTrail
+
+- Purpose: Records AWS account activity, including API events.
+- Use Case: Investigating who modified an AWS resource or changed an IAM policy.
+
+5. AWS KMS (Key Management Service)
+
+- Purpose: Helps create and manage encryption keys.
+- Use Case: Managing encryption keys for data stored in services such as Amazon S3 and Amazon EBS.
+
+6. Amazon Inspector
+
+- Purpose: Helps identify software vulnerabilities and unintended network exposure in supported AWS workloads.
+- Use Case: Identifying known vulnerabilities in software packages running on EC2 instances.
+
+7. Amazon GuardDuty
+
+- Purpose: Detects suspicious activity and potential security threats in an AWS environment.
+- Use Case: Investigating suspicious API activity or signs of potentially compromised credentials.
+
+Important Differences
+
+- IAM: Access and permissions management.
+- Shield: DDoS protection.
+- WAF: Web request filtering.
+- CloudTrail: AWS activity auditing.
+- KMS: Encryption key management.
+- Inspector: Vulnerability detection.
+- GuardDuty: Threat detection.
+
+Learning Status
+
+- Covered the theory and basic use cases of all seven security services.
+- Phase 3 MCQs are pending.
+- No new AWS resources were created as part of this theory session.
+
+Next Session Plan
+
+1. Revise the Month 4 AWS Strong roadmap through practical hands-on exercises.
+2. Troubleshoot and strengthen the existing AWS concepts and configurations.
+3. Complete the planned hands-on tasks before moving to exam preparation.
+4. Revise the 50 AWS Cloud Practitioner exam services.
+5. Practise exam-style MCQs after the relevant revision.
+
+Priority: Practical AWS skills first, certification exam practice second.
