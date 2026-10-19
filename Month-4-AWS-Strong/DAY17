@@ -1,0 +1,140 @@
+Day 17 — AWS VPC Networking, Region, Availability Zones, and Practical Learning
+
+1. Exploring VPCs in the AWS Console
+
+Today, I opened the Amazon VPC service in the AWS Management Console and explored the VPCs available in my AWS account.
+
+I observed two VPCs:
+
+- Custom VPC with IPv4 CIDR: "10.0.0.0/15"
+- Default VPC with IPv4 CIDR: "172.31.0.0/16"
+
+What I Learned
+
+A VPC (Virtual Private Cloud) is a logically isolated network in AWS where cloud resources such as EC2 instances can be launched.
+
+The default VPC is created by AWS for basic networking convenience. A custom VPC allows us to design our own network ranges and networking architecture.
+
+The CIDR block defines the IPv4 address range available within a VPC.
+
+For example:
+
+- "10.0.0.0/15" represents a larger private IPv4 network range.
+- "172.31.0.0/16" represents the default VPC's IPv4 network range.
+
+A VPC showing the state "Available" means that the VPC has been created and is available for use. It does not automatically mean that internet connectivity has been configured.
+
+2. Exploring Subnets
+
+I opened the Subnets section in the VPC Console and explored subnet information, including the VPC ID, IPv4 CIDR, and Availability Zone information.
+
+What I Learned
+
+A subnet is a smaller network segment inside a VPC. It uses a portion of the VPC's IP address range.
+
+Each subnet belongs to exactly one Availability Zone.
+
+Subnets help organize resources according to their networking and security requirements. For example, a web-facing load balancer can be placed in public subnets, while application servers can be placed in private subnets.
+
+A subnet being "Available" means it is available for use; it does not prove that the subnet has internet access.
+
+3. Understanding AWS Regions
+
+An AWS Region is a geographical area in which AWS operates infrastructure.
+
+For example, "eu-north-1" represents the Europe (Stockholm) Region.
+
+Why Regions Matter
+
+- AWS resources are generally created in a selected Region.
+- Resources in different Regions are separate regional deployments unless connected or configured to work together.
+- Region selection can affect latency, service availability, compliance requirements, and pricing.
+
+4. Understanding Availability Zones (AZs)
+
+Availability Zones are isolated locations within an AWS Region.
+
+A Region can contain multiple Availability Zones. They are designed to help customers build applications with better fault isolation and availability.
+
+Important Relationship
+
+- Region: A geographical AWS area.
+- Availability Zone: An isolated location within a Region.
+- Subnet: A network segment associated with exactly one Availability Zone.
+- EC2 instance: When launched into a particular subnet, it runs in that subnet's Availability Zone.
+
+For example, if an application needs resources in two Availability Zones, we would generally create a separate subnet in each AZ and deploy suitable resources into both.
+
+Using multiple AZs can improve availability, but only when the application, traffic routing, and supporting resources are configured appropriately.
+
+5. Public and Private Subnet Revision
+
+I revised the difference between public and private subnets.
+
+A public subnet typically has a route such as:
+
+"0.0.0.0/0 → Internet Gateway"
+
+This route provides a path toward the internet. However, a route to an Internet Gateway alone does not guarantee internet access. Appropriate IP addressing, security rules, and a running application or service are also required.
+
+A private subnet does not have a direct default route to an Internet Gateway for general internet access. A NAT Gateway can be used to allow resources in a private subnet to initiate outbound IPv4 internet connections when correctly configured.
+
+A NAT Gateway is not a web server and does not automatically make a private EC2 instance publicly accessible.
+
+6. Understanding the Relationship Between Networking Components
+
+I revised how the main AWS networking components work together:
+
+- VPC provides the isolated network.
+- Subnets divide the VPC's IP address range.
+- Route tables determine where network traffic is directed.
+- An Internet Gateway provides a path for internet connectivity when the routes and other requirements are correctly configured.
+- Security Groups control permitted inbound and outbound traffic for associated resources.
+- EC2 instances run applications and services inside the selected network.
+
+These components must work together for a website hosted on EC2 to be accessible from the internet.
+
+7. MCQ Practice and Results
+
+VPC and Networking Revision
+
+Score: 5/5
+
+I answered all five revision questions correctly.
+
+Region and Availability Zone Practice
+
+Score: 4/5
+
+I answered four out of five questions correctly.
+
+The main correction was:
+
+A subnet belongs to exactly one Availability Zone, not multiple Availability Zones.
+
+This is important when planning deployments across multiple AZs.
+
+8. Practical Work Status
+
+During today's console exploration, I reviewed VPC and subnet details and identified the custom and default VPCs.
+
+The following practical verification is still pending:
+
+1. Identify the subnet being used for the hands-on exercise.
+2. Open its associated route table.
+3. Check the "local" route and understand its purpose.
+4. Check whether the default IPv4 route "0.0.0.0/0" points to an Internet Gateway.
+5. Verify the Internet Gateway attachment and understand how it connects with the route table.
+6. Relate these settings to the public-subnet internet connectivity requirements.
+
+No successful end-to-end Route Table and Internet Gateway connectivity test was completed today, so this part remains pending.
+
+9. Key Takeaways
+
+- A VPC is a logically isolated AWS network.
+- A subnet is a network segment within a VPC and belongs to one AZ.
+- A VPC's "Available" state does not confirm internet connectivity.
+- Region and AZ are different concepts.
+- Multiple AZs can improve availability when the architecture is configured correctly.
+- A public subnet requires appropriate routing and other network settings to support internet connectivity.
+- Route Tables and Internet Gateways must be verified together when troubleshooting public access.
