@@ -1,0 +1,26 @@
+Day 18 — AWS Security, EC2 & Load Balancing
+
+Today, I learned how AWS networking and security work together to make an EC2-hosted website accessible.
+
+What I Learned
+
+- Security Groups: Understood stateful firewall rules, including inbound HTTP (port 80) traffic and outbound traffic.
+- Network ACLs (NACLs): Learned that NACLs are stateless, support both allow and deny rules, and require separate inbound and outbound rules. For an HTTP website, response traffic may use ephemeral ports, so allowing only outbound port 443 may not be sufficient.
+- EC2 & Pricing: Reviewed EC2 instances, AMIs, and On-Demand pricing. I learned that stopping an instance generally stops compute charges, but attached EBS storage may still incur charges.
+- Elastic Load Balancing: Learned how a load balancer distributes incoming requests across targets and how health checks help identify unhealthy targets.
+
+Hands-on Practice
+
+I inspected my existing VPC, subnet, route table, Internet Gateway, Security Group, and NACL settings. I verified the default route to the Internet Gateway and checked that public IPv4 auto-assignment was enabled on the subnet.
+
+Current Status
+
+Website connectivity testing is still pending because the EC2 instance is stopped and has no public IPv4 address. NAT Gateway hands-on is deferred until its potential cost is reviewed.
+
+Practice Results
+
+- Security Group & NACL: 5/5
+- EC2 MCQs: 5/5
+- Load Balancing MCQs: 3/3
+
+Next: Continue EC2 website connectivity troubleshooting and proceed with the AWS Cloud Practitioner preparation plan.
