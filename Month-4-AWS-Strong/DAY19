@@ -1,0 +1,28 @@
+Day 19 – AWS IAM Roles, S3 Storage Classes & CloudTrail
+
+Topics Covered
+
+- IAM Roles for EC2: Learned how EC2 instances use IAM roles to access AWS services securely without storing access keys directly on the instance.
+- S3 Hands-on Practice: Used AWS CLI to verify the active IAM role, list S3 bucket contents, and read an existing S3 object.
+- IAM Permissions: Verified how "AmazonS3ReadOnlyAccess" allows reading S3 data while restricting write operations.
+- S3 Storage Classes: Studied S3 Standard, Standard-IA, One Zone-IA, Intelligent-Tiering, Glacier Instant Retrieval, Glacier Flexible Retrieval, and Glacier Deep Archive.
+- AWS CloudTrail: Learned how CloudTrail records AWS API activity, including who performed an action, what action occurred, and when it happened.
+- CloudTrail vs. CloudWatch: Understood that CloudTrail tracks AWS account activity, while CloudWatch monitors metrics, logs, and alarms.
+- Troubleshooting & Auditing: Learned how CloudTrail helps investigate actions such as stopping an EC2 instance and how trails can deliver logs to S3 for longer-term retention.
+
+Practical Skills
+
+- Verified the active AWS identity using "aws sts get-caller-identity".
+- Listed the existing S3 bucket using AWS CLI.
+- Retrieved the contents of an existing S3 object.
+- Connected IAM role permissions with secure EC2-to-S3 access.
+
+Assessment
+
+Completed 5/5 CloudTrail MCQs correctly.
+
+Key Takeaway
+
+Learned how IAM roles provide secure AWS access, how S3 storage classes support different access and cost requirements, and how CloudTrail helps audit AWS activity.
+
+Day 19 Status: Completed
