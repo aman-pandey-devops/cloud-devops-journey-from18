@@ -1,0 +1,58 @@
+Day 20 | AWS Load Balancing, Auto Scaling & High Availability
+
+Overview
+
+Studied the architecture and core concepts behind building resilient, scalable, and highly available applications on AWS.
+
+Key Technical Learnings
+
+1. Application Load Balancer (ALB)
+
+- Explored Layer 7 load balancing for HTTP/HTTPS traffic.
+- Studied Target Groups, target health checks, and traffic distribution.
+- Understood how ALB routes requests to healthy registered targets.
+- Distinguished traffic management from EC2 instance provisioning and recovery.
+
+2. EC2 Launch Templates
+
+- Studied how Launch Templates define reusable EC2 launch configurations.
+- Reviewed key parameters, including AMI, instance type, security groups, and storage.
+- Understood how Launch Templates support consistent instance provisioning through Auto Scaling Groups.
+
+3. EC2 Auto Scaling
+
+- Learned the purpose of minimum, desired, and maximum capacity.
+- Explored how Auto Scaling Groups maintain configured capacity and replace unhealthy instances when health monitoring and replacement settings are configured appropriately.
+- Understood the relationship between Auto Scaling Groups and Launch Templates.
+
+4. Availability Zones & High Availability
+
+- Studied the relationship between AWS Regions and Availability Zones.
+- Explored multi-AZ deployment as a strategy for improving application resilience.
+- Understood how distributing compute resources across AZs can reduce the impact of an individual AZ failure.
+- Reviewed the importance of health checks, traffic routing, application design, and data availability in achieving high availability.
+
+Architecture Understanding
+
+Request Flow: Users → Application Load Balancer → Target Group → Healthy EC2 Instances
+
+Scaling Workflow: Auto Scaling Group → Launch Template → EC2 Instance Provisioning
+
+High Availability Strategy: Distribute application resources across multiple Availability Zones and configure health monitoring, routing, and recovery mechanisms.
+
+Hands-on & Console Exploration
+
+- Inspected the AWS console sections for Load Balancers, Target Groups, Auto Scaling Groups, Launch Templates, EC2 instances, and route tables.
+- Reviewed how the core components fit together in a scalable AWS architecture.
+- Used a cost-conscious, inspection-first approach without creating additional chargeable resources.
+
+Cloud Practitioner Exam Preparation
+
+- Completed 5 practice MCQs with a score of 5/5 (100%).
+- Revised ALB, Auto Scaling, desired capacity, health checks, Availability Zones, and High Availability.
+
+Key Takeaway
+
+Developed a clearer understanding of how AWS load balancing, automated compute capacity management, reusable instance configurations, and multi-AZ architecture work together to support scalable and resilient applications.
+
+Progress: Day 20 completed 
