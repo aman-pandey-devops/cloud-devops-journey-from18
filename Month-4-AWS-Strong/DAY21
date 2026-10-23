@@ -1,0 +1,43 @@
+# Day 21: Amazon CloudWatch & AWS CloudTrail
+
+**Goal:** Understand monitoring (CloudWatch) vs auditing (CloudTrail) for the AWS Certified Cloud Practitioner exam, using only free-tier console inspection. No paid resources were created.
+
+## 1. Amazon CloudWatch (Monitoring)
+- Explored EC2 per-instance metrics under CloudWatch → Metrics → All metrics.
+- Graphed `CPUUtilization` and `NetworkIn` for my EC2 instance.
+- **Troubleshooting:** The graph showed "No data available" on the 3h range because the instance was stopped and sent no metrics. Widening the range to 1 week revealed data from earlier running periods.
+- **Observations:** CPU stayed at roughly 0.1–0.4% (idle). NetworkIn peaked near 2.4 MB per 5-minute period (normal start-up traffic).
+- Basic monitoring publishes metrics every 5 minutes (free). Detailed monitoring is 1 minute (paid), so it was not enabled.
+- Reviewed the Create Alarm screen (statistic, period, threshold) without creating an alarm.
+- Checked Log Management → Log groups: empty. EC2 does not send OS or application logs to CloudWatch unless the CloudWatch Agent is installed.
+
+## 2. AWS CloudTrail (Auditing)
+- Opened Event history (last 90 days of management events, free by default).
+- Reviewed events: `ConsoleLogin`, `CheckMfa`, `StartInstances`, `StopInstances`, `SendSSHPublicKey`.
+- Inspected a JSON event record and identified the key fields:
+  - `userIdentity`: who performed the action (IAM user)
+  - `eventName`: what was done
+  - `eventTime`: when (UTC)
+  - `sourceIPAddress`: from which network
+  - `userAgent`: which client (browser, CLI or SDK)
+  - `MFAUsed`: whether MFA was used for login
+- **Correlation:** CloudWatch showed *when* the instance was running; CloudTrail showed *who* started and stopped it, at matching times.
+
+## 3. CloudWatch vs CloudTrail
+
+| | CloudWatch | CloudTrail |
+|---|---|---|
+| Purpose | Performance and health | Account activity audit |
+| Key question | What is happening? | Who did what, and when? |
+| Data | Metrics, logs, alarms, dashboards | API call events |
+| Free tier | Basic metrics (5 min) | Event history (90 days) |
+| Long-term storage | Log retention settings | Create a Trail (stores in S3) |
+
+## 4. Key Learnings
+- CloudWatch Logs is a feature of CloudWatch, not a separate service.
+- "Unhealthy" thresholds are defined by me in alarms; AWS does not set them.
+- Source IP in CloudTrail is the public IP of the network, not the device.
+- AWS can be accessed through Console, CLI and SDK, and CloudTrail records all three.
+- Security practice: account ID, IP address and instance ID are masked before publishing.
+
+
