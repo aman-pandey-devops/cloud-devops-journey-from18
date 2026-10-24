@@ -1,0 +1,59 @@
+ Day 22: AWS Revision and Cloud Practitioner Practice
+
+1. CloudFront Distribution Inspection
+
+- Inspected an existing Amazon CloudFront distribution without creating or modifying resources.
+- Checked the distribution status and domain name.
+- Observed that the distribution status was Disabled.
+- Identified the S3 static website endpoint as the origin.
+- Verified that the default root object was "index.html".
+- Learned that Origin Access Control (OAC) is not supported with an S3 static website endpoint origin.
+- Practiced inspecting AWS resources safely without making changes.
+
+2. Amazon Route 53 — Next Topic
+
+- Identified Amazon Route 53 as the next topic for learning.
+- Route 53 is an AWS DNS service used for domain registration, DNS routing, and health checks.
+
+3. AWS Lambda
+
+- Learned that AWS Lambda is a serverless compute service.
+- Understood that Lambda runs code without requiring users to manage servers directly.
+- Learned how Lambda can respond to events, such as an object being uploaded to Amazon S3.
+- Understood that Lambda can automatically scale based on demand.
+- Reviewed the basic pricing concept based on requests and execution duration.
+
+4. Amazon RDS
+
+- Learned that Amazon RDS is a managed relational database service.
+- Understood how applications can store and retrieve structured data using relational databases.
+- Reviewed supported database engines, including MySQL, PostgreSQL, and SQL Server.
+- Learned that AWS manages several database administration tasks, including supported backup and maintenance operations.
+
+5. AWS Lambda vs. Amazon RDS
+
+- AWS Lambda runs application code.
+- Amazon RDS stores and manages relational database data.
+- Understood that Lambda and RDS can work together in an application.
+
+6. AWS Cloud Practitioner MCQ Practice
+
+- Practiced four multiple-choice questions covering AWS Lambda and Amazon RDS.
+- Identified the appropriate service for serverless code execution.
+- Identified the appropriate service for relational database requirements.
+- Reviewed event-driven execution and the differences between compute and database services.
+- Score: 4/4 (100%).
+
+Key Takeaways
+
+- CloudFront can distribute content from an S3 origin.
+- An S3 static website endpoint differs from an S3 REST endpoint.
+- AWS Lambda is used for serverless code execution.
+- Amazon RDS is used for managed relational databases.
+- Lambda and RDS serve different purposes and can work together.
+- Inspected existing CloudFront resources without creating, modifying, enabling, or deleting anything.
+
+Next Steps
+
+- Learn Amazon Route 53 fundamentals.
+- Continue the remaining Month 4 website architecture, troubleshooting, revision, and Cloud Practitioner practice topics.
