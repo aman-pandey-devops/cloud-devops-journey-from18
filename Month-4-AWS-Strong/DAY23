@@ -1,0 +1,53 @@
+Day 23 – AWS Security Services - CLF02
+
+Topics Covered
+
+1. AWS Shield
+
+- Provides protection against Distributed Denial of Service (DDoS) attacks.
+- Helps protect applications and infrastructure from traffic-based attacks.
+
+2. AWS WAF (Web Application Firewall)
+
+- Filters incoming web requests using configured rules.
+- Helps block malicious requests and common web exploits.
+
+3. AWS KMS (Key Management Service)
+
+- Helps create and manage encryption keys.
+- Used to protect data through encryption across supported AWS services.
+
+4. Amazon GuardDuty
+
+- Detects suspicious activity and potential security threats in AWS accounts and workloads.
+- Analyzes supported data sources to identify potential risks.
+
+5. Amazon Inspector
+
+- Identifies software vulnerabilities and certain unintended network exposures in supported workloads.
+
+Important Differences
+
+Service| Main Purpose
+AWS Shield| DDoS protection
+AWS WAF| Filters web requests
+AWS KMS| Manages encryption keys
+Amazon GuardDuty| Detects potential threats
+Amazon Inspector| Identifies vulnerabilities
+
+Key Learnings
+
+- Understood the purpose of major AWS security services.
+- Learned the difference between threat detection, vulnerability assessment, web filtering, encryption key management, and DDoS protection.
+- Learned that GuardDuty primarily detects threats, while WAF can block requests according to configured rules.
+- Understood the basic meaning of an API: a way for software services to communicate and exchange requests.
+- Learned that actions performed through the AWS Management Console can trigger API requests.
+
+Practice and Assessment
+
+- Completed security-services practice questions.
+- Completed a 10-question AWS Security Services quiz.
+- Score: 9/10.
+- Reviewed the difference between AWS KMS and other security services.
+
+Status: Day 23 – Completed
