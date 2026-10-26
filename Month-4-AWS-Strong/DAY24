@@ -1,0 +1,105 @@
+Day 24 — AWS Cloud Practitioner Preparation
+
+1. Amazon RDS (Relational Database Service)
+
+What I Learned
+
+- Amazon RDS is a managed relational database service provided by AWS.
+- It supports database engines such as MySQL, PostgreSQL, MariaDB, Oracle, and Microsoft SQL Server.
+- Relational databases organize data into tables with rows and columns.
+- Applications can use SQL to query and manage structured data.
+- AWS manages many database administration tasks, including infrastructure provisioning and supported maintenance operations.
+
+When to Use It
+
+RDS is useful when an application needs a relational database, such as storing customer records, orders, or payment-related data.
+
+2. AWS Lambda
+
+What I Learned
+
+- AWS Lambda is a serverless compute service.
+- It executes code in response to configured events or requests.
+- AWS manages the underlying server infrastructure.
+- Lambda can integrate with services such as Amazon S3 and other supported AWS event sources.
+- Serverless does not mean servers do not exist; it means I do not manage the underlying servers directly.
+
+Example
+
+When a file is uploaded to an S3 bucket, a configured event can trigger a Lambda function to process that file.
+
+When to Use It
+
+Lambda is useful for event-driven automation, file processing, and running code without managing servers.
+
+3. Amazon DynamoDB
+
+What I Learned
+
+- DynamoDB is a fully managed NoSQL database service.
+- It supports key-value and document data models.
+- Unlike a traditional relational database, it does not require data to be organized into relational tables with fixed schemas in the same way.
+- It is designed for low-latency data access at scale.
+
+When to Use It
+
+DynamoDB is useful for applications that need fast access to key-based or document-oriented data.
+
+4. Amazon SNS (Simple Notification Service)
+
+What I Learned
+
+- SNS is a managed publish/subscribe messaging service.
+- A publisher sends a message to an SNS topic.
+- The topic distributes messages to its configured subscribers.
+- Subscribers can include supported endpoints such as AWS services, applications, or notification destinations.
+
+Example
+
+A system publishes an alert to an SNS topic, which distributes the notification to multiple configured subscribers.
+
+When to Use It
+
+SNS is useful for notifications and distributing messages to multiple subscribers.
+
+5. Amazon SQS (Simple Queue Service)
+
+What I Learned
+
+- SQS is a managed message queuing service.
+- Messages are stored in a queue until consumers retrieve and process them.
+- It allows application components to communicate asynchronously.
+- The producer and consumer do not need to process a message at the same moment.
+
+Example
+
+An application places an order-processing task in an SQS queue. A worker retrieves the message and processes the task.
+
+When to Use It
+
+SQS is useful for background jobs, task queues, and separating application components so they can process work independently.
+
+6. Important Differences
+
+Service| Main Purpose
+Amazon RDS| Managed relational database
+Amazon DynamoDB| Managed NoSQL database
+AWS Lambda| Runs code in response to configured events or requests
+Amazon SNS| Distributes messages to subscribers
+Amazon SQS| Stores messages for consumers to retrieve and process
+
+SNS vs SQS
+
+- SNS: Pushes published messages to configured subscribers.
+- SQS: Holds messages in a queue for consumers to retrieve.
+- SNS and SQS can work together when one event needs to reach multiple independent processing queues.
+
+7. Cloud Practitioner MCQ Practice
+
+- Practiced exam-style questions about RDS, Lambda, DynamoDB, SNS, and SQS.
+- Reviewed incorrect answers and revised weak concepts.
+- Focused on distinguishing relational databases from NoSQL databases.
+- Practiced identifying when to use SNS versus SQS.
+- Revised Lambda's event-driven execution and AWS-managed infrastructure.
+
+
