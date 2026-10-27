@@ -1,0 +1,65 @@
+Day 25 — Part 1: AWS Billing & Cost Management
+
+Overview
+
+Learned the fundamentals of AWS Billing and Cost Management, focusing on understanding cloud spending, monitoring costs, and managing billing across multiple AWS accounts.
+
+Topics Covered
+
+- AWS Billing Dashboard: Understand the overall billing summary of an AWS account.
+- AWS Bills: Review service-wise charges and detailed billing information.
+- AWS Cost Explorer: Analyze spending trends and compare costs across services and time periods.
+- AWS Budgets: Set cost or usage thresholds and configure alerts to monitor spending.
+- AWS Free Tier: Understand free usage limits, eligibility conditions, and potential charges beyond applicable limits.
+- AWS Cost and Usage Report (CUR): Access detailed cost and usage records for deeper analysis.
+- AWS Organizations — Consolidated Billing: Understand centralized management of multiple AWS accounts and combined billing.
+
+Key Learnings
+
+- Understand the difference between billing details, cost analysis, and budget alerts.
+- Monitor cloud spending and identify potential cost increases.
+- Understand why Free Tier usage must be monitored carefully.
+- Recognize how consolidated billing supports organizations managing multiple AWS accounts.
+- Learn that budget alerts do not automatically stop resources unless an appropriate action is separately configured.
+
+Outcome
+
+Built a foundation in AWS Billing and Cost Management, with a focus on cloud cost visibility, spending analysis, and cost control.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
