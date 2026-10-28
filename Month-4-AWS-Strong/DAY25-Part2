@@ -1,0 +1,37 @@
+Day 25 — Part 2: AWS Pricing Models & Well-Architected Framework
+
+Overview
+
+Learned the fundamentals of AWS pricing models and the six pillars of the AWS Well-Architected Framework.
+
+Topics Covered
+
+AWS Pricing Models
+
+- On-Demand: Use AWS resources without a long-term commitment.
+- Reserved Instances: Understand commitment-based discounts for eligible usage.
+- Savings Plans: Learn how committing to eligible compute usage can provide discounts.
+- Spot Instances: Use spare EC2 capacity at lower prices, with the possibility of interruption.
+- Dedicated Hosts: Understand dedicated physical servers for specific licensing and compliance requirements.
+
+AWS Well-Architected Framework
+
+Studied the six pillars:
+
+1. Operational Excellence: Manage operations, monitor systems, and improve processes.
+2. Security: Protect data, accounts, and infrastructure from unauthorized access.
+3. Reliability: Keep systems available and recover from failures.
+4. Performance Efficiency: Select and use suitable resources to meet performance requirements.
+5. Cost Optimization: Reduce unnecessary spending and use resources efficiently.
+6. Sustainability: Reduce environmental impact through efficient resource usage.
+
+Key Learnings
+
+- Understand the differences between AWS pricing options.
+- Recognize the trade-offs between cost, flexibility, and interruptions.
+- Identify the six Well-Architected pillars and their purposes.
+- Apply these concepts when planning secure, reliable, and cost-conscious cloud solutions.
+
+Outcome
+
+Built foundational knowledge of AWS pricing and cloud architecture best practices as part of Month 4 Cloud + DevOps learning.
