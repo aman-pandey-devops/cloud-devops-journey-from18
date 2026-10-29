@@ -1,0 +1,32 @@
+Day 26 — AWS Cloud Practitioner Mock Test & Weak Topic Analysis
+
+Overview
+
+Completed a 65-question AWS Cloud Practitioner practice mock test to evaluate my understanding of AWS services, cloud concepts, security, networking, storage, and billing.
+
+Mock Test Results
+
+- Total Questions: 65
+- Correct Answers: 52
+- Incorrect Answers: 13
+- Score: 80%
+
+Topics Covered
+
+- IAM, EC2, S3, VPC, Security Groups, and IAM Roles
+- Elastic Load Balancing and Auto Scaling
+- CloudWatch and CloudTrail
+- CloudFront and Route 53
+- AWS security services, including WAF, Shield, KMS, GuardDuty, Macie, Inspector, Config, and Artifact
+- AWS storage services: EBS, EFS, S3, and S3 Glacier
+- Networking: Site-to-Site VPN and Direct Connect
+- Database and application services: RDS, Lambda, DynamoDB, SNS, and SQS
+- AWS billing, pricing models, Cost Explorer, Budgets, and the Well-Architected Framework
+
+Key Learnings
+
+- Evaluated my understanding of AWS services through exam-style questions.
+- Identified areas requiring further revision, especially similar AWS security services, networking options, storage types, and pricing models.
+- Recognized the importance of understanding service use cases rather than memorizing definitions.
+
+
