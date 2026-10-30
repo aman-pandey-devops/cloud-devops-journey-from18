@@ -1,0 +1,32 @@
+Month 4 — Secure AWS Web Infrastructure Project
+
+Overview
+
+Continued building my Secure AWS Web Infrastructure project, focusing on AWS networking, EC2 deployment, IAM permissions, S3 integration, and monitoring.
+
+Work Completed
+
+- Inspected existing VPCs, subnets, Internet Gateways, and route tables.
+- Verified public and private subnet associations and routing configurations.
+- Identified a blackhole route caused by a previously deleted NAT Gateway.
+- Continued the EC2 and Nginx web server deployment.
+- Configured an IAM Role for EC2 to access S3.
+- Started setting up CloudWatch monitoring with an SNS notification topic.
+
+Key Learnings
+
+- Understood the relationship between VPCs, subnets, route tables, and Internet Gateways.
+- Learned why a deleted NAT Gateway can leave a blackhole route.
+- Reviewed how IAM Roles allow EC2 instances to access AWS services securely.
+- Explored how CloudWatch alarms and SNS notifications support infrastructure monitoring.
+
+Next Steps
+
+- Complete the CloudWatch alarm configuration and test SNS notifications.
+- Test the deployed website, S3 access, and security configurations.
+- Troubleshoot any issues and document their root causes and solutions.
+- Finalize the architecture diagram, screenshots, README, and cost-and-cleanup notes.
+
+Outcome
+
+Made progress toward a practical AWS infrastructure project while developing a better understanding of networking, access control, and monitoring.
