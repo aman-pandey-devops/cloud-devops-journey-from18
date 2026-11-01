@@ -1,0 +1,37 @@
+Month 4 – Final Project Completed: Secure AWS Web Infrastructure
+
+Successfully completed my Month 4 Cloud + DevOps final project: Secure AWS Web Infrastructure.
+
+Project Implementation
+
+- Designed and configured a custom AWS VPC.
+- Configured public and private subnets.
+- Set up Internet Gateway and Route Tables.
+- Implemented network security using Security Groups and Network ACLs.
+- Launched an EC2 instance and deployed an Nginx web server.
+- Configured an IAM Role to provide secure S3 access to EC2.
+- Used Amazon S3 for static file storage.
+- Configured CloudWatch monitoring and alarms.
+- Integrated Amazon SNS for alert notifications.
+
+Testing & Documentation
+
+- Tested website accessibility and infrastructure connectivity.
+- Verified EC2-to-S3 access using IAM Role permissions.
+- Configured and reviewed monitoring and notification settings.
+- Documented the architecture, implementation steps, and screenshots in the project README.
+
+Key Learnings
+
+- AWS networking and traffic flow.
+- EC2 deployment and web server configuration.
+- IAM roles and permission management.
+- S3 integration.
+- Infrastructure monitoring and alerting.
+- AWS security and troubleshooting.
+
+Project Status: Completed
+
+Month 4 Status: Completed
+
+This project helped me understand how multiple AWS services work together to build and monitor a secure cloud infrastructure.
