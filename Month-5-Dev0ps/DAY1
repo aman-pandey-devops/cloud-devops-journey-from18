@@ -1,0 +1,111 @@
+Day 1 – Docker Fundamentals
+
+1. What is Docker?
+
+Docker is a platform that helps developers package applications along with their required dependencies, libraries, configuration files, and runtime environment.
+
+It makes it easier to run applications consistently across different compatible environments, such as development computers, testing environments, and cloud servers.
+
+For example, a Python application may work on one computer but fail on another because of different Python versions or missing libraries. Docker helps reduce these environment-related compatibility problems by packaging the application with its requirements.
+
+2. Why Do We Need Docker?
+
+Without Docker, developers may face problems when moving applications between different computers or servers.
+
+Common issues include:
+
+- Different programming language versions.
+- Missing libraries and dependencies.
+- Different application configurations.
+- Applications working in development but failing in production.
+
+Docker helps make application deployment more consistent and manageable.
+
+3. How Does Docker Work?
+
+The basic Docker workflow is:
+
+1. A developer creates an application.
+2. The application and its required environment are packaged into a Docker image.
+3. A container is created and started from that image.
+4. The application runs inside the container.
+
+This makes it easier to move and deploy applications across compatible environments.
+
+4. What Is a Kernel?
+
+The kernel is the core part of an operating system. It manages communication between applications and computer hardware.
+
+Its responsibilities include:
+
+- Managing CPU resources.
+- Managing memory (RAM).
+- Handling file access.
+- Managing running processes.
+- Providing applications with access to system resources.
+
+Docker containers generally share the host operating system's kernel instead of running a complete separate operating system inside every container.
+
+5. How Does Docker Use the Kernel?
+
+Linux containers use the Linux kernel of their host environment.
+
+For example, when running Linux containers on a Linux machine, containers share the host's Linux kernel.
+
+On Windows, Docker Desktop commonly uses WSL 2 or another Linux environment to run Linux containers.
+
+Sharing the host kernel is one of the main reasons containers are generally more lightweight than virtual machines.
+
+6. Docker Image vs Docker Container
+
+Docker Image
+
+A Docker image is a read-only template used to create containers.
+
+It contains the application and the files, dependencies, and configuration required to run it.
+
+Example: An Nginx Docker image can be used to create Nginx containers.
+
+Docker Container
+
+A Docker container is an instance created from a Docker image. It provides an isolated environment in which the application runs.
+
+Containers can be started, stopped, restarted, and removed.
+
+Relationship Between Images and Containers
+
+One Docker image can be used to create multiple independent containers.
+
+For example, a single Nginx image can create three separate Nginx containers.
+
+7. Docker vs Virtual Machines
+
+Docker Containers| Virtual Machines
+Generally share the host kernel| Run their own guest operating system
+Usually lightweight| Generally require more resources
+Usually start quickly| Generally take longer to boot
+Provide process-level isolation| Provide virtualized machine environments
+
+8. Real-World Use of Docker
+
+Docker is commonly used in software development and DevOps workflows.
+
+- Developers package applications into images.
+- Testers run the same packaged application in testing environments.
+- DevOps engineers deploy containers on servers or cloud infrastructure.
+
+This helps maintain consistency between development, testing, and production environments.
+
+Key Takeaways
+
+- Docker helps package and run applications with their required dependencies.
+- Docker images are templates used to create containers.
+- Containers are running instances created from images.
+- Multiple containers can be created from one image.
+- The kernel manages hardware and system resources.
+- Linux containers generally share the host kernel.
+- Containers are generally more lightweight than virtual machines.
+
+Day 1 Status: Docker Fundamentals – Conceptual Learning Completed.
+
+Practical Work: Not started. Docker installation and hands-on commands are scheduled for Day 2.
