@@ -1,0 +1,58 @@
+Day 02 – Docker Images and Containers
+
+Overview
+
+On Day 2 of my Cloud and DevOps learning journey, I practised working with Docker images and containers using Docker Engine installed directly inside Ubuntu on WSL2.
+
+1. Docker Image Management
+
+- Downloaded the official Nginx image from Docker Hub using "docker pull nginx".
+- Checked downloaded images using "docker images".
+- Understood that Docker images are templates used to create containers.
+- Learned that one image can be used to create multiple independent containers.
+
+2. Running Containers
+
+- Executed the "hello-world" image to verify that Docker was working correctly.
+- Inspected containers using "docker ps" and "docker ps -a".
+- Ran an Nginx container using port mapping:
+  "docker run -d --name my-nginx -p 8080:80 nginx"
+- Accessed the Nginx welcome page through "http://localhost:8080".
+
+3. Container Lifecycle Management
+
+Practised the following commands:
+
+Command| Purpose
+"docker pull nginx"| Download an image
+"docker images"| List downloaded images
+"docker run"| Create and start a container
+"docker ps"| List running containers
+"docker ps -a"| List all containers
+"docker stop my-nginx"| Stop a container
+"docker start my-nginx"| Start an existing container
+"docker rm my-nginx"| Remove a container
+
+4. Key Concepts Learned
+
+- Difference between Docker images and containers.
+- How Docker downloads images from Docker Hub.
+- How containers are created and started from images.
+- How to manage the container lifecycle.
+- Host-to-container port mapping.
+- How Nginx serves a web page from inside a Docker container.
+
+Practical Outcome
+
+Successfully downloaded the Nginx image, launched a container, accessed the Nginx welcome page through the browser, and practised stopping, restarting, and removing the container.
+
+The Nginx image was retained after container removal for future use.
+
+Environment
+
+- Operating System: Ubuntu 26.04 LTS on WSL2
+- Docker Engine: 29.1.3
+- Web Server: Nginx
+- Image Source: Docker Hub
+
+Day 02 Completed – Docker Images and Container Management
