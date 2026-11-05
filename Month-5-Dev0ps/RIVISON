@@ -1,0 +1,22 @@
+Day 04 – Docker Revision & Practice
+
+Overview
+
+Today, I focused on revising the Docker concepts and commands covered in the previous sessions.
+
+Revision Topics
+
+- Docker Images and Containers
+- Container lifecycle: Create, Start, Stop, and Remove
+- Running an Nginx container
+- Checking running and stopped containers
+- Viewing container logs using "docker logs"
+- Accessing a container using "docker exec"
+- Exploring the Nginx default website directory
+- Inspecting container configuration using "docker inspect"
+
+Learning Outcome
+
+Revised the fundamentals of Docker image and container management, along with practical commands used to inspect and manage containers.
+
+Note: Today's session was focused on revision rather than introducing new topics.
