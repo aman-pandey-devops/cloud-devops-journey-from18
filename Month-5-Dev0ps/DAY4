@@ -1,0 +1,176 @@
+Day 04 – Docker Port Mapping, Volumes & Environment Variables
+
+Overview
+
+On Day 4 of my Docker learning journey, I explored three important Docker concepts and implemented them through hands-on exercises:
+
+- Docker Port Mapping
+- Docker Volumes and Persistent Storage
+- Environment Variables
+
+The objective was to understand how containers communicate with the host machine, how application data can persist beyond a container's lifecycle, and how applications can be configured at runtime.
+
+1. Docker Port Mapping
+
+Theory
+
+Port mapping connects a port on the host machine to a port inside a Docker container.
+
+Syntax:
+
+-p HOST_PORT:CONTAINER_PORT
+
+- Host Port: The port used to access the application from the host machine.
+- Container Port: The port on which the application listens inside the container.
+- Port mapping makes containerized applications accessible through the host machine.
+
+Hands-on Implementation
+
+Step 1: Checked port availability
+
+sudo ss -tulnp | grep :9090
+
+Step 2: Created an Nginx container with custom port mapping
+
+sudo docker run -d --name day4-nginx -p 9090:80 nginx
+
+Step 3: Verified the running container
+
+sudo docker ps
+
+Step 4: Tested the application
+
+Opened the following URL in the browser:
+
+http://localhost:9090
+
+Result: Successfully accessed the Nginx Welcome Page using host port 9090 mapped to container port 80.
+
+2. Docker Volumes
+
+Theory
+
+Docker containers use a writable layer for storing data. However, data in this layer is not preserved when a container is removed.
+
+Docker Volumes provide persistent storage that exists independently of containers.
+
+Key concepts:
+
+- Volumes store data outside a container's writable layer.
+- A volume can be mounted into a container directory.
+- The same volume can be reused by another container.
+- Removing a container does not automatically remove its named volume.
+
+Hands-on Implementation
+
+Step 1: Created a named volume
+
+sudo docker volume create day4-data
+
+Step 2: Inspected the volume
+
+sudo docker volume inspect day4-data
+
+Verified its name, driver, scope, and mountpoint.
+
+Step 3: Attached the volume to an Nginx container
+
+sudo docker run -d --name day4-volume-nginx -p 9091:80 -v day4-data:/usr/share/nginx/html nginx
+
+Step 4: Created a custom HTML file inside the mounted directory
+
+sudo docker exec day4-volume-nginx sh -c 'echo "<h1>Hello from Docker Volume!</h1>" > /usr/share/nginx/html/index.html'
+
+Step 5: Verified the website
+
+Opened:
+
+http://localhost:9091
+
+Successfully displayed the custom HTML message.
+
+Step 6: Removed the original container
+
+sudo docker rm -f day4-volume-nginx
+
+Step 7: Created a new container using the same volume
+
+sudo docker run -d --name day4-volume-test -p 9092:80 -v day4-data:/usr/share/nginx/html nginx
+
+Step 8: Verified data persistence
+
+Opened:
+
+http://localhost:9092
+
+Result: The custom HTML message was still available in the new container. This confirmed that the named Docker Volume preserved the data after the original container was removed.
+
+3. Environment Variables
+
+Theory
+
+Environment Variables provide configuration values to applications at runtime without requiring changes to the application's source code.
+
+They are useful for managing different configurations across development, testing, and production environments.
+
+Examples:
+
+APP_ENV=testing
+APP_ENV=production
+DEBUG=false
+
+Important concepts:
+
+- "-e" passes an environment variable to a container.
+- Applications must be designed to read and use these variables.
+- Setting a variable does not automatically change application behaviour.
+- Sensitive values should be handled through secure secrets-management practices.
+
+Hands-on Implementation
+
+Step 1: Created a container with an environment variable
+
+sudo docker run -d --name day4-env-test -e APP_ENV=testing nginx
+
+Step 2: Verified the environment variable
+
+sudo docker exec day4-env-test printenv APP_ENV
+
+Output:
+
+testing
+
+Result: Successfully passed and verified a custom environment variable inside the running container.
+
+Key Commands Practiced
+
+Command| Purpose
+"ss -tulnp"| Check listening ports
+"docker run"| Create and start containers
+"docker ps"| List running containers
+"docker volume create"| Create a named volume
+"docker volume inspect"| Inspect volume details
+"docker exec"| Execute commands inside a container
+"docker rm -f"| Forcefully remove a container
+"printenv"| Display environment variable values
+
+Key Learnings
+
+By completing today's practical exercises, I learned:
+
+1. How to expose containerized applications through host port mapping.
+2. How to create, inspect, and attach Docker Volumes.
+3. How persistent storage works across container deletion and recreation.
+4. How to pass and verify environment variables inside containers.
+5. How to validate Docker configurations through actual browser testing and terminal commands.
+
+Practical Outcome
+
+Successfully:
+
+- Deployed an Nginx container using custom port mapping.
+- Created and mounted a named Docker Volume.
+- Verified data persistence after deleting and recreating a container.
+- Passed and verified an environment variable inside a container.
+
+Status: Day 04 Completed
