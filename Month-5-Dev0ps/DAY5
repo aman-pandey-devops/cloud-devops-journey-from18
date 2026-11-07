@@ -1,0 +1,86 @@
+Day 05 – Docker Hub & Container Troubleshooting
+
+Overview
+
+Learned how Docker Hub works as a container image registry and practiced publishing, downloading, and deploying Docker images. Also performed a simulated company troubleshooting task to identify and fix an Nginx deployment issue.
+
+1. Docker Hub – Theory
+
+- Docker Hub is a cloud-based registry for storing and sharing Docker images.
+- "docker pull" downloads images from a registry.
+- "docker push" uploads images to a registry.
+- Public repositories allow other users to access and download published images.
+- Image tags help identify different image versions.
+
+2. Hands-on Implementation
+
+Pulled the Nginx image:
+
+sudo docker pull nginx
+
+Verified local images:
+
+sudo docker images
+
+Created a public Docker Hub repository: "aman1030/my-nginx"
+
+Tagged the image:
+
+sudo docker tag nginx:latest aman1030/my-nginx:v1
+
+Logged in to Docker Hub:
+
+sudo docker login -u aman1030
+
+Resolved an authentication issue by using a Personal Access Token with repository Read & Write permissions.
+
+Pushed the image:
+
+sudo docker push aman1030/my-nginx:v1
+
+Pulled the published image:
+
+sudo docker pull aman1030/my-nginx:v1
+
+Deployed a container using the published image:
+
+sudo docker run -d --name hub-nginx-test -p 9093:80 aman1030/my-nginx:v1
+
+Verified the Nginx Welcome Page at "http://localhost:9093".
+
+3. Practical Troubleshooting
+
+Scenario: Nginx was running, but the application was inaccessible.
+
+Investigation:
+
+sudo docker ps -a
+
+Identified incorrect port mapping:
+
+- Incorrect: "9094:8080"
+- Correct: "9094:80"
+
+Root Cause: Nginx listens on container port 80 by default, but the container was configured to use port 8080.
+
+Resolution:
+
+Removed the incorrectly configured container:
+
+sudo docker rm -f ticket-nginx
+
+Recreated it with the correct port mapping:
+
+sudo docker run -d --name ticket-nginx -p 9094:80 nginx
+
+Verification: Successfully accessed the Nginx Welcome Page at "http://localhost:9094".
+
+Key Learnings
+
+- Docker Hub image publishing and distribution.
+- Image tagging, authentication, pulling, and pushing.
+- Personal Access Token permissions.
+- Running containers from published images.
+- Investigating deployment issues and identifying root causes.
+- Fixing port mapping and verifying application availability.
+
