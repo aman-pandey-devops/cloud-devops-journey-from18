@@ -1,0 +1,44 @@
+Day 06 – Docker Troubleshooting
+
+Objective
+
+Practiced investigating and resolving common Docker issues through three simulated company-style troubleshooting scenarios.
+
+Scenario 1: Incorrect Port Mapping
+
+- Investigated an Nginx container using "docker ps -a".
+- Found that the container had no host port mapping.
+- Removed the incorrectly configured container.
+- Recreated it using "-p 9095:80".
+- Verified that the Nginx welcome page opened successfully at "http://localhost:9095".
+
+Scenario 2: Container Immediately Exits
+
+- Investigated the container status using "docker ps -a".
+- Found the container in the "Exited (1)" state.
+- Used "docker logs" to identify the simulated error message.
+- Learned how a terminated main process causes a container to stop.
+- Understood the difference between exit code "0" (success) and "1" (failure).
+
+Scenario 3: Incorrect Image Tag
+
+- Reproduced an image pull failure using an invalid tag:
+  "nginx:wrong-tag-123"
+- Identified the incorrect tag in the image reference.
+- Successfully pulled the correct image using:
+  "sudo docker pull nginx:latest"
+- Verified the downloaded image using "docker images".
+
+Key Learnings
+
+- Investigating container status and port mappings.
+- Reading container logs to identify failures.
+- Understanding container lifecycle and exit codes.
+- Identifying incorrect image names and tags.
+- Applying a systematic troubleshooting workflow.
+
+Troubleshooting Workflow
+
+Investigate → Identify Root Cause → Fix → Verify
+
+Completed three practical Docker troubleshooting scenarios.
