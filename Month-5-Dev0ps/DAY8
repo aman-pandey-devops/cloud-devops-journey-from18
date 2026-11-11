@@ -1,0 +1,52 @@
+Day 08 – Dockerfile and Custom Docker Image
+
+Objective
+
+Learn how to create a custom Docker image using a Dockerfile and run a website container from that image.
+
+Dockerfile Instructions Covered
+
+- FROM: Defines the base image.
+- COPY: Copies project files into the image.
+- RUN: Executes commands during image build.
+- CMD: Defines the default command when a container starts.
+
+Dockerfile Created
+
+FROM nginx:latest
+COPY . /usr/share/nginx/html/
+
+Hands-on Implementation
+
+1. Created a Dockerfile inside the website project directory.
+2. Used the official Nginx image as the base image.
+3. Copied website files into the Nginx document root.
+4. Built a custom Docker image:
+
+sudo docker build -t aman-nginx:v1 .
+
+5. Verified the custom image:
+
+sudo docker images
+
+6. Created and started a container using the custom image:
+
+sudo docker run -d --name aman-website -p 8080:80 aman-nginx:v1
+
+7. Verified the running container using:
+
+sudo docker ps
+
+8. Opened the website in the browser and confirmed that it was accessible.
+
+Key Learning
+
+- Difference between Dockerfile, Docker image, and Docker container.
+- Purpose of FROM, COPY, RUN, and CMD.
+- How to build a custom Docker image.
+- How to run a container using a custom image.
+- How to verify a running container.
+
+Status
+
+Completed the Dockerfile creation, custom image build, and container deployment hands-on practice.
