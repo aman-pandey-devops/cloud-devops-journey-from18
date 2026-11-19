@@ -1,0 +1,102 @@
+Month 5 — Day 8: Dockerfile, Custom Images & AWS/Docker Revision
+
+Overview
+
+Today I worked on building custom Docker images, understanding Dockerfile instructions, image layers, caching, ".dockerignore", and publishing a custom image to Docker Hub.
+
+I also started revising AWS and Docker concepts through practical troubleshooting and interview-style scenarios.
+
+1. Dockerfile
+
+Created a Dockerfile to build a custom Nginx website image.
+
+FROM nginx:latest
+COPY . /usr/share/nginx/html/
+
+Instructions learned
+
+- "FROM" — Defines the base image.
+- "COPY" — Copies files from the build context into the image.
+- "RUN" — Executes commands during image building.
+- "CMD" — Defines the default command when a container starts.
+
+2. Custom Docker Image Build
+
+Built a custom image using:
+
+sudo docker build -t aman-nginx:v1 .
+
+Ran the container and verified the website in the browser.
+
+3. Docker Image Layers & Cache
+
+Explored image history using:
+
+sudo docker history aman-nginx:v1
+
+Learned how Docker images consist of layers and how Docker build cache can reuse unchanged layers to make builds more efficient.
+
+4. .dockerignore
+
+Created and tested a ".dockerignore" file.
+
+.git
+.gitignore
+README.md
+*.log
+
+Created a temporary log file and verified that it was excluded from the Docker build context and was not present inside the resulting container.
+
+Why .dockerignore matters
+
+- Excludes unnecessary files from the build context.
+- Helps reduce build context size.
+- Prevents unwanted files from being copied into the image.
+
+5. Docker Hub
+
+Tagged and published my custom image to Docker Hub.
+
+sudo docker tag aman-nginx:v3 aman1030/my-nginx:v2
+sudo docker login -u aman1030
+sudo docker push aman1030/my-nginx:v2
+
+Docker Hub repository:
+
+https://hub.docker.com/repository/docker/aman1030/my-nginx
+
+6. AWS Revision — Troubleshooting Scenarios
+
+Revised the following AWS concepts through practical scenarios:
+
+- EC2 website connectivity troubleshooting.
+- Security Groups and inbound/outbound rules.
+- Nginx service troubleshooting.
+- VPC, public/private subnets, and Route Tables.
+- Internet Gateway vs NAT Gateway.
+- IAM Roles and EC2 temporary credentials.
+- ARN and AWS identity verification using "aws sts get-caller-identity".
+- S3 IAM permissions and Bucket Policies.
+- Explicit Deny.
+- Security Groups vs Network ACLs.
+- Stateful vs Stateless networking.
+- VPC local routes and communication between EC2 instances using private IPs.
+
+7. Key Learnings
+
+- A Dockerfile defines how a custom Docker image is built.
+- Docker images contain layers that can be reused through caching.
+- ".dockerignore" filters unnecessary files from the build context.
+- Docker images can be tagged and published to Docker Hub.
+- IAM Roles provide temporary AWS credentials to EC2.
+- Security Groups are stateful, while NACLs are stateless.
+- Private EC2 instances can access the internet through a NAT Gateway without requiring public IPs.
+- EC2 instances within the same VPC can communicate through private IPs using the local route, subject to security and network rules.
+
+Day 8 Summary
+
+Completed Dockerfile practice, custom image building, Docker layer and cache inspection, ".dockerignore" testing, and Docker Hub image publishing.
+
+Also started AWS and Docker revision through troubleshooting scenarios to strengthen practical understanding and interview preparation.
+
+Month 5 — Day 8 Completed.
