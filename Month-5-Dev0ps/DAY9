@@ -1,0 +1,68 @@
+Day 9: Building and Running a Custom Docker Image
+
+Overview
+
+Today I practiced creating a custom Docker image using a Dockerfile, packaging my own HTML website into an Nginx image, and running it as a container.
+
+1. Project Structure
+
+Created a new project with the following structure:
+
+day9-docker-project/
+├── Dockerfile
+└── website/
+    └── index.html
+
+2. Created a Custom Dockerfile
+
+FROM nginx:latest
+COPY website/ /usr/share/nginx/html/
+
+Instructions Learned
+
+- "FROM" — selects the base image.
+- "COPY" — copies files from the build context into the image.
+- Nginx default website directory — "/usr/share/nginx/html/".
+
+3. Built a Custom Docker Image
+
+sudo docker build -t day9-website:v1 .
+
+Learned how to build a custom image from a Dockerfile and assign a name and tag to it.
+
+4. Verified the Image
+
+sudo docker images
+
+Confirmed that "day9-website:v1" was successfully created.
+
+5. Ran a Container
+
+sudo docker run -d --name day9-website-container -p 8085:80 day9-website:v1
+
+Learned how to run a custom image as a container and map host port 8085 to container port 80.
+
+6. Website Verification
+
+- Opened the website using "http://localhost:8085".
+- Confirmed that the custom website was accessible in the browser.
+- Verified that "index.html" was present inside the container.
+
+7. Container Inspection
+
+sudo docker exec day9-website-container ls /usr/share/nginx/html/
+
+sudo docker exec day9-website-container cat /usr/share/nginx/html/index.html
+
+Learned how to execute commands inside a running container and inspect files without stopping it.
+
+Key Learnings
+
+- Creating a custom image using a Dockerfile.
+- Using Nginx as a base image.
+- Copying website files into the container's web directory.
+- Building and tagging Docker images.
+- Running containers with port mapping.
+- Verifying website files and content inside a container using "docker exec".
+
+  Day 9 Completed.
