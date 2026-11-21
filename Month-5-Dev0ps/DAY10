@@ -1,0 +1,76 @@
+Month 5 — Day 10: Docker CMD & Container Startup Behavior
+
+Objective
+
+Understand how Docker CMD defines the default command executed when a container starts, and observe the container lifecycle after the main process finishes.
+
+1. Project Setup
+
+Created a dedicated project directory:
+
+mkdir -p ~/day10-cmd-entrypoint
+cd ~/day10-cmd-entrypoint
+
+2. Dockerfile
+
+Created a Dockerfile using the Ubuntu base image and CMD instruction.
+
+FROM ubuntu:latest
+CMD ["echo", "Hello Docker - DAY10"]
+
+Concepts Learned
+
+- "FROM" defines the base image used to build a Docker image.
+- "CMD" specifies the default command that runs when a container starts.
+- The command is executed when Docker starts a container from the image.
+
+3. Building the Docker Image
+
+sudo docker build -t day10-cmd:v1 .
+
+What I Learned
+
+- "docker build" builds a new image using the Dockerfile.
+- "-t" assigns a name and tag to the image.
+- "." specifies the current directory as the build context.
+- Docker automatically pulls the required base image if it is not available locally.
+
+4. Running the Container
+
+sudo docker run --name day10-cmd-test day10-cmd:v1
+
+Output
+
+Hello Docker - DAY10
+
+This confirmed that Docker successfully created the container and executed the command defined in CMD.
+
+5. Container Lifecycle Verification
+
+sudo docker ps -a
+
+Observation
+
+After displaying the message, the container stopped.
+
+What I Learned
+
+- A container runs while its main process is running.
+- When the main process finishes execution, the container exits.
+- A container in the Exited state is not necessarily an error.
+- Containers are designed to run processes, not simply remain active indefinitely.
+
+Key Commands Practiced
+
+Command| Purpose
+"docker build"| Build an image from a Dockerfile
+"docker run"| Create and start a container
+"docker ps -a"| View all containers, including stopped containers
+
+Day 10 Status
+
+Completed so far: Dockerfile creation, image building, running a container with CMD, and verifying container exit behavior.
+
+Still under revision: CMD override, ENTRYPOINT, CMD + ENTRYPOINT interaction, and Docker startup troubleshooting.
+
+Day 10 remains in progress.o
