@@ -1,0 +1,123 @@
+Day 10 — Docker CMD, ENTRYPOINT & Troubleshooting
+
+Objective
+
+Understand how Docker containers start, how "CMD" and "ENTRYPOINT" control execution, how runtime arguments work, and how to troubleshoot container behavior.
+
+1. CMD Instruction
+
+"CMD" defines the default command or arguments Docker executes when a container starts. It can be overridden by providing a different command at runtime.
+
+FROM ubuntu:latest
+CMD ["echo", "Hello Docker - DAY10"]
+
+Build and run:
+
+sudo docker build -t day10-cmd:v1 .
+sudo docker run --name day10-cmd-test day10-cmd:v1
+
+Output: "Hello Docker - DAY10"
+
+The container exited after printing the message because "echo" completed its execution. A container remains running only while its main process is running.
+
+2. CMD Override & Container Debugging
+
+sudo docker run -it --name day10-debug day10-cmd:v1 bash
+
+This command starts an interactive Bash shell instead of executing the default CMD.
+
+Inside the container, I practiced:
+
+pwd
+ls -la
+ls -la /app
+ls -la /usr/share/nginx/html
+
+I inspected the working directory and checked different paths to understand the container filesystem.
+
+What I understood: An interactive shell is useful for debugging because it allows us to inspect files, directories, and the environment inside a container without modifying the original image.
+
+3. ENTRYPOINT Instruction
+
+"ENTRYPOINT" defines the main executable that runs when a container starts. Unlike CMD, the executable generally remains fixed when runtime arguments are supplied.
+
+FROM ubuntu:latest
+ENTRYPOINT ["echo", "Docker ENTRYPOINT is running"]
+
+Run:
+
+sudo docker run --name day10-entry-test day10-entry:v1
+sudo docker run --rm day10-entry:v1 Hello Aman
+
+The second command produced:
+
+Docker ENTRYPOINT is running Hello Aman
+
+This demonstrated how additional runtime arguments are passed to the configured ENTRYPOINT.
+
+4. CMD and ENTRYPOINT Together
+
+FROM ubuntu:latest
+ENTRYPOINT ["echo"]
+CMD ["Hello from Docker"]
+
+Here, ENTRYPOINT defines the executable ("echo"), while CMD provides its default argument.
+
+Default execution:
+
+sudo docker run --rm day10-combo:v1
+
+Output: "Hello from Docker"
+
+Runtime override:
+
+sudo docker run --rm day10-combo:v1 Hello Aman
+
+Output: "Hello Aman"
+
+What I understood: Runtime arguments replaced the default CMD arguments, while ENTRYPOINT remained unchanged. This allows a container to use a fixed executable with flexible inputs.
+
+5. Container Troubleshooting
+
+Scenario 1 — Web server accessibility
+
+Started an Nginx container with port mapping:
+
+sudo docker run -d --name troubleshoot-web -p 8080:80 nginx
+
+Investigated its state, port mapping, and logs using:
+
+sudo docker ps -a
+sudo docker logs troubleshoot-web
+
+Verified that the container was running and the port mapping was "8080 → 80/TCP".
+
+Learning: A running container and correct port mapping are important checks, but they alone do not confirm that a web application is accessible.
+
+Scenario 2 — Container exits immediately
+
+sudo docker run -d --name troubleshoot-exit ubuntu
+
+The container exited because no long-running foreground process was provided.
+
+Learning: Detached mode ("-d") runs a container in the background but does not keep it alive. Docker containers depend on their main process; when that process exits, the container stops. Port mapping is not required for every container.
+
+Key Learnings
+
+- "CMD" defines the default command or arguments.
+- "ENTRYPOINT" defines the main executable.
+- CMD can be overridden at runtime.
+- CMD and ENTRYPOINT can work together.
+- Container lifecycle depends on the main process.
+- "docker ps -a" helps identify container state.
+- "docker logs" helps investigate container output.
+- Port mapping connects host ports to container ports.
+- Exited containers can still be inspected and their logs retrieved.
+
+Day 10 Progress
+
+- CMD and ENTRYPOINT — Practiced
+- Runtime command overrides — Tested
+- Interactive container debugging — Practiced
+- Container startup and exit behavior — Understood
+- Troubleshooting scenarios — Investigated
