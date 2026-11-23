@@ -1,0 +1,148 @@
+Day 11 – Docker Networking & Container Communication
+
+Objective
+
+Understand Docker networking, network drivers, bridge networks, network creation and inspection, and container-to-container communication. Practice connecting containers to networks and troubleshooting network connectivity.
+
+1. Docker Networking Fundamentals
+
+Docker networking enables containers to communicate with each other, the host machine, and external networks.
+
+In multi-container applications, different components such as frontend, backend, and database may run in separate containers. Docker networks provide connectivity between these components.
+
+2. Docker Network Drivers
+
+Learned the purpose of different network drivers:
+
+- Bridge: Connects containers through a virtual network on a single Docker host.
+- Host: Allows a container to share the host's network namespace.
+- None: Provides no normal network connectivity to the container.
+- Overlay: Enables networking across multiple Docker hosts in supported environments.
+
+Bridge networking is especially useful for local multi-container applications.
+
+3. Default Bridge vs User-Defined Bridge
+
+Default Bridge
+
+Docker automatically creates a default bridge network. Containers connected to it can communicate using IP addresses, but automatic container-name DNS resolution is not provided in the same way as user-defined bridge networks.
+
+User-defined Bridge
+
+A custom bridge network provides better control over container connectivity and automatic DNS resolution through container names.
+
+Benefits:
+
+- Container-to-container communication
+- Name-based communication without manually tracking container IPs
+- Better network organization and isolation
+- Easier management of multi-container applications
+
+4. Network Creation and Inspection
+
+Created and inspected Docker networks using:
+
+sudo docker network ls
+sudo docker network inspect bridge
+sudo docker network create app-network
+sudo docker network inspect app-network
+
+Learned to inspect network properties such as:
+
+- Network ID and name
+- Driver and scope
+- Subnet and gateway
+- Connected containers
+- IPAM configuration
+
+Subnet defines the IP address range available to the Docker network, while the gateway provides a routing point for network traffic.
+
+5. Connecting Containers to Networks
+
+Created an Nginx container and connected it to a user-defined bridge network:
+
+sudo docker run -d --name test-nginx --network app-network nginx
+
+Verified the container's network attachment using:
+
+sudo docker network inspect app-network
+sudo docker inspect test-nginx
+
+Also learned how to connect an existing running container to a network without recreating it:
+
+sudo docker network connect app-network troubleshoot-net
+
+Verified the network attachment by inspecting the network configuration.
+
+6. Container-to-Container Communication
+
+Created two Nginx containers on the same user-defined bridge network:
+
+sudo docker network create app-network
+
+sudo docker run -d --name container1 --network app-network nginx
+
+sudo docker run -d --name container2 --network app-network nginx
+
+Entered the first container:
+
+sudo docker exec -it container1 bash
+
+Checked whether curl was installed:
+
+curl --version
+
+Sent an HTTP request from "container1" to "container2":
+
+curl http://container2
+
+Received the default Nginx HTML response successfully.
+
+This verified that containers connected to the same user-defined bridge network can communicate using container names. Docker's internal DNS resolves the container name to its network IP, allowing communication without manually specifying the IP address.
+
+7. Bash and Curl
+
+Reviewed the difference between Bash and curl:
+
+- Bash: A shell used to execute Linux commands and automate tasks through scripts.
+- Bash scripting: Writing multiple commands in a script file to automate operations.
+- curl: A command-line tool used to send HTTP/HTTPS requests and receive responses from servers.
+
+Used curl to verify HTTP communication between Docker containers.
+
+8. Network Troubleshooting
+
+Scenario 1 – Container Not Connected to the Required Network
+
+Created a container without specifying a custom network:
+
+sudo docker run -d --name troubleshoot-net nginx
+
+Connected the running container to the existing network without recreating it:
+
+sudo docker network connect app-network troubleshoot-net
+
+Verified the connection using:
+
+sudo docker network inspect app-network
+
+Successfully attached the running container to the network and confirmed its presence in the network inspection output.
+
+Key Learnings
+
+- Docker network drivers control how container networking operates.
+- Bridge networking is useful for containers running on the same Docker host.
+- User-defined bridge networks support automatic DNS resolution between containers.
+- Subnets and gateways are part of Docker's internal network configuration.
+- Containers can communicate using container names instead of manually tracking IP addresses.
+- "docker network inspect" helps investigate network configuration and attached containers.
+- "docker network connect" allows an existing running container to join another network without recreating it.
+- "curl" can be used to test HTTP connectivity and verify server responses.
+
+Progress
+
+Completed networking fundamentals, network creation and inspection, user-defined bridge networking, container attachment, and successful container-to-container HTTP communication.
+
+Practiced network troubleshooting by connecting an existing container to a custom network.
+
+Currently working on Docker network troubleshooting and final practical revision.
