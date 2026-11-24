@@ -1,0 +1,62 @@
+Day 12 – Docker Networking Practice & Introduction to Docker Compose
+
+Objective
+
+Strengthen independent Docker networking skills through hands-on practice, revise Docker volumes, and understand the purpose of Docker Compose.
+
+1. Independent Networking Challenge
+
+- Created a custom Docker network.
+- Created two Nginx containers named "sonu" and "monu".
+- Connected both containers to the same custom network.
+- Accessed one container from the other using Bash and "curl".
+- Successfully verified container-to-container communication.
+
+Key Learning: Containers connected to the same user-defined bridge network can communicate using container names through Docker's internal DNS.
+
+2. Networking Troubleshooting Concepts
+
+Revised how to connect and disconnect containers from Docker networks.
+
+docker network connect NETWORK_NAME CONTAINER_NAME
+docker network disconnect NETWORK_NAME CONTAINER_NAME
+docker network inspect NETWORK_NAME
+
+Key Learning:
+
+- "docker network connect" attaches a container to an additional network.
+- A container can be connected to multiple networks simultaneously.
+- Connecting to another network does not automatically disconnect the existing network.
+- Containers on separate networks do not automatically communicate through Docker's network-name DNS.
+
+3. Docker Volumes Revision
+
+Revised the purpose of Docker volumes and data persistence.
+
+- Docker volumes store data outside a container's writable layer.
+- Volume data can remain available even after a container is removed.
+- Named volumes are managed by Docker.
+- Bind mounts connect a specific host directory or file to a container.
+
+Example:
+
+docker volume create website-data
+docker volume ls
+docker volume inspect website-data
+
+4. Introduction to Docker Compose
+
+Learned why Docker Compose is useful for managing containerized applications.
+
+- Docker Compose uses a YAML configuration file, commonly named "compose.yaml".
+- It defines application services, images, ports, volumes, and networks.
+- It allows multiple services to be managed through a single configuration.
+- "docker compose up -d" starts the configured services in detached mode.
+
+Practical Progress
+
+- Successfully tested communication between two containers.
+- Revised Docker network connection and disconnection.
+- Reviewed named volumes and bind mounts.
+- Understood the basic purpose and workflow of Docker Compose.
+
