@@ -1,0 +1,264 @@
+Day 12 – Docker Networking & Docker Compose
+
+1. Docker Networking – Container Communication
+
+What is a Docker Network?
+
+A Docker network allows containers to communicate with each other. For example, a web application container needs to communicate with a database container.
+
+A user-defined bridge network is useful because Docker provides automatic DNS resolution. This means containers on the same network can communicate using their container names instead of manually finding IP addresses.
+
+Hands-on Practice
+
+Step 1: Create a custom network
+
+docker network create app-network
+
+Step 2: Run two containers on the same network
+
+docker run -d --name container1 --network app-network nginx
+
+docker run -d --name container2 --network app-network nginx
+
+Step 3: Enter the first container
+
+docker exec -it container1 bash
+
+Step 4: Test communication
+
+curl http://container2
+
+Result: Received the Nginx HTML response.
+
+What I understood: Docker's internal DNS resolved the name "container2" automatically because both containers were connected to the same user-defined network.
+
+---
+
+2. Networking Troubleshooting
+
+What happens when containers use different networks?
+
+Containers connected to separate user-defined bridge networks cannot automatically communicate using each other's container names.
+
+Hands-on Practice
+
+Step 1: Create two separate networks
+
+docker network create day12-net-a
+docker network create day12-net-b
+
+Step 2: Run containers on different networks
+
+docker run -d --name web1 --network day12-net-a nginx
+
+docker run -d --name web2 --network day12-net-b nginx
+
+Step 3: Test communication
+
+docker exec -it web1 bash
+
+curl http://web2
+
+Error received:
+
+Could not resolve host: web2
+
+Step 4: Fix the problem
+
+docker network connect day12-net-a web2
+
+Tested communication again and successfully received the Nginx response.
+
+What I learned: A container can connect to multiple networks. Connecting "web2" to "day12-net-a" allowed both containers to share a network and resolve each other's names.
+
+---
+
+3. Docker Compose – Introduction
+
+What is Docker Compose?
+
+Docker Compose is a tool used to define and manage application services through a YAML configuration file.
+
+Without Compose, I need to run separate Docker commands to create containers, configure ports, and attach networks.
+
+With Compose, I can define these settings in one file and manage the application using commands such as "docker compose up" and "docker compose down".
+
+Real-world use: A web application may need a frontend, backend and database. Compose helps define and run these services together.
+
+Installation and Verification
+
+Installed Docker Compose V2 and checked the version:
+
+docker compose version
+
+---
+
+4. Practical Project – Nginx Website Using Compose
+
+Step 1: Create the project structure
+
+day12-compose/
+├── compose.yaml
+└── website/
+    └── index.html
+
+Created a custom HTML website inside "website/index.html".
+
+Step 2: Create the Compose file
+
+services:
+  website:
+    image: nginx:latest
+    container_name: day12-website
+    ports:
+      - "8080:80"
+    volumes:
+      - ./website:/usr/share/nginx/html:ro
+
+Understanding the Configuration
+
+Configuration| What it does
+"services"| Defines the application services.
+"website"| Identifies the Compose service.
+"image"| Specifies the image used to create the container.
+"container_name"| Gives the container a custom name.
+"ports"| Connects host and container ports.
+"volumes"| Mounts host files or directories inside the container.
+
+New Concept: YAML
+
+YAML is a human-readable format used to store configuration settings.
+
+Docker Compose uses YAML so that service settings can be written in a structured way. Indentation matters because it defines which settings belong to which service.
+
+New Concept: Port Mapping
+
+ports:
+  - "8080:80"
+
+The format is "HOST_PORT:CONTAINER_PORT".
+
+- "8080" is the port on my host machine.
+- "80" is the port where Nginx listens inside the container.
+
+When I open "localhost:8080", Docker forwards the traffic to port 80 inside the container.
+
+New Concept: Bind Mount
+
+volumes:
+  - ./website:/usr/share/nginx/html:ro
+
+A bind mount connects a specific directory on the host machine to a directory inside a container.
+
+In my project:
+
+- "./website" is the host directory.
+- "/usr/share/nginx/html" is Nginx's website directory.
+- "ro" means read-only from the container's perspective.
+
+This is useful during development because I can edit website files on my machine and see the changes without rebuilding the Docker image.
+
+---
+
+5. Run and Test the Website
+
+Step 1: Validate the configuration
+
+sudo docker compose config
+
+Step 2: Start the service
+
+sudo docker compose up -d
+
+Step 3: Check the container status
+
+sudo docker compose ps
+
+Step 4: Access the website
+
+curl http://localhost:8080
+
+Opened "http://localhost:8080" in the browser and verified the custom webpage.
+
+Bind Mount Testing
+
+Modified the host-side "website/index.html" file and refreshed the browser.
+
+Result: The updated HTML content appeared without rebuilding the image or restarting the container.
+
+This confirmed that the bind mount was working correctly.
+
+---
+
+6. Docker Compose Lifecycle Management
+
+Commands Practiced
+
+sudo docker compose logs website
+sudo docker compose stop website
+sudo docker compose ps -a
+sudo docker compose start website
+sudo docker compose ps
+sudo docker compose restart website
+sudo docker compose ps
+sudo docker compose down
+
+What Each Command Does
+
+- "logs": Displays output generated by the service's container. Useful for troubleshooting.
+- "stop": Stops a running container but keeps it available.
+- "start": Starts an existing stopped container.
+- "restart": Stops and starts an existing container.
+- "ps": Shows the status of containers belonging to the Compose project.
+- "down": Stops and removes the project's containers and default network.
+
+Important difference:
+
+"stop" does not remove the container, while "down" removes the Compose project's containers and default network.
+
+Also, "docker compose down" does not delete the original host directory used by a bind mount.
+
+---
+
+7. Data Persistence Verification
+
+What is Data Persistence?
+
+Data persistence means keeping important data available even when a container is stopped or removed.
+
+A container has its own writable filesystem layer. Data stored only in that layer can disappear when the container is removed.
+
+A bind mount keeps the original files on the host machine.
+
+Hands-on Verification
+
+After running:
+
+sudo docker compose down
+
+Checked the host-side files:
+
+ls ~/day12-compose/website
+
+cat ~/day12-compose/website/index.html
+
+Result: The original HTML file was still present.
+
+This helped me understand why bind mounts are useful when application files need to remain outside the container lifecycle.
+
+---
+
+8. Important Concepts for Revision
+
+Topic| What I understood
+User-defined Bridge| Connects containers and provides automatic name resolution within the shared network.
+Docker Internal DNS| Resolves container names to their IP addresses on a shared user-defined network.
+Docker Compose| Manages application services using a YAML configuration file.
+YAML| A structured, human-readable configuration format.
+Port Mapping| Forwards traffic from a host port to a container port.
+Bind Mount| Connects a specific host directory to a container directory.
+Read-only Mount| Allows reading mounted files but prevents writes through that mount.
+Data Persistence| Keeps important data outside the container's writable layer.
+Compose Lifecycle| Manages starting, stopping, restarting and removing services.
+
+
