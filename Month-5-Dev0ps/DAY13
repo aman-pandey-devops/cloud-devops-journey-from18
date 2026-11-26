@@ -1,0 +1,189 @@
+Docker Day 13 – Environment Variables & Multi-Service Docker Compose
+
+Overview
+
+Today I practiced managing application configuration using environment variables and Docker Compose. I also learned how multiple containers communicate with each other through a shared Docker network.
+
+The main goal was to understand how application configuration reaches a container and how different services work together.
+
+1. Environment Variables
+
+Environment variables are configuration values that an application can read while running.
+
+I practiced setting variables in the terminal:
+
+export DB_HOST=localhost
+echo $DB_HOST
+
+- "export" makes a variable available to processes started from the current shell.
+- "echo $DB_HOST" displays its value.
+
+Environment variables are useful because configuration can be changed without modifying application code.
+
+For example, database connection details can change between development and production environments.
+
+2. Creating a ".env" File
+
+I created a ".env" file to keep multiple configuration values together.
+
+Example:
+
+DB_HOST=localhost
+DB_USER=aman
+DB_NAME=notesdb
+
+Instead of writing these values directly into application configuration, we can keep them separate.
+
+In real applications, this approach is useful for managing database connection settings. Actual passwords and secrets must not be committed to GitHub.
+
+3. Understanding "compose.yaml"
+
+I created a "compose.yaml" file to define a Docker Compose service.
+
+Docker Compose uses this file to understand which services to run, which images to use, and how to configure containers.
+
+I used variable substitution:
+
+environment:
+  DB_HOST: ${DB_HOST}
+  DB_USER: ${DB_USER}
+  DB_NAME: ${DB_NAME}
+
+Here, "${DB_HOST}" tells Compose to read the corresponding configuration value and pass it into the container environment.
+
+The ".env" file provides values, while "compose.yaml" defines how those values are used.
+
+4. Validating Docker Compose Configuration
+
+I practiced:
+
+sudo docker compose config
+
+This command checks the Compose configuration and displays the resolved configuration.
+
+It helped me verify that values from ".env" were correctly substituted.
+
+I also learned that Compose automatically looks for default filenames such as "compose.yaml". For a differently named file, we can specify it using the "-f" option.
+
+Example:
+
+sudo docker compose -f myfile.yaml config
+
+5. Testing Environment Variables Inside a Container
+
+I used the Alpine Linux image as a lightweight test environment.
+
+My Compose service included:
+
+test:
+  image: alpine
+  environment:
+    DB_HOST: ${DB_HOST}
+    DB_USER: ${DB_USER}
+    DB_NAME: ${DB_NAME}
+  command: sh -c "env | grep '^DB_'"
+
+I ran:
+
+sudo docker compose run --rm test
+
+The container displayed the database configuration values.
+
+This confirmed that the variables were not only available in the Compose configuration but were also passed into the running container.
+
+The "--rm" option automatically removes the temporary container after the command finishes.
+
+6. Environment Variable Override
+
+I tested how a shell environment variable can override a value from ".env".
+
+sudo DB_USER=developer docker compose config
+
+My ".env" file contained "DB_USER=aman", but the resolved configuration displayed "developer".
+
+This helped me understand configuration precedence: an environment variable supplied in the shell takes priority over the value in the ".env" file for Compose interpolation.
+
+The original ".env" file was not modified.
+
+7. Working with Multiple Services
+
+I updated my Compose file to define three services:
+
+- "test" – Used to verify environment variables.
+- "web" – Used the "nginx:alpine" image to run a web server.
+- "client" – Used Alpine to send an HTTP request to the web service.
+
+This helped me understand that one Compose project can manage multiple independent containers.
+
+Each service has its own responsibility, but Compose manages them together.
+
+8. Container-to-Container Communication
+
+I configured the client service to request:
+
+command: wget -qO- http://web
+
+I also used:
+
+depends_on:
+  - web
+
+The "depends_on" setting controls startup order by starting the web service before the client service.
+
+I ran:
+
+sudo docker compose run --rm client
+
+The client successfully received the Nginx HTML response.
+
+This demonstrated that services in the same default Compose network can communicate using their service names.
+
+I also learned that "localhost" inside a container refers to that same container, not another container.
+
+For example, a Flask application connecting to a PostgreSQL service should normally use "db" as its database hostname if the Compose service is named "db".
+
+9. Understanding Database and Docker Volume
+
+I learned that a database and a Docker volume have different responsibilities.
+
+- A database organizes and manages application data.
+- A Docker volume provides persistent storage for data files.
+
+If a PostgreSQL container is deleted but its volume is retained, a new PostgreSQL container can reuse that volume and access the existing database data, provided it is configured compatibly.
+
+This is important because database data should not depend only on a container's temporary filesystem.
+
+10. Flask and PostgreSQL Architecture
+
+I learned how Flask and PostgreSQL work together in a real application.
+
+- Flask handles application requests and backend logic.
+- PostgreSQL manages and stores application data.
+- A Docker network allows the containers to communicate.
+- A Docker volume helps preserve database data.
+- Environment variables provide database connection configuration.
+
+For example, when a user saves a note on a website, the Flask backend receives the request and sends the appropriate database operation to PostgreSQL.
+
+The user does not need to access the database or Docker terminal directly.
+
+11. Container Status and Cleanup
+
+I practiced checking service status:
+
+sudo docker compose ps
+
+This helped me identify which containers were running.
+
+Finally, I cleaned up the Compose project:
+
+sudo docker compose down
+
+This stopped and removed the Compose containers and its project network. It did not delete my ".env" or "compose.yaml" files.
+
+Key Learning
+
+Today I understood how Docker Compose handles configuration, how environment variables reach containers, and how multiple services communicate through a shared network.
+
+I also learned why application services and database services have separate responsibilities and why persistent storage is important.
+
